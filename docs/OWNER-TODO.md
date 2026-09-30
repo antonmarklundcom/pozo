@@ -14,12 +14,23 @@ Only things an agent cannot do. Everything else is handled by the runbook runs
 3. **Keyword data:** connect the keyword-library MCP to the cloud environment, or run the Sonnet run on
    the PC where it is connected. Without it, keyword-dependent tasks (copy rewrites, new pages, guides)
    are skipped — never guessed.
+4. **axe-core for cloud sessions:** the browser check (part of `node tools/verify.mjs`) now runs axe-core
+   as a global tool. Cloud containers start without it, so add `npm i -g axe-core` to the environment's
+   setup script (Claude Code environment settings → Setup script). Otherwise each session installs it
+   first. On the PC, run `npm i -g playwright axe-core` once.
+5. **After the first deploy from this repo:** check that `domains/pozo.com.py/private/` exists on
+   Hostinger (next to `public_html`). `wa.php` writes the WhatsApp click log `wa-clicks.log` there. The
+   folder already exists if `private/pozo.php` is there. Then run
+   `node tools/smoke-live.mjs https://pozo.com.py` from the PC; it lists anything the live site still
+   serves differently from `main`.
 
 ## Business answers (reply in chat whenever)
 
 - Does the operator offer: limpieza de pozo artesiano, bombas (venta/cambio), destape de cañerías?
 - Coverage: exactly the 10 cities listed on /zonas/, or more?
 - Later: real photos, verified prices (PYG), VenderCRM site key, Resend domain + notify mailbox.
+- Official profile URLs of the business (Google Business Profile, Facebook, Instagram), if they exist.
+  They go into `SITE.sameAs` in `site.config.mjs` (structured data). It stays empty until you confirm them.
 
 ## Search Console key (for `node tools/gsc-report.mjs`)
 

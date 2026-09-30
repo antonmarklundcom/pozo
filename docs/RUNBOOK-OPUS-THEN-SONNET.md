@@ -90,6 +90,33 @@ qa checks) into `tools/kit/` with a config file so they can be copied into obra/
 
 Check `docs/IMPROVE-REPORT-2026-09-29.md` "Runbook log": if the Opus run is not finished, stop and say so.
 
+**Notes from the Opus run (read first).**
+- Setup: run `npm i -g axe-core` before the first `node tools/verify.mjs`. The browser check needs it and
+  exits with that hint otherwise. Playwright is preinstalled in cloud sessions.
+- Branches: a cloud session can usually push only to its own session branch. Use that one branch for every
+  task: after each merge, `git fetch origin main && git merge --ff-only origin/main`, then start the next
+  task. One PR per task, never force-push. This replaces the `<run>/<task>` names in §1.
+- Guides (N9) use the O1 system:
+  - Entries go in `content/guides.mjs`; set `draft: false` to publish.
+  - Replace or delete the draft example, and take the meaning group from the keyword map (not in
+    `SERVICE_MEANING_GROUPS`).
+  - qa.mjs enforces ≥ 700 words and 4–6 FAQs. `/guias/`, the sitemap, the footer link and "Guías
+    relacionadas" follow automatically.
+- "Servicios relacionados" (N8) already exists as a link block (`RELATED_SERVICES` in `build.mjs`). N8
+  adds contextual links in body copy only. `tools/link-graph.mjs` (in verify) must keep passing, and a new
+  service page needs an entry in `RELATED_SERVICES` and contextual links from ≥ 3 pages.
+- New zone pages (N10) automatically get the "Desagüe por zona" block on the desagüe and pozo-lleno pages.
+  The link graph requires the hub and ≥ 1 service page to link them.
+- CSS: edit `assets/css/site.css`. The build writes `site.min.css` and the inline critical CSS. If a new
+  component appears in the first screen, add its class prefix to `CRITICAL_COMPONENTS` in `build.mjs`;
+  the browser check says so when it is missing. Keep text contrast ≥ 4.5:1, because axe fails
+  serious findings.
+- Live checks (N6): `node tools/smoke-live.mjs https://pozo.com.py` and `node tools/crawl.mjs …` exit 2 or
+  report unreachable when the host is blocked. In that case skip N6 and add it to the TODO.
+- Other tools: `tools/wa-report.mjs` (WhatsApp click log), `tools/gsc-report.mjs` (needs `GSC_KEY_FILE`),
+  `tools/perf.mjs`. The generic tools live in `tools/kit/` (config: `kit.config.mjs`,
+  `docs/SITE-KIT.md`). The old `tools/*.mjs` commands still work.
+
 **Keyword gate.** Tasks marked 🔑 need the keyword-library MCP. If it is not connected in the session,
 skip every 🔑 task, list them in `docs/OWNER-TODO.md` ("connect the keyword-library MCP or run on the PC"),
 and do the rest. Never substitute guesses for keyword data.
