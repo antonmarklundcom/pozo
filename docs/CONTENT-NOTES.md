@@ -21,3 +21,28 @@ Editorial notes that used to be visible on the public site live here instead.
   guaraní (PYG) prices may ever replace them. WhatsApp texts never mention prices.
 - Visit / diagnosis cost, response times, guarantees, "24/7", "gratis", potability: not claimed.
 - Truck capacity 8 m³ and depth band 30–120 m are "informado/a", as the operator stated them.
+
+## Zone pages: facts to verify with a local
+
+Concrete local claims in `content/zones.mjs` that the owner's Paraguayan partner should check.
+Everything else on those pages is generic access/drainage advice. Remove or fix any claim that is wrong.
+
+- San Lorenzo: neighbors Fernando de la Mora, Capiatá, Ñemby; dense centre with small lots and narrow gates; newer outer
+  barrios with unpaved/cobbled streets; UNA campus is in San Lorenzo; many rentals/pensions and shops.
+- Mariano Roque Alonso: many quintas/chacras with long internal dirt paths; on the Río Paraguay bank; lower areas can
+  flood or waterlog in heavy rain/crecidas; neighbors Limpio, Luque, Asunción.
+- Luque: large city with dense urban core and outer quintas/dirt roads; Aeropuerto Silvio Pettirossi is in Luque;
+  heavy traffic toward Asunción; neighbors San Lorenzo, Limpio, Mariano Roque Alonso.
+- Capiatá: newer barrios with dirt/cobbled streets and no sewer network; neighbors San Lorenzo, Luque, Itauguá;
+  many new plots being built on.
+- Lambaré: Cerro Lambaré exists and several streets slope; borders Asunción; dense barrios with pasillos/shared
+  entrances; neighbors Villa Elisa, Ñemby.
+- Fernando de la Mora: small, very dense city next to Asunción; locals say "Zona Norte" / "Zona Sur"; old houses with
+  old pozos; neighbors Asunción, San Lorenzo, Lambaré.
+- Ñemby: growing sectors with new houses, unpaved streets, no sewer; neighbors Villa Elisa, Lambaré, San Lorenzo.
+- Villa Elisa: mostly residential, houses with gardens and finished floors; neighbors Ñemby, Lambaré, San Antonio.
+- Limpio: mix of shops/workshops/depots, barrios, quintas and new subdivisions; neighbors Mariano Roque Alonso, Luque,
+  Capiatá.
+- Asunción: not every home is connected to a sewer network, some still use pozo ciego; old houses with narrow garages
+  and street trees; neighbors Lambaré, Fernando de la Mora, Mariano Roque Alonso.
+- Check also: the "nearby" lists above and the suggestion that a pozo artesiano is asked about mostly on large outer lots.
