@@ -7,8 +7,10 @@ return [
     'crm_url' => 'https://crm.clientes.com.py',
     'wa_form' => [
         'intro' => ['contacto' => 'Hola, les escribo desde pozo.com.py: acabo de enviar el formulario de contacto.', 'ficha' => 'Hola, les escribo desde pozo.com.py: acabo de dejar mis datos en la ficha rápida ({page}).'],
-        'labels' => ['name' => 'Nombre', 'phone' => 'Teléfono', 'service' => 'Servicio', 'zona' => 'Ciudad y barrio', 'message' => 'Consulta', 'email' => 'Correo'],
-        'outro' => ['Si hace falta, les mando fotos o medidas por acá.', 'Para cuándo lo necesito (hoy, esta semana, sin apuro): ___'],
+        'labels' => ['name' => 'Nombre', 'phone' => 'Teléfono', 'service' => 'Servicio', 'zona' => 'Ciudad y barrio', 'urgencia' => 'Para cuándo', 'message' => 'Consulta', 'email' => 'Correo'],
+        'urgency' => ['hoy' => 'hoy', 'semana' => 'esta semana', 'sin-apuro' => 'sin apuro'],
+        'outro' => ['Si hace falta, les mando fotos o medidas por acá.'],
+        'ask_when' => 'Para cuándo lo necesito (hoy, esta semana, sin apuro): ___',
     ],
     // Read by wa.php: every page of the message map with its default topic and
     // the text for each topic (content/wa-messages.mjs).
@@ -1323,5 +1325,5 @@ Quiero hacer una consulta sobre mis datos personales.
 Nombre y teléfono con los que escribí: ___
 Qué necesito (ver, corregir o borrar mis datos): ___']],
     ],
-    'generated_at' => '2026-09-30T02:33:39.235Z',
+    'generated_at' => '2026-09-30T02:37:23.535Z',
 ];

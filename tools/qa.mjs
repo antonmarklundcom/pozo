@@ -9,7 +9,7 @@ import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE } from '../site.config.mjs';
 import { TOPICS, PAGES, waText, CALCULATOR_TEMPLATE, FORM_FALLBACK } from '../content/wa-messages.mjs';
-import { ZONES, GRANDFATHERED_ZONES } from '../content/zones.mjs';
+import { ZONES, GRANDFATHERED_ZONES, COVERAGE_CITIES } from '../content/zones.mjs';
 import { GUIDES, PUBLISHED_GUIDES, DRAFT_GUIDES, SERVICE_MEANING_GROUPS, GUIDE_HUB, HAS_GUIDE_HUB, guidePath, guideWordCount, anchorId } from '../content/guides.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -101,6 +101,16 @@ for (const source of ['build.mjs', 'assets/js/site.js', 'contacto.php', 'wa.php'
   if (/(?:'|`)Hola, (?:quiero|necesito|tengo|mi pozo|les escribo|envié)/.test(text)) fail(`${source}: WhatsApp text written outside content/wa-messages.mjs`);
 }
 
+// Lead triage controls: one radio per FORM_FALLBACK.urgency key, and a zona
+// select with every coverage city plus "Otra".
+function triageOk(formHtml) {
+  const radios = [...formHtml.matchAll(/<input[^>]*type="radio" name="urgencia" value="([^"]+)"/g)].map(([, value]) => value);
+  const select = formHtml.match(/<select[^>]*name="zona"[\s\S]*?<\/select>/)?.[0] || '';
+  const options = [...select.matchAll(/<option(?: value="([^"]*)")?>([^<]*)<\/option>/g)].map(([, value, label]) => value ?? label);
+  const cities = COVERAGE_CITIES.map((city) => city.replace(/&/g, '&amp;'));
+  return radios.join() === Object.keys(FORM_FALLBACK.urgency).join() && cities.every((city) => options.includes(city)) && options.includes('Otra');
+}
+
 // --- 3. Every generated page -------------------------------------------------
 const titles = new Set();
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
@@ -179,6 +189,8 @@ for (const file of htmlFiles) {
   if (!/class="contact-toggle"/.test(html)) fail(`${rel}: missing header contact-toggle`);
   if (!/<details class="wa-launcher" id="wa-launcher">/.test(html)) fail(`${rel}: missing no-JS WhatsApp launcher`);
   if (!/class="wa-ficha__form" action="\/contacto\.php" method="POST"/.test(html)) fail(`${rel}: launcher ficha rápida form missing`);
+  const ficha = html.match(/<form class="wa-ficha__form"[\s\S]*?<\/form>/)?.[0] || '';
+  if (!triageOk(ficha)) fail(`${rel}: ficha rápida needs the urgencia radios (${Object.keys(FORM_FALLBACK.urgency).join('/')}) and the zona select (coverage cities + Otra)`);
   for (const [tag] of html.matchAll(/<a\s[^>]*target="_blank"[^>]*>/g)) {
     if (!/rel="[^"]*noopener/.test(tag)) fail(`${rel}: target="_blank" without rel="noopener": ${tag.slice(0, 90)}`);
   }
@@ -331,10 +343,11 @@ for (const path of published) {
 const contactHtml = await readFile(join(root, 'contacto', 'index.html'), 'utf8');
 if (!/<form[^>]+action="\/contacto\.php"[^>]+method="POST"/.test(contactHtml)) fail('contacto/index.html: server-side lead form is not configured');
 if (!/name="phone"[^>]+required/.test(contactHtml) || !/name="website"/.test(contactHtml) || !/name="consent"/.test(contactHtml)) fail('contacto/index.html: phone, honeypot or consent control missing');
+if (!triageOk(contactHtml.match(/<form class="lead-form"[\s\S]*?<\/form>/)?.[0] || '')) fail('contacto/index.html: lead form needs the urgencia radios and the zona select');
 if (!contactHtml.includes('https://crm.clientes.com.py/vc-attribution.js') || !contactHtml.includes('Enviar y continuar en WhatsApp')) fail('contacto/index.html: CRM attribution or CRM-to-WhatsApp CTA missing');
 
 const contactHandler = await readFile(join(root, 'contacto.php'), 'utf8');
-for (const required of ['VENDERCRM_URL', 'VENDERCRM_API_KEY', '/api/v1/leads', 'idempotency_key', 'X-Api-Key', 'api.resend.com', 'Idempotency-Key', 'RESEND_API_KEY', 'https://crm.clientes.com.py', '/private/vendercrm.php', '/private/pozo.php', 'whatsappFallback($lead,', "'wa_form'"]) {
+for (const required of ["'urgencia' =>", "'[URGENTE] '", "'ask_when'", 'VENDERCRM_URL', 'VENDERCRM_API_KEY', '/api/v1/leads', 'idempotency_key', 'X-Api-Key', 'api.resend.com', 'Idempotency-Key', 'RESEND_API_KEY', 'https://crm.clientes.com.py', '/private/vendercrm.php', '/private/pozo.php', 'whatsappFallback($lead,', "'wa_form'"]) {
   if (!contactHandler.includes(required)) fail(`contacto.php: missing ${required}`);
 }
 // Secrets: nothing that looks like a real key anywhere in the repo.

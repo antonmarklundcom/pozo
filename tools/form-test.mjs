@@ -51,7 +51,7 @@ await new Promise((resolve) => setTimeout(resolve, 800));
 
 const valid = {
   form_id: 'contacto', page_url: 'https://pozo.com.py/contacto/', website: '', name: 'Prueba Automática',
-  phone: '0981 000 000', email: 'visitante@example.invalid', zona: 'San Lorenzo, Barrio Centro',
+  phone: '0981 000 000', email: 'visitante@example.invalid', zona: 'San Lorenzo', barrio: 'Barrio Centro', urgencia: 'hoy',
   service: 'Desagüe de pozo ciego', message: 'Prueba local con stubs. El pozo rebalsa.', consent: '1',
 };
 async function post(port, fields) {
@@ -86,6 +86,7 @@ try {
   const text = waText(r.location);
   check(text.includes('pozo.com.py') && text.includes('formulario de contacto'), 'WhatsApp text must name the site and the form');
   check(text.includes('San Lorenzo, Barrio Centro') && text.includes('Desagüe de pozo ciego') && text.includes('0981 000 000'), 'WhatsApp text must carry zona, service and phone');
+  check(text.includes('Para cuándo: hoy') && !text.includes('Para cuándo lo necesito'), 'WhatsApp text must carry the chosen urgency instead of asking for it');
   check(calls.length === 0, 'no-keys submit must not call any service');
 
   // Valid, stubbed keys: CRM then Resend, then WhatsApp.
@@ -99,6 +100,7 @@ try {
     check(crm.headers['x-api-key'] === 'stub-not-a-real-key', 'CRM call without X-Api-Key');
     check(crm.body.source === 'site:pozo.com.py:contacto', `CRM source ${crm.body.source}`);
     check(crm.body.fields?.zona === valid.zona && crm.body.fields?.pagina === valid.page_url && crm.body.fields?.servicio === valid.service, 'CRM fields zona/pagina/servicio missing');
+    check(crm.body.fields?.urgencia === 'hoy' && crm.body.fields?.barrio === 'Barrio Centro', `CRM fields urgencia/barrio wrong (${crm.body.fields?.urgencia}, ${crm.body.fields?.barrio})`);
     check(/^[a-f0-9]{64}$/.test(crm.body.idempotency_key || ''), 'CRM idempotency_key missing');
   }
   if (mail && crm) {
@@ -106,7 +108,22 @@ try {
     check(mail.body.reply_to === valid.email && mail.body.to?.[0] === 'operator@example.invalid', 'Resend reply_to/to wrong');
     check(!/[\r\n]/.test(mail.body.subject || ''), 'Resend subject contains a newline');
     check(String(mail.body.text).includes('contactId=c_stub'), 'Resend text must carry the CRM result');
+    check(String(mail.body.subject).startsWith('[URGENTE] '), `urgencia=hoy must prefix the subject with [URGENTE] (got ${mail.body.subject})`);
+    check(String(mail.body.text).includes('Para cuándo: hoy') && String(mail.body.text).includes('Ciudad y barrio: San Lorenzo, Barrio Centro'), 'Resend text must carry urgency and zona');
   }
+
+  // Not urgent: no [URGENTE], label "esta semana". Unknown value: ignored, the text asks instead.
+  let mark = calls.length;
+  await post(WITH_KEYS_PORT, { ...valid, urgencia: 'semana', phone: '0981 000 001' });
+  const weekMail = calls.slice(mark).find((call) => call.url === '/emails');
+  const weekCrm = calls.slice(mark).find((call) => call.url === '/api/v1/leads');
+  check(weekMail && !String(weekMail.body.subject).includes('[URGENTE]'), 'urgencia=semana must not mark the subject as urgent');
+  check(weekCrm?.body.fields?.urgencia === 'esta semana', `urgencia=semana -> CRM field ${weekCrm?.body.fields?.urgencia}`);
+  mark = calls.length;
+  r = await post(WITH_KEYS_PORT, { ...valid, urgencia: '<script>', phone: '0981 000 002' });
+  const badCrm = calls.slice(mark).find((call) => call.url === '/api/v1/leads');
+  check(badCrm && !('urgencia' in (badCrm.body.fields || {})), 'an unknown urgencia value must be dropped');
+  check(waText(r.location).includes('Para cuándo lo necesito'), 'without a valid urgency the WhatsApp text must ask for it');
 
   // Same visitor again within the hour: same idempotency key (no duplicate deal/email).
   const before = calls.length;
@@ -140,4 +157,4 @@ if (failures.length) {
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
-console.log(`Form test passed: ${calls.length} stubbed CRM/Resend calls, honeypot, validation, idempotency, ficha and WhatsApp redirect verified.`);
+console.log(`Form test passed: ${calls.length} stubbed CRM/Resend calls, honeypot, validation, idempotency, urgency/zona triage, ficha and WhatsApp redirect verified.`);

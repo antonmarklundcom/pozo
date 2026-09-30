@@ -170,6 +170,11 @@ export const FORM_FALLBACK = {
     contacto: `Hola, les escribo desde ${SITE_LABEL}: acabo de enviar el formulario de contacto.`,
     ficha: `Hola, les escribo desde ${SITE_LABEL}: acabo de dejar mis datos en la ficha rápida ({page}).`,
   },
-  labels: { name: 'Nombre', phone: 'Teléfono', service: 'Servicio', zona: 'Ciudad y barrio', message: 'Consulta', email: 'Correo' },
-  outro: ['Si hace falta, les mando fotos o medidas por acá.', WHEN],
+  labels: { name: 'Nombre', phone: 'Teléfono', service: 'Servicio', zona: 'Ciudad y barrio', urgencia: 'Para cuándo', message: 'Consulta', email: 'Correo' },
+  // "¿Para cuándo?" radio in both forms: value -> label (form, CRM field, WhatsApp, email).
+  // 'hoy' marks the notification email subject with [URGENTE].
+  urgency: { hoy: 'hoy', semana: 'esta semana', 'sin-apuro': 'sin apuro' },
+  outro: ['Si hace falta, les mando fotos o medidas por acá.'],
+  // Added only when the visitor did not pick an urgency.
+  askWhen: WHEN,
 };

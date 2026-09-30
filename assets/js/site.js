@@ -271,12 +271,14 @@
   if (fichaForm) {
     const service = fichaForm.querySelector('select[name="service"]');
     const message = fichaForm.querySelector('input[name="message"]');
-    const zona = fichaForm.querySelector('input[name="zona"]');
+    const zona = fichaForm.querySelector('select[name="zona"]');
     fichaForm.addEventListener('submit', () => {
       if (!message) return;
       const parts = ['Ficha rápida enviada desde el sitio.'];
       if (service && service.value) parts.push(`Caso: ${service.value}.`);
-      if (zona && zona.value) parts.push(`Ciudad/barrio: ${zona.value}.`);
+      if (zona && zona.value) parts.push(`Ciudad: ${zona.value}.`);
+      const when = fichaForm.querySelector('input[name="urgencia"]:checked');
+      if (when) parts.push(`Para cuándo: ${when.nextElementSibling ? when.nextElementSibling.textContent : when.value}.`);
       parts.push('Pido que me escriban por WhatsApp.');
       message.value = parts.join(' ');
     });

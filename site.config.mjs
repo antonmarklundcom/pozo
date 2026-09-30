@@ -13,7 +13,7 @@ export const SITE = {
   leadEmail: '',
   venderCrmUrl: 'https://crm.clientes.com.py',
   capacity: '8 m³',
-  assetVersion: '20260930-3',
+  assetVersion: '20260930-4',
 };
 
 export const DEMO_MODE = false;

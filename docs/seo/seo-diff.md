@@ -1,7 +1,7 @@
 # SEO before/after diff
 
 Before: http://127.0.0.1:8770 (2026-09-30T00:53:43.782Z, 37 URLs)  
-After: http://127.0.0.1:8765 (2026-09-30T02:33:39.665Z, 48 URLs)
+After: http://127.0.0.1:8765 (2026-09-30T02:37:24.043Z, 48 URLs)
 
 ## Lost or broken URLs (0)
 
@@ -23,7 +23,13 @@ None. Every URL that answered 200 or 301 before still does.
 | /privacidad.php | 301 | — |  | no |
 | /tratamiento-agua.php | 301 | — |  | no |
 
-## Changed URLs (13)
+## Changed URLs (14)
+
+### /contacto/
+
+| Field | Before | After |
+|---|---|---|
+| words | 292 | 324 |
 
 ### /pozos-artesianos/precio-metro
 
