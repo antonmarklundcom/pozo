@@ -174,6 +174,7 @@
   // --- Calculator ----------------------------------------------------------
   const calculator = document.querySelector('#well-calculator');
   const estimate = document.querySelector('#estimate');
+  const estimateResult = document.querySelector('#estimate-result');
   // Base URL (number) and text template come from the build, which takes them
   // from site.config.mjs and content/wa-messages.mjs. Nothing is hard-coded here.
   const WA_BASE = estimate ? estimate.dataset.waBase || '' : '';
@@ -222,7 +223,7 @@
       ? `<a class="button button--wa" id="send-estimate" href="${waHref}" target="_blank" rel="noopener noreferrer">Enviar por WhatsApp</a>`
       : '';
 
-    estimate.innerHTML = `<p class="eyebrow">Estimación inicial</p><h2>${s.depth} metros · ${labels[s.soil]}</h2><ul>${rows}</ul><div class="estimate-total"><span>Estimado</span><strong>${s.total != null ? formatGs(s.total) : 'A cotizar'}</strong></div><p>${note}</p><div class="estimate-actions"><button class="button button--outline" id="copy-estimate" type="button">Copiar solicitud</button>${waButton}</div>`;
+    estimateResult.innerHTML = `<p class="eyebrow">Estimación inicial</p><h2>${s.depth} metros · ${labels[s.soil]}</h2><ul>${rows}</ul><div class="estimate-total"><span>Estimado</span><strong>${s.total != null ? formatGs(s.total) : 'A cotizar'}</strong></div><p>${note}</p><div class="estimate-actions"><button class="button button--outline" id="copy-estimate" type="button">Copiar solicitud</button>${waButton}</div>`;
   }
 
   async function copySummary() {
@@ -239,13 +240,29 @@
     }
   }
 
-  if (calculator && estimate) {
+  function refreshEstimate() {
+    // Skip half-typed input (empty or out of range) so the price never jumps to a default.
+    if (!calculator.checkValidity()) return;
+    const summary = calculatorSummary(new FormData(calculator));
+    renderEstimate(summary);
+    document.querySelectorAll('#included-toggle [data-needs-install]').forEach((col) => { col.hidden = !summary.install; });
+    const total = estimateResult.querySelector('.estimate-total strong');
+    if (total && !reducedMotion) {
+      total.classList.remove('is-updated');
+      void total.offsetWidth;
+      total.classList.add('is-updated');
+    }
+  }
+
+  if (calculator && estimate && estimateResult) {
     calculator.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!calculator.reportValidity()) return;
-      renderEstimate(calculatorSummary(new FormData(calculator)));
+      refreshEstimate();
       estimate.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
     });
+    calculator.addEventListener('input', refreshEstimate);
+    calculator.addEventListener('change', refreshEstimate);
     document.addEventListener('click', (event) => {
       if (event.target.closest('#copy-estimate')) copySummary();
     });

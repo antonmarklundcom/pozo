@@ -1,7 +1,7 @@
 # SEO before/after diff
 
 Before: http://127.0.0.1:8770 (2026-09-30T00:53:43.782Z, 37 URLs)  
-After: http://127.0.0.1:8765 (2026-09-30T16:08:19.086Z, 48 URLs)
+After: http://127.0.0.1:8765 (2026-09-30T17:51:18.647Z, 48 URLs)
 
 ## Lost or broken URLs (0)
 
@@ -99,7 +99,7 @@ None. Every URL that answered 200 or 301 before still does.
 
 | Field | Before | After |
 |---|---|---|
-| words | 216 | 359 |
+| words | 216 | 440 |
 
 ### /servicios/septico/
 

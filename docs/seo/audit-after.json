@@ -1,5 +1,5 @@
 {
-  "crawledAt": "2026-09-30T16:08:19.086Z",
+  "crawledAt": "2026-09-30T17:51:18.647Z",
   "base": "http://127.0.0.1:8765",
   "sitemap": {
     "status": 200,
@@ -1118,7 +1118,7 @@
           ]
         }
       ],
-      "words": 359,
+      "words": 440,
       "images": [
         "/assets/images/bomba-pozo-artesiano.webp"
       ]
