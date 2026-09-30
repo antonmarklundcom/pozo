@@ -5,5 +5,10 @@ return [
     'phone_display' => '+595 992 279 599',
     'site_url' => 'https://pozo.com.py',
     'crm_url' => 'https://crm.clientes.com.py',
-    'generated_at' => '2026-09-28T20:10:16.902Z',
+    'wa_form' => [
+        'intro' => ['contacto' => 'Hola, les escribo desde pozo.com.py: acabo de enviar el formulario de contacto.', 'ficha' => 'Hola, les escribo desde pozo.com.py: acabo de dejar mis datos en la ficha rápida ({page}).'],
+        'labels' => ['name' => 'Nombre', 'phone' => 'Teléfono', 'service' => 'Servicio', 'zona' => 'Ciudad y barrio', 'message' => 'Consulta', 'email' => 'Correo'],
+        'outro' => ['Si hace falta, les mando fotos o medidas por acá.', 'Para cuándo lo necesito (hoy, esta semana, sin apuro): ___'],
+    ],
+    'generated_at' => '2026-09-30T01:46:31.536Z',
 ];

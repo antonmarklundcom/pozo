@@ -19,13 +19,29 @@ Edit `site.config.mjs`:
 7. Preserve any existing `.well-known` or domain-verification files.
 8. After extraction, verify HTTPS, the homepage, `/contacto/`, one form submission, WhatsApp links, `robots.txt` and `sitemap.xml` on the public domain.
 
-## Build
+## Build and verify
 
 ```powershell
-node build.mjs
+node build.mjs            # regenerate pages, sitemap, robots, 404, config/site.generated.php
+node tools/verify.mjs     # build + QA + crawl + SEO diff + browser check + stubbed form test
+# Windows without php on PATH:  $env:PHP_BIN="C:\php\php.exe"; node tools/verify.mjs
 ```
 
 Node.js is only used locally to regenerate pages and `config/site.generated.php`. Hostinger serves the generated HTML and executes `contacto.php`.
+
+Where things live:
+
+| What | File |
+|---|---|
+| Number, hours, prices, asset version | `site.config.mjs` |
+| **Every WhatsApp text** (page/service → message, calculator, form redirect) | `content/wa-messages.mjs` |
+| Zone pages | `content/zones.mjs` |
+| One sibling-site cross-link per page | `content/cross-links.mjs` |
+| Page templates and copy | `build.mjs` |
+| Internal editorial notes (never published) | `docs/CONTENT-NOTES.md` |
+| SEO baseline, crawl, before/after diff | `docs/seo/` |
+
+`tools/qa.mjs` fails on any phone number other than 595992279599 in any file, on a wa.me link with empty text or without the site/page line, on a previously published URL without a 301, on a route folder without `index.html`, and on internal notes visible to visitors.
 
 ## VenderCRM
 
@@ -54,7 +70,7 @@ Setup:
 
 ## Local preview
 
-Use any local static server from this folder. Clean directory URLs are already represented by folders containing `index.html`. To exercise `contacto.php` locally, use PHP's built-in server: `php -S 127.0.0.1:8765` from this folder (note: PHP's built-in server does not read `.htaccess`).
+Run `php -S 127.0.0.1:8765 tools/router.php` from this folder. The router emulates the production `.htaccess` (301s, denied folders, `404.html`, 403 for a folder without `index.html`), which plain `php -S` does not. `contacto.php` works through it; test it only with `node tools/form-test.mjs` (CRM and Resend stubbed, fake keys).
 
 ## Images
 
@@ -66,8 +82,10 @@ The privacy page describes the actual lead and attribution flow, including the R
 
 ## Hostinger Git deployment
 
+**Deploy source:** Hostinger currently deploys from `antonmarklundcom/pozo.com.py`. Work happens in `antonmarklundcom/pozo`; after a PR here is merged, sync the deploy repo (or point hPanel Git at this repo) — otherwise the live site does not change.
+
 In hPanel → Websites → Git, add repository `https://github.com/antonmarklundcom/pozo.com.py`, branch `main`, install path empty (= `public_html`). Use Auto-deployment via the webhook shown in hPanel, added under GitHub → Settings → Webhooks. Generated HTML is committed, so no build step is needed on the server; run `node build.mjs` locally, commit, push.
 
-- `.htaccess` blocks web access to `.git`, `config/`, `docs/`, `tools/`, `build.mjs`, `site.config.mjs` and the README.
+- `.htaccess` blocks web access to `.git`, `config/`, `content/`, `docs/`, `tools/`, `build.mjs`, `site.config.mjs` and the README.
 - Secrets never live in the repo: put `domains/pozo.com.py/private/pozo.php` on the server (template in `docs/pozo-private.example.php`).
 - Backup: `python tools/package-hostinger.py` builds a deploy-only ZIP one folder above the project.

@@ -162,9 +162,10 @@
   // --- Calculator ----------------------------------------------------------
   const calculator = document.querySelector('#well-calculator');
   const estimate = document.querySelector('#estimate');
-  const WA_NUMBER = (document.querySelector('.wa-option') || {}).href
-    ? (document.querySelector('.wa-option').href.match(/wa\.me\/(\d+)/) || [])[1]
-    : '';
+  // Base URL (number) and text template come from the build, which takes them
+  // from site.config.mjs and content/wa-messages.mjs. Nothing is hard-coded here.
+  const WA_BASE = estimate ? estimate.dataset.waBase || '' : '';
+  const WA_TEMPLATE = estimate ? estimate.dataset.waTemplate || '' : '';
 
   function selectedComponents(data) {
     return [
@@ -184,14 +185,11 @@
 
   function requestText() {
     const { depth, soil, components } = calculatorSummary(new FormData(calculator));
-    return [
-      'Hola, quiero cotizar un pozo artesiano.',
-      'Ciudad/barrio: ___',
-      `Profundidad estimada: ${depth} m`,
-      `Tipo de suelo esperado: ${soil}`,
-      `Componentes: ${components.join(', ') || 'solo perforación'}`,
-      'Vi pozo.com.py – Precio por metro.',
-    ].join('\n');
+    const soilLabels = { tierra: 'tierra', mixto: 'mixto', roca: 'roca', desconocido: 'no sé' };
+    return WA_TEMPLATE
+      .replace('{depth}', String(depth))
+      .replace('{soil}', soilLabels[soil] || soil)
+      .replace('{components}', components.join(', ') || 'solo perforación');
   }
 
   function renderEstimate({ depth, soil, components }) {
@@ -209,7 +207,7 @@
       components.includes('Tablero') ? '<li><span>Tablero</span><strong>Según configuración</strong></li>' : '',
     ].join('');
 
-    const waHref = WA_NUMBER ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(requestText())}` : '';
+    const waHref = WA_BASE && WA_TEMPLATE ? `${WA_BASE}${encodeURIComponent(requestText())}` : '';
     const waButton = waHref
       ? `<a class="button button--wa" id="send-estimate" href="${waHref}" target="_blank" rel="noopener noreferrer">Enviar por WhatsApp</a>`
       : '';

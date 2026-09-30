@@ -1,5 +1,7 @@
 ﻿# Handover: pozo.com.py (cloud / other PC)
 
+> **2026-09-30:** current work is on branch `claude/awesome-franklin-otvfy7` — read `docs/IMPROVE-PLAN-2026-09-30.md` and `docs/HANDOFF-SONNET.md` first. WhatsApp texts live in `content/wa-messages.mjs`; verify with `node tools/verify.mjs`.
+
 Repo: https://github.com/antonmarklundcom/pozo  (branch main)
 
 ## Prompt to paste into Claude Code (cloud run / other PC)

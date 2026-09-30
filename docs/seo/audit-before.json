@@ -1,0 +1,1562 @@
+{
+  "source": "Baseline = main @ 57bfa64 (identical site files to the Hostinger deploy repo antonmarklundcom/pozo.com.py) served with php -S tools/router.php, which emulates the production .htaccess. A direct crawl of https://pozo.com.py was not possible from the cloud session (egress policy blocked the host). Re-run: node tools/crawl.mjs https://pozo.com.py docs/seo/audit-live-before.json",
+  "knownLiveDifferences": {
+    "/zonas/": "Returns 403 on live and is missing from the live sitemap.xml (per owner report 2026-09-29); present in the repo build.",
+    "footer": "Live footer shows the internal editorial note \"Reemplazalas con fotos verificadas...\" (also present in this baseline)."
+  },
+  "crawledAt": "2026-09-30T00:53:43.782Z",
+  "base": "http://127.0.0.1:8770",
+  "sitemap": {
+    "status": 200,
+    "urls": [
+      "/",
+      "/servicios/",
+      "/servicios/artesiano/",
+      "/servicios/precio-pozo/",
+      "/servicios/pozo-ciego/",
+      "/servicios/desague/",
+      "/servicios/pozo-lleno/",
+      "/servicios/septico/",
+      "/servicios/agua/",
+      "/zonas/san-lorenzo/",
+      "/zonas/mra/",
+      "/zonas/",
+      "/contacto/",
+      "/privacidad/"
+    ]
+  },
+  "pageCount": 37,
+  "pages": {
+    "/": {
+      "path": "/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Pozos artesianos y desagüe en Paraguay | Pozo.com.py",
+      "description": "Pozos artesianos, desagüe de pozos ciegos y soluciones sépticas en Asunción y Gran Asunción. Consultá cobertura y disponibilidad.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/",
+      "h1": [
+        "Pozos artesianos y desagüe de pozos ciegos en Gran Asunción"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero describir mi caso.\nCiudad/barrio: ___\nQué necesito: ___\nAcceso para camión o equipo: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, te paso los datos de mi consulta.\nCiudad/barrio: ___\nServicio: ___\nDetalle: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Inicio."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Inicio."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "FAQPage"
+          ]
+        }
+      ],
+      "words": 898,
+      "images": [
+        "/assets/images/pozo-artesiano-perforacion.webp",
+        "/assets/images/pozo-artesiano-servicio.webp",
+        "/assets/images/pozo-septico-instalacion.webp",
+        "/assets/images/desague-pozo-ciego-camion.webp",
+        "/assets/images/pozo-ciego-lleno-inspeccion.webp",
+        "/assets/images/pozo-septico-instalacion.webp",
+        "/assets/images/tratamiento-agua-filtros.webp"
+      ]
+    },
+    "/contacto/": {
+      "path": "/contacto/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Contacto y cobertura | Pozo.com.py",
+      "description": "Consultá por pozos artesianos, desagüe y sistemas sépticos en Asunción y Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/contacto/",
+      "h1": [
+        "Contanos qué necesitás y dónde."
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Contacto."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Contacto."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 292,
+      "images": []
+    },
+    "/desague-mariano-roque-alonso": {
+      "path": "/desague-mariano-roque-alonso",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/zonas/mra/"
+    },
+    "/desague-mariano-roque-alonso/": {
+      "path": "/desague-mariano-roque-alonso/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/zonas/mra/"
+    },
+    "/desague-pozo-ciego": {
+      "path": "/desague-pozo-ciego",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/desague/"
+    },
+    "/desague-pozo-ciego/": {
+      "path": "/desague-pozo-ciego/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/desague/"
+    },
+    "/desague-san-lorenzo": {
+      "path": "/desague-san-lorenzo",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/zonas/san-lorenzo/"
+    },
+    "/desague-san-lorenzo/": {
+      "path": "/desague-san-lorenzo/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/zonas/san-lorenzo/"
+    },
+    "/pozo-ciego-lleno": {
+      "path": "/pozo-ciego-lleno",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/pozo-lleno/"
+    },
+    "/pozo-ciego-lleno/": {
+      "path": "/pozo-ciego-lleno/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/pozo-lleno/"
+    },
+    "/pozo/artesiano/": {
+      "path": "/pozo/artesiano/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/artesiano/"
+    },
+    "/pozo/ciego/": {
+      "path": "/pozo/ciego/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/pozo-ciego/"
+    },
+    "/pozo/septico/": {
+      "path": "/pozo/septico/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/septico/"
+    },
+    "/pozos-artesianos": {
+      "path": "/pozos-artesianos",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/artesiano/"
+    },
+    "/pozos-artesianos/": {
+      "path": "/pozos-artesianos/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/artesiano/"
+    },
+    "/pozos-artesianos/precio-metro": {
+      "path": "/pozos-artesianos/precio-metro",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 404,
+      "title": "Página no encontrada | Pozo.com.py",
+      "description": "La página solicitada no existe. Volvé al inicio o elegí un servicio.",
+      "robots": "noindex,follow",
+      "canonical": "",
+      "h1": [
+        "Esta página no está donde esperábamos."
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService"
+          ]
+        }
+      ],
+      "words": 20,
+      "images": []
+    },
+    "/pozos-artesianos/precio-metro/": {
+      "path": "/pozos-artesianos/precio-metro/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 404,
+      "title": "Página no encontrada | Pozo.com.py",
+      "description": "La página solicitada no existe. Volvé al inicio o elegí un servicio.",
+      "robots": "noindex,follow",
+      "canonical": "",
+      "h1": [
+        "Esta página no está donde esperábamos."
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService"
+          ]
+        }
+      ],
+      "words": 20,
+      "images": []
+    },
+    "/pozos-artesianos/precio-por-metro/": {
+      "path": "/pozos-artesianos/precio-por-metro/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/precio-pozo/"
+    },
+    "/pozos-ciegos": {
+      "path": "/pozos-ciegos",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/pozo-ciego/"
+    },
+    "/pozos-ciegos/": {
+      "path": "/pozos-ciegos/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/pozo-ciego/"
+    },
+    "/pozos-septicos": {
+      "path": "/pozos-septicos",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/septico/"
+    },
+    "/pozos-septicos/": {
+      "path": "/pozos-septicos/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/septico/"
+    },
+    "/privacidad/": {
+      "path": "/privacidad/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Política de privacidad | Pozo.com.py",
+      "description": "Política de tratamiento de datos de contacto enviados a Pozo.com.py.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/privacidad/",
+      "h1": [
+        "Política de privacidad"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [
+        "https://www.bacn.gov.py/leyes-paraguayas/12924/ley-n-75932025-de-proteccion-de-datos-personales-en-la-republica-del-paraguay",
+        "https://www.bacn.gov.py/leyes-paraguayas/9417/ley"
+      ],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hacer una consulta sobre mis datos personales en Pozo.com.py.\nVi pozo.com.py – Privacidad."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Privacidad."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Privacidad."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Privacidad."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Privacidad."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Privacidad."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 315,
+      "images": []
+    },
+    "/servicios/": {
+      "path": "/servicios/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Servicios de pozos y desagüe | Pozo.com.py",
+      "description": "Servicios de pozos artesianos, pozos ciegos, desagüe, sistemas sépticos y tratamiento de agua en Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/",
+      "h1": [
+        "Servicios de pozos, desagüe y agua"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, te paso los datos de mi consulta.\nCiudad/barrio: ___\nServicio: ___\nDetalle: ___\nVi pozo.com.py – Servicios."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Servicios."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Servicios."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Servicios."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Servicios."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Servicios."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Servicios."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "CollectionPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 246,
+      "images": [
+        "/assets/images/pozo-artesiano-servicio.webp",
+        "/assets/images/pozo-septico-instalacion.webp",
+        "/assets/images/desague-pozo-ciego-camion.webp",
+        "/assets/images/pozo-ciego-lleno-inspeccion.webp",
+        "/assets/images/pozo-septico-instalacion.webp",
+        "/assets/images/tratamiento-agua-filtros.webp"
+      ]
+    },
+    "/servicios/agua/": {
+      "path": "/servicios/agua/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Tratamiento de agua de pozo | Pozo.com.py",
+      "description": "Filtros para sarro, hierro, color y sedimentos, más cloración según análisis del agua de pozo en Paraguay.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/agua/",
+      "h1": [
+        "Tratamiento de agua de pozo"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Tratamiento de agua."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Tratamiento de agua."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Tratamiento de agua."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Tratamiento de agua."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Tratamiento de agua."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Tratamiento de agua."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Tratamiento de agua."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Tratamiento de agua."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 443,
+      "images": [
+        "/assets/images/tratamiento-agua-filtros.webp",
+        "/assets/images/analisis-calidad-agua.webp"
+      ]
+    },
+    "/servicios/artesiano/": {
+      "path": "/servicios/artesiano/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Pozos artesianos en Paraguay | Pozo.com.py",
+      "description": "Perforación de pozos artesianos con entubado, filtro, bomba y tablero en Asunción y Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/artesiano/",
+      "h1": [
+        "Pozos artesianos en Paraguay"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Pozos artesianos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Pozos artesianos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Pozos artesianos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozos artesianos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Pozos artesianos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos artesianos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Pozos artesianos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Pozos artesianos."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 559,
+      "images": [
+        "/assets/images/pozo-artesiano-servicio.webp"
+      ]
+    },
+    "/servicios/desague/": {
+      "path": "/servicios/desague/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en Asunción | Pozo.com.py",
+      "description": "Desagüe de pozo ciego con camión atmosférico de 8 m³ en Asunción y Gran Asunción. Urgencias sujetas a disponibilidad.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/desague/",
+      "h1": [
+        "Desagüe de pozo ciego"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Desagüe de pozo ciego."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 498,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/servicios/pozo-ciego/": {
+      "path": "/servicios/pozo-ciego/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Pozos ciegos en Asunción | Pozo.com.py",
+      "description": "Construcción, mantenimiento y desagüe de pozos ciegos en Asunción y Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/pozo-ciego/",
+      "h1": [
+        "Pozos ciegos: construcción y mantenimiento"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos ciegos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos ciegos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos ciegos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozos ciegos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Pozos ciegos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos ciegos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Pozos ciegos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Pozos ciegos."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 463,
+      "images": [
+        "/assets/images/pozo-septico-instalacion.webp"
+      ]
+    },
+    "/servicios/pozo-lleno/": {
+      "path": "/servicios/pozo-lleno/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Pozo ciego lleno: qué hacer | Pozo.com.py",
+      "description": "Qué hacer si el pozo ciego está lleno, rebalsa, huele mal o drena lento. Guía y desagüe en Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/pozo-lleno/",
+      "h1": [
+        "Pozo ciego lleno: señales y qué hacer"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Pozo ciego lleno."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Pozo ciego lleno."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 448,
+      "images": [
+        "/assets/images/pozo-ciego-lleno-inspeccion.webp"
+      ]
+    },
+    "/servicios/precio-pozo/": {
+      "path": "/servicios/precio-pozo/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Precio de pozo artesiano por metro | Pozo.com.py",
+      "description": "Calculadora de alcance para pozo artesiano por profundidad, suelo, entubado, filtro, bomba y tablero. Solicitá cotización.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/precio-pozo/",
+      "h1": [
+        "Precio de pozo artesiano por metro"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nProfundidad estimada: ___ m\nTipo de suelo esperado: ___\nVi pozo.com.py – Precio por metro."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nProfundidad estimada: ___ m\nTipo de suelo esperado: ___\nVi pozo.com.py – Precio por metro."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nProfundidad estimada: ___ m\nTipo de suelo esperado: ___\nVi pozo.com.py – Precio por metro."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Precio por metro."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Precio por metro."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Precio por metro."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Precio por metro."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Precio por metro."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 216,
+      "images": [
+        "/assets/images/bomba-pozo-artesiano.webp"
+      ]
+    },
+    "/servicios/septico/": {
+      "path": "/servicios/septico/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Pozos sépticos y biodigestores | Pozo.com.py",
+      "description": "Cámaras sépticas, biodigestores y orientación de saneamiento para propiedades en Asunción y Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/servicios/septico/",
+      "h1": [
+        "Pozos sépticos, cámaras y biodigestores"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos sépticos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos sépticos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos sépticos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Pozos sépticos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Pozos sépticos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Pozos sépticos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Pozos sépticos."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Pozos sépticos."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 448,
+      "images": [
+        "/assets/images/pozo-septico-instalacion.webp"
+      ]
+    },
+    "/tratamiento-agua": {
+      "path": "/tratamiento-agua",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 404,
+      "title": "Página no encontrada | Pozo.com.py",
+      "description": "La página solicitada no existe. Volvé al inicio o elegí un servicio.",
+      "robots": "noindex,follow",
+      "canonical": "",
+      "h1": [
+        "Esta página no está donde esperábamos."
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService"
+          ]
+        }
+      ],
+      "words": 20,
+      "images": []
+    },
+    "/tratamiento-agua/": {
+      "path": "/tratamiento-agua/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 404,
+      "title": "Página no encontrada | Pozo.com.py",
+      "description": "La página solicitada no existe. Volvé al inicio o elegí un servicio.",
+      "robots": "noindex,follow",
+      "canonical": "",
+      "h1": [
+        "Esta página no está donde esperábamos."
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Página no encontrada."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Página no encontrada."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService"
+          ]
+        }
+      ],
+      "words": 20,
+      "images": []
+    },
+    "/tratamiento-de-agua/": {
+      "path": "/tratamiento-de-agua/",
+      "inSitemap": false,
+      "legacy": true,
+      "status": 301,
+      "location": "/servicios/agua/"
+    },
+    "/zonas/": {
+      "path": "/zonas/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Zonas de cobertura en Gran Asunción | Pozo.com.py",
+      "description": "Zonas donde se coordina desagüe de pozo ciego y pozos artesianos en Asunción y Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/",
+      "h1": [
+        "Zonas de cobertura"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, te paso los datos de mi consulta.\nCiudad/barrio: ___\nServicio: ___\nDetalle: ___\nVi pozo.com.py – Zonas."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: ___\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Zonas."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: ___\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Zonas."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: ___\nQué pasa o qué necesito: ___\nVi pozo.com.py – Zonas."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: ___\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Zonas."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: ___\nQué necesito: ___\nVi pozo.com.py – Zonas."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "CollectionPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 90,
+      "images": []
+    },
+    "/zonas/mra/": {
+      "path": "/zonas/mra/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe en Mariano Roque Alonso | Pozo.com.py",
+      "description": "Desagüe de pozo ciego con camión atmosférico de 8 m³ en Mariano Roque Alonso. Consultá acceso, disponibilidad y tarifa.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/mra/",
+      "h1": [
+        "Desagüe de pozo ciego en Mariano Roque Alonso"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: Mariano Roque Alonso\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: Mariano Roque Alonso\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: Mariano Roque Alonso\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: Mariano Roque Alonso\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: Mariano Roque Alonso\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: Mariano Roque Alonso\nQué pasa o qué necesito: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: Mariano Roque Alonso\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: Mariano Roque Alonso\nQué necesito: ___\nVi pozo.com.py – Desagüe en Mariano Roque Alonso."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 374,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/san-lorenzo/": {
+      "path": "/zonas/san-lorenzo/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en San Lorenzo | Pozo.com.py",
+      "description": "Desagüe de pozo ciego con camión atmosférico de 8 m³ en San Lorenzo. Consultá acceso, disponibilidad y tarifa.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/san-lorenzo/",
+      "h1": [
+        "Desagüe de pozo ciego en San Lorenzo"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/mra/",
+        "/zonas/san-lorenzo/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: San Lorenzo\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: San Lorenzo\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: San Lorenzo\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, necesito un desagüe urgente. Mi pozo ciego está lleno o rebalsando.\nCiudad/barrio: San Lorenzo\n¿Puede entrar un camión hasta el pozo?: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero cotizar un pozo artesiano.\nCiudad/barrio: San Lorenzo\nUso del agua (casa, comercio, riego, obra): ___\nProfundidad estimada, si la conozco: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, tengo una consulta por pozo ciego o sistema séptico.\nCiudad/barrio: San Lorenzo\nQué pasa o qué necesito: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero consultar por tratamiento o análisis de agua de pozo.\nCiudad/barrio: San Lorenzo\nProblema (sarro, hierro, color, olor): ___\n¿Tengo análisis?: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, quiero hablar sobre otro caso.\nCiudad/barrio: San Lorenzo\nQué necesito: ___\nVi pozo.com.py – Desagüe en San Lorenzo."
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 368,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    }
+  }
+}

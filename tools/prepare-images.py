@@ -1,8 +1,20 @@
+"""Optimise the source illustrations into WebP for the site.
+
+    python tools/prepare-images.py        (needs Pillow: pip install pillow)
+
+Writes, for every source image:
+  - assets/images/<name>.webp        the main file (unchanged URL; used for og:image)
+  - assets/images/<name>-<w>.webp    smaller widths for srcset (mobile-first)
+  - assets/images/manifest.json      widths/heights read by build.mjs to emit
+                                     srcset + sizes on every <img>
+"""
+import json
 from pathlib import Path
 from PIL import Image
 
 DEST = Path(__file__).resolve().parents[1] / 'assets' / 'images'
 SOURCE = Path(__file__).resolve().parents[1] / 'source-images'
+VARIANT_WIDTHS = (480, 800, 1200)
 
 IMAGES = {
     SOURCE / 'homepage-pozo-artesiano-original.png': ('pozo-artesiano-perforacion.webp', 2000, 82),
@@ -16,12 +28,27 @@ IMAGES = {
 }
 
 DEST.mkdir(parents=True, exist_ok=True)
+manifest = {}
+
+
+def resized(image, width):
+    height = round(image.height * width / image.width)
+    return image.resize((width, height), Image.Resampling.LANCZOS)
+
 
 for source_path, (dest_name, max_width, quality) in IMAGES.items():
-    with Image.open(source_path) as image:
-        image = image.convert('RGB')
-        if image.width > max_width:
-            height = round(image.height * max_width / image.width)
-            image = image.resize((max_width, height), Image.Resampling.LANCZOS)
-        image.save(DEST / dest_name, 'WEBP', quality=quality, method=6)
-        print(f'{dest_name}: {image.width}x{image.height}')
+    with Image.open(source_path) as original:
+        original = original.convert('RGB')
+        main = resized(original, max_width) if original.width > max_width else original
+        main.save(DEST / dest_name, 'WEBP', quality=quality, method=6)
+        variants = []
+        for width in VARIANT_WIDTHS:
+            if width >= main.width:
+                continue
+            stem = dest_name[:-5]
+            resized(original, width).save(DEST / f'{stem}-{width}.webp', 'WEBP', quality=quality, method=6)
+            variants.append(width)
+        manifest[dest_name] = {'width': main.width, 'height': main.height, 'variants': variants}
+        print(f'{dest_name}: {main.width}x{main.height}, variants {variants}')
+
+(DEST / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')

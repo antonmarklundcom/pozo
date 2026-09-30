@@ -256,6 +256,18 @@ tbody td:last-child { color: var(--ink); font-weight: 800; }
 .coverage-card p { color: rgba(255,255,255,.7); }
 .coverage-card hr { margin: 26px 0; border: 0; border-top: 1px solid var(--line-light); }
 .coverage-card .arrow-link, .coverage-card .side-note { color: var(--water-light); }
+.coverage-card .plain-steps { margin: 0; padding-left: 1.2em; color: rgba(255,255,255,.78); }
+.coverage-card .plain-steps li + li { margin-top: 8px; }
+
+/* --- Zone hub cards and the one sibling cross-link per page ---------------- */
+.zone-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.zone-card { position: relative; display: grid; gap: 6px; min-height: var(--tap); padding: 22px 56px 22px 22px; border: 1px solid var(--line); background: var(--white); color: var(--ink); text-decoration: none; transition: border-color .18s ease, box-shadow .18s ease, opacity .42s ease-out, transform .42s ease-out; }
+.zone-card:hover { border-color: var(--water); box-shadow: var(--shadow); }
+.zone-card strong { font-family: var(--display); font-size: 1.4rem; font-weight: 700; line-height: 1.05; }
+.zone-card span { color: var(--muted); font-size: .88rem; }
+.zone-card__arrow { position: absolute; top: 50%; right: 20px; transform: translateY(-50%); color: var(--clay) !important; }
+.prose .cross-link { margin-top: 36px; padding: 18px 20px; border-left: 3px solid var(--water); background: var(--paper); font-size: .95rem; }
+.prose .cross-link a { font-weight: 700; }
 .faq-grid { display: grid; grid-template-columns: .66fr 1.34fr; gap: 80px; }
 .faq-grid > div:first-child > p:not(.eyebrow) { color: var(--muted); }
 .faq-list { border-top: 1px solid var(--line); }
@@ -550,6 +562,20 @@ body.launcher-open { overflow: hidden; }
   @keyframes wa-sheet { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
   .wa-launcher__close { display: grid; }
 }
+
+@media (max-width: 700px) {
+  /* Sticky contact bar (service and zone pages). The closed FAB is offset above the bar. */
+  .has-contact-bar { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  .contact-bar { position: fixed; z-index: 80; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(255,255,255,.18); background: var(--ink); box-shadow: 0 -8px 24px rgba(6,26,32,.25); }
+  .contact-bar__btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; border-radius: var(--radius); font-size: .95rem; font-weight: 800; text-decoration: none; }
+  .contact-bar__btn svg { width: 20px; height: 20px; }
+  .contact-bar__btn--wa { background: var(--wa); color: var(--ink); }
+  .contact-bar__btn--call { border: 1px solid rgba(255,255,255,.55); background: transparent; color: var(--white); }
+  .contact-bar__btn:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; box-shadow: 0 0 0 5px var(--water-deep); }
+  .has-contact-bar .wa-launcher:not([open]) { bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+@media (min-width: 701px) { .contact-bar { display: none; } }
 
 @media (max-width: 380px) {
   .decision-hero h1 { font-size: 2.05rem; }

@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 const VENDERCRM_DEFAULT_URL = 'https://crm.clientes.com.py';
-const WHATSAPP_NUMBER_FALLBACK = '595992279599';
 const THANK_YOU_PATH = '/gracias/';
 const CONTACT_PATH = '/contacto/';
 const RESEND_API_BASE_DEFAULT = 'https://api.resend.com';
@@ -41,22 +40,33 @@ if (is_readable($generatedConfigPath)) {
     }
 }
 
-$whatsappNumber = (string)($generatedConfig['whatsapp'] ?? WHATSAPP_NUMBER_FALLBACK);
+// The number and every WhatsApp text come from config/site.generated.php, which
+// build.mjs writes from site.config.mjs and content/wa-messages.mjs.
+$whatsappNumber = preg_replace('/\D+/', '', (string)($generatedConfig['whatsapp'] ?? '')) ?? '';
+$waForm = is_array($generatedConfig['wa_form'] ?? null) ? $generatedConfig['wa_form'] : [];
 $siteUrl = (string)($generatedConfig['site_url'] ?? 'https://pozo.com.py');
 $crmDefaultUrl = (string)($generatedConfig['crm_url'] ?? VENDERCRM_DEFAULT_URL);
 
-function whatsappFallback(array $lead, string $whatsappNumber): never
+function whatsappFallback(array $lead, string $whatsappNumber, array $waForm, string $formId, string $page): never
 {
-    $lines = [
-        'Hola, envié una consulta desde Pozo.com.py.',
-        'Nombre: ' . $lead['name'],
-        'Teléfono: ' . $lead['phone'],
-        'Servicio: ' . $lead['service'],
-        'Consulta: ' . $lead['message'],
-    ];
-    if ($lead['email'] !== '') {
-        $lines[] = 'Correo: ' . $lead['email'];
+    if ($whatsappNumber === '') {
+        // Never send a visitor to a wa.me link without a number.
+        error_log('[pozo] WhatsApp redirect skipped: config/site.generated.php has no number (run node build.mjs).');
+        redirectTo(THANK_YOU_PATH);
     }
+    $intro = (array)($waForm['intro'] ?? []);
+    $labels = (array)($waForm['labels'] ?? []);
+    $pageName = (string)(parse_url($page, PHP_URL_PATH) ?: '/');
+    $lines = [str_replace('{page}', $pageName, (string)($intro[$formId] ?? $intro['contacto'] ?? ''))];
+    foreach (['name', 'phone', 'service', 'zona', 'message', 'email'] as $field) {
+        if (($lead[$field] ?? '') !== '') {
+            $lines[] = ($labels[$field] ?? ucfirst($field)) . ': ' . $lead[$field];
+        }
+    }
+    foreach ((array)($waForm['outro'] ?? []) as $line) {
+        $lines[] = (string)$line;
+    }
+    $lines = array_values(array_filter($lines, static fn($line) => $line !== ''));
     redirectTo('https://wa.me/' . $whatsappNumber . '?text=' . rawurlencode(implode("\n", $lines)));
 }
 
@@ -83,6 +93,7 @@ $lead = [
     'email' => value('email', 320),
     'service' => value('service', 120),
     'message' => value('message', 5000),
+    'zona' => value('zona', 200),
 ];
 
 if (
@@ -139,7 +150,7 @@ $payload = [
     'fields' => array_filter([
         'servicio' => $lead['service'],
         'pagina' => $convertingPage,
-        'zona' => value('zona', 200),
+        'zona' => $lead['zona'],
     ], static fn($item) => $item !== null && $item !== ''),
     'idempotency_key' => $idempotencyKey,
 ];
@@ -331,4 +342,4 @@ if ($resendApiKey === '' || empty($notifyTo)) {
 
 // --- [3] Always end in WhatsApp with the enquiry prefilled ------------------
 error_log(sprintf('[pozo] crm=%s resend=%s', $crmStatusLog, $resendStatusLog));
-whatsappFallback($lead, $whatsappNumber);
+whatsappFallback($lead, $whatsappNumber, $waForm, isset(CONTACT_SOURCES[$formId]) ? $formId : 'contacto', $convertingPage);
