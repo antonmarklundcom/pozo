@@ -1247,6 +1247,1084 @@ Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'H
 Quiero hacer una consulta sobre mis datos personales.
 Nombre y teléfono con los que escribí: ___
 Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/luque/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Luque, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Luque, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Luque, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Luque, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Luque, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Luque, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Luque, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Luque, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Luque, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Luque, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Luque, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Luque, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/capiata/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Capiatá, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Capiatá, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Capiatá, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Capiatá, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Capiatá, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Capiatá, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Capiatá, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Capiatá, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Capiatá, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Capiatá, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Capiatá, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Capiatá, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/lambare/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Lambaré, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Lambaré, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Lambaré, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Lambaré, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Lambaré, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Lambaré, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Lambaré, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Lambaré, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Lambaré, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Lambaré, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Lambaré, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Lambaré, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/fernando-de-la-mora/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Fernando de la Mora, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Fernando de la Mora, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/nemby/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Ñemby, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Ñemby, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Ñemby, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Ñemby, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Ñemby, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Ñemby, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Ñemby, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Ñemby, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Ñemby, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Ñemby, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Ñemby, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Ñemby, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/villa-elisa/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Villa Elisa, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Villa Elisa, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Villa Elisa, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Villa Elisa, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Villa Elisa, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Villa Elisa, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Villa Elisa, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Villa Elisa, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Villa Elisa, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Villa Elisa, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Villa Elisa, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Villa Elisa, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/limpio/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Limpio, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Limpio, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Limpio, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Limpio, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Limpio, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Limpio, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Limpio, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Limpio, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Limpio, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Limpio, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Limpio, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Limpio, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/zonas/asuncion/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: Asunción, barrio ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: Asunción, barrio ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: Asunción, barrio ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: Asunción, barrio ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: Asunción, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: Asunción, barrio ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: Asunción, barrio ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: Asunción, barrio ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: Asunción, barrio ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: Asunción, barrio ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: Asunción, barrio ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: Asunción, barrio ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/guias/' => ['topic' => 'otro', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Guías).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/guias/cada-cuanto-desagotar-pozo-ciego/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/guias/pozo-ciego-o-camara-septica/' => ['topic' => 'ciego', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/guias/pozo-artesiano-o-pozo-excavado/' => ['topic' => 'artesiano', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/guias/bomba-y-tanque-hidroneumatico/' => ['topic' => 'artesiano', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
+        '/guias/preparar-terreno-para-perforar-pozo/' => ['topic' => 'artesiano', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
+Ciudad y barrio: ___
+¿Está rebalsando ahora? (sí/no): ___
+¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___
+Distancia aproximada del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa, sin abrirla.
+Para cuándo: hoy mismo / mañana / esta semana', 'artesiano' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero cotizar la perforación de un pozo artesiano.
+Ciudad y barrio: ___
+Uso del agua (casa, quinta, comercio, riego, obra): ___
+Profundidad de pozos vecinos, si la sé: ___ m
+Les mando fotos del terreno y del acceso para el equipo.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'precio' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero saber el precio por metro de un pozo artesiano para mi terreno.
+Ciudad y barrio: ___
+Profundidad estimada: ___ m
+Tipo de suelo, si lo sé (tierra, mixto, roca): ___
+Incluir: entubado / filtro / bomba / tablero
+Les mando fotos del terreno y del acceso.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'ciego' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Tengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).
+Ciudad y barrio: ___
+Qué necesito (pozo nuevo, se llena seguido, revisión): ___
+Cantidad de personas que usan el baño: ___
+Les mando fotos del patio y de la tapa, con medidas aproximadas del espacio.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Necesito un desagüe de pozo ciego con camión atmosférico.
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Distancia del portón a la tapa: ___ pasos
+Les mando una foto del acceso y otra de la tapa.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-acceso' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto del acceso desde la calle.
+Ciudad y barrio: ___
+Ancho del portón o pasillo: ___ m
+¿Hay cables bajos, alero o árboles en la entrada? ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-tapa' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero coordinar un desagüe de pozo ciego. Les mando la foto de la tapa (sin abrirla).
+Ciudad y barrio: ___
+¿Está rebalsando? (sí/no): ___
+Fecha aproximada del último desagüe: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'desague-distancia' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero coordinar un desagüe de pozo ciego. Les paso la distancia del camión a la tapa.
+Ciudad y barrio: ___
+Del portón a la tapa hay unos ___ pasos
+¿El camión puede quedar en la calle frente a la casa? (sí/no): ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'lleno' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Mi pozo ciego está lleno: hay olor, drenaje lento o rebalse.
+Ciudad y barrio: ___
+Qué pasa y desde cuándo: ___
+¿Afecta a un solo baño o a toda la casa? ___
+Fecha del último desagüe: ___
+Les mando fotos tomadas desde distancia segura.
+Para cuándo: hoy mismo / mañana / esta semana', 'septico' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero consultar por una cámara séptica o un biodigestor.
+Ciudad y barrio: ___
+Tipo de propiedad y cantidad de personas: ___
+Espacio disponible (medidas aproximadas): ___ x ___ m
+Sistema actual, si hay: ___
+Les mando fotos del lugar donde iría.
+Para cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___', 'agua' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero consultar por el tratamiento del agua de mi pozo.
+Ciudad y barrio: ___
+Qué noto en el agua (sarro, hierro, color, olor, sedimento): ___
+Análisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.
+Uso del agua y cantidad de personas: ___
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'otro' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Tengo otra consulta sobre pozos, desagüe o agua.
+Ciudad y barrio: ___
+Qué necesito: ___
+Les mando fotos si ayudan a entender el caso.
+Para cuándo lo necesito (hoy, esta semana, sin apuro): ___', 'privacidad' => 'Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).
+Quiero hacer una consulta sobre mis datos personales.
+Nombre y teléfono con los que escribí: ___
+Qué necesito (ver, corregir o borrar mis datos): ___']],
         '/guias/preparar-acceso-camion-atmosferico/' => ['topic' => 'desague', 'texts' => ['urgente' => 'Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).
 Necesito un desagüe urgente: el pozo ciego está lleno o rebalsando.
 Ciudad y barrio: ___
@@ -1325,5 +2403,5 @@ Quiero hacer una consulta sobre mis datos personales.
 Nombre y teléfono con los que escribí: ___
 Qué necesito (ver, corregir o borrar mis datos): ___']],
     ],
-    'generated_at' => '2026-09-30T19:00:31.953Z',
+    'generated_at' => '2026-09-30T19:00:55.170Z',
 ];

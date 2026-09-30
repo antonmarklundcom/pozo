@@ -11,7 +11,22 @@
   <url><loc>https://pozo.com.py/servicios/agua/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pozo.com.py/zonas/san-lorenzo/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pozo.com.py/zonas/mra/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/luque/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/capiata/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/lambare/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/fernando-de-la-mora/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/nemby/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/villa-elisa/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/limpio/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/zonas/asuncion/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pozo.com.py/zonas/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/guias/cada-cuanto-desagotar-pozo-ciego/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/guias/pozo-ciego-o-camara-septica/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/guias/pozo-artesiano-o-pozo-excavado/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/guias/bomba-y-tanque-hidroneumatico/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/guias/preparar-terreno-para-perforar-pozo/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/guias/preparar-acceso-camion-atmosferico/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pozo.com.py/guias/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pozo.com.py/contacto/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pozo.com.py/privacidad/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
