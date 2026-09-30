@@ -165,3 +165,11 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   `.htaccess`. Verify green with identical QA counts; sabotage tests (core title rule, site wa-track rule,
   link-graph threshold) still fail as expected. Guide: `docs/SITE-KIT.md`. No other repo touched.
   Also fixed `tools/package-hostinger.py` (backup ZIP allowlist): it missed `wa.php` (O2) and `guias/` (O1).
+- **O-end — Opus run finished (2026-09-30).** O0–O10: 11 PRs merged into `main` (#1–#11), none skipped or closed; this O-end PR is the last one.
+  `node tools/verify.mjs` is green on `main` (build, QA, crawl, link graph, SEO diff, browser check with
+  axe and the critical-CSS check, stubbed form test). Nothing is deployed until hPanel Git points at this
+  repo. `docs/OWNER-TODO.md` is updated: deploy source, network access, keyword MCP, axe-core in the setup
+  script, the `private/` folder check, the Search Console key, and `sameAs` profiles. Notes for the Sonnet
+  run are in `docs/RUNBOOK-OPUS-THEN-SONNET.md` §3 ("Notes from the Opus run").
+  **The Sonnet run may start.**
+
