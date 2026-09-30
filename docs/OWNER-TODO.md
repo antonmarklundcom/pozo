@@ -24,6 +24,17 @@ Only things an agent cannot do. Everything else is handled by the runbook runs
    `node tools/smoke-live.mjs https://pozo.com.py` from the PC; it lists anything the live site still
    serves differently from `main`.
 
+## Waiting for keyword data or a reachable live site (skipped by the Sonnet run)
+
+The Sonnet run could not do these because the keyword-library MCP was not connected and `pozo.com.py` is not
+reachable from the cloud session. Run the next session where the MCP is connected (or on the PC), and allow
+`pozo.com.py` under Network access. Nothing was guessed.
+
+- N6 live crawl and smoke test (`node tools/crawl.mjs https://pozo.com.py docs/seo/audit-live-before.json`,
+  `node tools/smoke-live.mjs https://pozo.com.py`).
+- N7 keyword map, N8 stronger copy + FAQs + contextual links, N9 guides (6–8), N10 zone batch 2.
+- Images stay off until you write `Generate image` in the launch message (budget: stop before 50 credits).
+
 ## Business answers (reply in chat whenever)
 
 - Does the operator offer: limpieza de pozo artesiano, bombas (venta/cambio), destape de cañerías?

@@ -2,6 +2,10 @@
 
 HTML/PHP website prepared for Hostinger shared hosting. Requires PHP 8.1+ (uses `declare(strict_types=1)`, `never` return types and `str_starts_with`).
 
+## Start here
+
+Owner: read `docs/OWNER-TODO.md` first (deploy source, network access, keyword data, business answers). Developers: `node tools/verify.mjs` must pass before every merge.
+
 ## Current status
 
 The public pages ship with `DEMO_MODE = false`, `index,follow`, the configured phone/WhatsApp number and no preparation banner. Prices that vary by scope are shown as "A cotizar". The contact form works through WhatsApp even before VenderCRM or Resend credentials are added.
@@ -44,6 +48,11 @@ Where things live:
 | Styles / scripts (edit these; `site.min.*` and the inline critical CSS are generated) | `assets/css/site.css`, `assets/js/site.js` |
 | Performance check (LCP, bytes at 390/1366) | `node tools/perf.mjs` → `docs/perf/` |
 | Internal editorial notes (never published) | `docs/CONTENT-NOTES.md` |
+| **What the owner must do** (short list, kept current by the runs) | `docs/OWNER-TODO.md` |
+| What was changed, run log, SEO before/after | `docs/IMPROVE-REPORT-2026-09-29.md` |
+| The two-run plan (Opus engineering, Sonnet content) | `docs/RUNBOOK-OPUS-THEN-SONNET.md` |
+| Operator reply templates and quick-reply shortcuts for WhatsApp | `docs/WHATSAPP-RESPUESTAS.md` |
+| Google Business Profile pack (categories, description, posts, Q&A, photos) | `docs/GBP-POZO.md` |
 | Generic QA/SEO tools (site kit, copyable to sibling sites) and their config | `tools/kit/`, `kit.config.mjs`, `docs/SITE-KIT.md` |
 | pozo-only QA rules and browser/form hooks | `tools/qa.mjs`, `tools/site/` |
 | SEO baseline, crawl, before/after diff | `docs/seo/` |

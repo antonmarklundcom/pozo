@@ -192,3 +192,6 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   Paraguayan form and was left) came out clean; no tuteo. One error fixed: the trust bar said "Sin costo oculto",
   an unconfirmed cost promise (`docs/CONTENT-NOTES.md`), now "Cada visita se confirma con el operador".
   No SEO rewording, titles and H1s untouched.
+- **N5 — Owner summary refresh**: README got a "Start here" pointer and rows for `OWNER-TODO.md`, the report,
+  the runbook, `WHATSAPP-RESPUESTAS.md` and `GBP-POZO.md`. `docs/OWNER-TODO.md` now lists what the Sonnet run
+  skipped (N6–N10) and why. Docs only.
