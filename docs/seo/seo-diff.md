@@ -1,7 +1,7 @@
 # SEO before/after diff
 
 Before: http://127.0.0.1:8770 (2026-09-30T00:53:43.782Z, 37 URLs)  
-After: http://127.0.0.1:8765 (2026-09-30T03:22:10.762Z, 48 URLs)
+After: http://127.0.0.1:8765 (2026-09-30T03:33:32.767Z, 48 URLs)
 
 ## Lost or broken URLs (0)
 

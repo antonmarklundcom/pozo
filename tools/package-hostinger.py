@@ -8,13 +8,15 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 WORKSPACE_ROOT = PROJECT_ROOT.parent
 ZIP_PATH = WORKSPACE_ROOT / "pozo-com-py-hostinger-ready-2026-09-28.zip"
 
-DEPLOY_DIRS = ("assets", "config", "contacto", "gracias", "servicios", "zonas", "privacidad")
-ROOT_FILES = (".htaccess", "404.html", "contacto.php", "favicon.svg", "index.html", "robots.txt", "sitemap.xml")
+DEPLOY_DIRS = ("assets", "config", "contacto", "gracias", "servicios", "zonas", "privacidad", "guias")
+ROOT_FILES = (".htaccess", "404.html", "contacto.php", "wa.php", "favicon.svg", "index.html", "robots.txt", "sitemap.xml")
 
 
 def deploy_files() -> list[Path]:
     files = [PROJECT_ROOT / name for name in ROOT_FILES]
     for directory in DEPLOY_DIRS:
+        if not (PROJECT_ROOT / directory).is_dir():
+            continue  # guias/ exists only once a guide is published
         files.extend(path for path in (PROJECT_ROOT / directory).rglob("*") if path.is_file())
     return sorted(files, key=lambda path: path.relative_to(PROJECT_ROOT).as_posix())
 

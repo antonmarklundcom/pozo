@@ -44,6 +44,8 @@ Where things live:
 | Styles / scripts (edit these; `site.min.*` and the inline critical CSS are generated) | `assets/css/site.css`, `assets/js/site.js` |
 | Performance check (LCP, bytes at 390/1366) | `node tools/perf.mjs` → `docs/perf/` |
 | Internal editorial notes (never published) | `docs/CONTENT-NOTES.md` |
+| Generic QA/SEO tools (site kit, copyable to sibling sites) and their config | `tools/kit/`, `kit.config.mjs`, `docs/SITE-KIT.md` |
+| pozo-only QA rules and browser/form hooks | `tools/qa.mjs`, `tools/site/` |
 | SEO baseline, crawl, before/after diff | `docs/seo/` |
 | Live smoke test (deploy = build? exit 2 if the host is unreachable from here) | `node tools/smoke-live.mjs https://pozo.com.py [--out docs/seo/smoke-live.md]` |
 | Search Console report (service-account key via `GSC_KEY_FILE`, never in git; example `docs/gsc.example.json`) | `node tools/gsc-report.mjs [--days 28]` → `docs/seo/gsc-<date>.csv` + `.md` |
