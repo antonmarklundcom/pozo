@@ -151,3 +151,9 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   parses, 39 legacy URLs (literal `.htaccess` rules) 301 to their target, 10 denied paths 404/403. Exit 2 when
   unreachable (network error or egress denial via `x-deny-reason`). Tested: local router → pass; original v2
   import → 63 differences; live `pozo.com.py` → exit 2 (host not in this environment's allowlist).
+- **O9 — Search Console report**: `tools/gsc-report.mjs` signs a service-account JWT with `node:crypto`
+  (RS256, scope webmasters.readonly), gets a token, pages through Search Analytics (page × query, last 28
+  days ending 3 days ago), writes `docs/seo/gsc-<date>.csv` and a summary of pages with ≥ 100 impressions and
+  CTR under half the usual CTR for their position. Key only via `GSC_KEY_FILE` (example
+  `docs/gsc.example.json`; `.gitignore` + a qa.mjs private-key guard). No key here → exit 2; key request and
+  setup steps added to `docs/OWNER-TODO.md`. Tested end to end against a local stub (signature verified).

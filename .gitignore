@@ -14,3 +14,5 @@ private/
 qa-screens/
 
 .preview/
+gsc-key*.json
+*service-account*.json
