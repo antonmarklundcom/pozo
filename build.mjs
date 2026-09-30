@@ -543,8 +543,50 @@ const home = {
   </main>`,
 };
 
+// Short, factual answers for the top of each service page (what search and AI answer
+// engines quote) and extra FAQs. Only facts already published on the site; the
+// reference rates come from PRICES so they can never drift from the calculator.
+const REF_KIT = formatGs(PRICES.installationKit);
+const REF_RATE = formatGs(PRICES.drillingSoilPerMeter);
+const REF_100 = formatGs(calculatorEstimate(100, true).total);
+const REF_20 = formatGs(calculatorEstimate(0, false).extra20);
+const AEO = {
+  '/servicios/artesiano/': {
+    quick: `Un pozo artesiano se cotiza por metro perforado más la instalación (bomba, tablero y tanque). En Gran Asunción se informan profundidades típicas de 30 a 120 m, sin garantía: el valor final se confirma después de revisar suelo, profundidad y acceso. <a href="/servicios/precio-pozo/">Calculá un precio de referencia</a>.`,
+    faqs: [
+      ['¿Cuánto cuesta un pozo artesiano en Paraguay?', `Depende de la profundidad, el suelo y la instalación. Como referencia, esta web usa ${REF_RATE} por metro de perforación (con entubado y engravado) más ${REF_KIT} de instalación completa; un pozo de 100 m da ${REF_100}. El operador confirma el valor final. Podés calcularlo en la página de precio por metro.`],
+      ['¿Qué incluye la instalación completa?', 'Motor bomba de 1 hp con tablero, tanque hidroneumático, presostato, manómetro, cable, cañerías, uniones, válvula, distribuidor de 5 vías, manguera flexible y accesorios.'],
+      ['¿Qué datos necesito enviar para cotizar?', 'Ciudad y barrio, uso previsto del agua, acceso para el equipo y, si podés, fotos o un video del terreno y del lugar donde querés el pozo.'],
+    ],
+  },
+  '/servicios/pozo-ciego/': {
+    quick: 'Un pozo ciego recibe las aguas residuales de la vivienda y las infiltra en el suelo; según el uso, necesita desagote periódico. La construcción, la revisión y el mantenimiento se cotizan según tamaño, suelo y acceso.',
+    faqs: [['¿Qué datos se necesitan para cotizar un pozo ciego?', 'Cantidad de personas que usan el baño, si es un pozo nuevo o una revisión, medidas aproximadas del espacio disponible y fotos del patio y de la tapa.']],
+  },
+  '/servicios/desague/': {
+    quick: 'El desagüe de pozo ciego se hace con un camión atmosférico de 8 m³. El precio depende del viaje, la ubicación, el acceso y la urgencia, y se confirma antes de coordinar. Cubrimos Asunción y Gran Asunción, con urgencias también los domingos, sujetas a disponibilidad.',
+    faqs: [
+      ['¿Qué capacidad tiene el camión atmosférico?', 'La capacidad informada es de 8 m³ por viaje. Si el pozo necesita más de un viaje, se confirma antes de empezar.'],
+      ['¿Qué datos necesito enviar para coordinar?', 'Ciudad y barrio, si el camión puede llegar cerca de la tapa, la distancia aproximada desde el portón y dos fotos tomadas desde un lugar seguro.'],
+    ],
+  },
+  '/servicios/pozo-lleno/': {
+    quick: 'Las señales más comunes de un pozo ciego lleno son olor fuerte, desagües lentos, rebalse o el nivel cerca de la tapa. No abras ni entres al pozo: puede haber gases peligrosos. Escribinos con fotos y zona para coordinar el camión atmosférico.',
+    faqs: [['¿Es peligroso abrir la tapa del pozo?', 'Sí. Los pozos ciegos pueden acumular gases peligrosos y hay riesgo de caída. No abras la tapa ni te asomes; sacá fotos desde un lugar seguro y dejá que lo revise un equipo con protección.']],
+  },
+  '/servicios/septico/': {
+    quick: 'Una cámara séptica o un biodigestor trata las aguas residuales antes de su disposición, y ambos necesitan mantenimiento. El modelo y la instalación se definen según la cantidad de personas y las condiciones del terreno.',
+    faqs: [['¿En qué se diferencian una cámara séptica y un biodigestor?', 'Los dos tratan las aguas residuales antes de su disposición. Cambian el diseño, el tratamiento y el mantenimiento que necesitan. La opción adecuada depende del uso, del terreno y de lo que se pueda instalar; se define en la consulta.']],
+  },
+  '/servicios/agua/': {
+    quick: 'El tratamiento del agua depende del análisis: sarro, hierro, sedimentos y microorganismos necesitan soluciones distintas. Un filtro no vuelve potable el agua por sí solo; eso se confirma con un análisis de laboratorio.',
+    faqs: [['¿Qué análisis de agua conviene pedir?', 'Depende del uso y de los síntomas: sarro, hierro, color, olor o sedimentos se miden de forma distinta a la contaminación microbiológica. Contanos qué notás y para qué usás el agua y definimos qué parámetros conviene medir.']],
+  },
+};
+
 function genericServicePage(config) {
-  const pageFaqs = config.faqs || [];
+  const extra = AEO[config.path] || {};
+  const pageFaqs = [...(config.faqs || []), ...(extra.faqs || [])];
   const crumbItems = config.crumbs || [['/', 'Inicio'], ['/servicios/', 'Servicios'], [config.path, config.short]];
   const message = waMessage(null, config.path);
   return {
@@ -554,7 +596,7 @@ function genericServicePage(config) {
     faqs: pageFaqs,
     crumbs: crumbItems,
     body: `<main>${breadcrumbs(crumbItems)}${serviceHero(config)}
-      <section class="section" id="contenido"><div class="shell article-grid"><article class="prose"><p class="intro">${config.intro}</p>${config.sections.map(([heading, html]) => `<h2>${heading}</h2>${html}`).join('')}${relatedLinks(config.path, Boolean(config.zone))}${relatedGuides(config.path)}${crossLink(config.path)}</article><aside class="side-panel"><p class="eyebrow">Datos para consultar</p><ul>${config.checklist.map((item) => `<li>${item}</li>`).join('')}</ul>${cta(`${svg('wa')}<span>Enviar estos datos</span>`, message, 'button button--wa')}<a class="side-panel__phone" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>${esc(SITE.phoneDisplay)}</span></a><p class="side-note">Sin precios ni disponibilidad automática: el operador confirma cada caso.</p></aside></div></section>
+      <section class="section" id="contenido"><div class="shell article-grid"><article class="prose">${extra.quick ? `<p class="quick-answer"><strong>Respuesta corta:</strong> ${extra.quick}</p>` : ''}<p class="intro">${config.intro}</p>${config.sections.map(([heading, html]) => `<h2>${heading}</h2>${html}`).join('')}${relatedLinks(config.path, Boolean(config.zone))}${relatedGuides(config.path)}${crossLink(config.path)}</article><aside class="side-panel"><p class="eyebrow">Datos para consultar</p><ul>${config.checklist.map((item) => `<li>${item}</li>`).join('')}</ul>${cta(`${svg('wa')}<span>Enviar estos datos</span>`, message, 'button button--wa')}<a class="side-panel__phone" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>${esc(SITE.phoneDisplay)}</span></a><p class="side-note">Sin precios ni disponibilidad automática: el operador confirma cada caso.</p></aside></div></section>
       ${pageFaqs.length ? `<section class="section section--faq"><div class="shell faq-grid"><div><p class="eyebrow">Preguntas frecuentes</p><h2>Lo esencial antes de coordinar</h2></div>${faqBlock(pageFaqs)}</div></section>` : ''}
       <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">${config.short}</p><h2>${config.ctaTitle}</h2><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Consultar ahora</span>`, message, 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section>
     </main>`,
@@ -591,14 +633,23 @@ pages.push(genericServicePage({
   faqs: [['¿Qué profundidad puede necesitar un pozo?', 'En Gran Asunción se informan como típicos 30 a 120 m, pero no es una garantía. La geología y el punto de perforación determinan el resultado.'], ['¿La bomba está incluida?', 'Se cotiza como componente separado o dentro de un alcance integral, según la propuesta real del operador. La potencia depende de profundidad, caudal y uso.'], ['¿Cuánto tarda la perforación?', 'No damos un plazo fijo sin conocer acceso, profundidad y tipo de suelo. El operador confirma una estimación después de revisar los datos del terreno.']],
 }));
 
+const calculatorFaqs = [
+  ['¿Cuánto cuesta perforar un pozo artesiano por metro?', `Como precio de referencia, ${REF_RATE} por metro en suelo de tierra o mixto, con entubado y engravado incluidos. La roca se cotiza aparte.`],
+  ['¿El precio incluye la bomba?', `Sí, la instalación completa (${REF_KIT}) incluye el motor bomba de 1 hp con tablero, el tanque hidroneumático, presostato, manómetro, cableado y accesorios.`],
+  ['¿Cuánto suma perforar 20 metros más?', `Suma ${REF_20} al precio de referencia.`],
+  ['¿Es un precio cerrado?', 'No. Es una referencia para que puedas planificar. El operador confirma el valor final después de revisar suelo, profundidad y acceso del terreno.'],
+];
+
 const calculatorPage = {
   path: '/servicios/precio-pozo/', short: 'Precio por metro', eyebrow: 'Estimación de referencia',
   title: 'Precio de pozo artesiano por metro | Pozo.com.py', description: 'Calculadora de alcance para pozo artesiano por profundidad, suelo, entubado, filtro, bomba y tablero. Solicitá cotización.',
-  h1: 'Precio de pozo artesiano por metro', image: 'bomba-pozo-artesiano.webp', service: true,
+  h1: 'Precio de pozo artesiano por metro', image: 'bomba-pozo-artesiano.webp', service: true, faqs: calculatorFaqs,
   crumbs: [['/', 'Inicio'], ['/servicios/', 'Servicios'], ['/servicios/artesiano/', 'Pozos artesianos'], ['/servicios/precio-pozo/', 'Precio por metro']],
   body: `<main>${breadcrumbs([['/', 'Inicio'], ['/servicios/', 'Servicios'], ['/servicios/artesiano/', 'Pozos artesianos'], ['/servicios/precio-pozo/', 'Precio por metro']])}${serviceHero({eyebrow:'Calculadora de alcance', h1:'Precio de pozo artesiano por metro', lead:'Calculá un precio de referencia en guaraníes según profundidad y suelo. El operador confirma el valor final.', image:'bomba-pozo-artesiano.webp', alt:'Ilustración de una bomba, un tanque de presión y un tablero eléctrico en un cuarto técnico', path:'/servicios/precio-pozo/', short:'Precio por metro'})}
     <section class="section" id="contenido"><div class="shell calculator-grid"><form class="calculator" id="well-calculator"><div class="field"><label for="depth">Profundidad estimada</label><div class="input-suffix"><input id="depth" name="depth" type="number" min="10" max="300" step="1" value="${CALC_DEFAULT_DEPTH}" required><span>metros</span></div></div><div class="field"><label for="soil">Tipo de suelo esperado</label><select id="soil" name="soil"><option value="tierra">Tierra</option><option value="mixto">Mixto</option><option value="roca">Roca</option><option value="desconocido">No sé</option></select></div><fieldset><legend>Qué incluir</legend><p class="form-note">La perforación siempre incluye entubado y engravado.</p><label class="check"><input type="checkbox" name="install" checked> Instalación completa: bomba 1 hp, tablero, tanque hidroneumático y cañerías</label></fieldset><p class="calc-live"><span aria-hidden="true">↻</span> El precio se actualiza solo cuando cambiás los datos.</p></form><div class="estimate" id="estimate" data-rates='${RATES_JSON}' data-wa-base="${esc(whatsappLink(''))}" data-wa-template="${esc(CALCULATOR_TEMPLATE)}"><div id="estimate-result" aria-live="polite">${(() => { const e = calculatorEstimate(CALC_DEFAULT_DEPTH, true); return `<p class="eyebrow">Estimación inicial</p><h2>${CALC_DEFAULT_DEPTH} metros · suelo de tierra</h2><ul><li><span>Perforación con entubado y engravado</span><strong>${formatGs(e.drilling)}</strong></li><li><span>Instalación completa</span><strong>${formatGs(e.kit)}</strong></li></ul><div class="estimate-total"><span>Estimado</span><strong>${formatGs(e.total)}</strong></div><p>Precio de referencia. Si hace falta perforar 20 m más, suma ${formatGs(e.extra20)}. El operador confirma el valor final al revisar suelo, profundidad y acceso.</p>`; })()}<div class="estimate-actions"><button class="button button--outline" id="copy-estimate" type="button">Copiar solicitud</button>${cta(`${svg('wa')}<span>Enviar por WhatsApp</span>`, waMessage('precio', '/servicios/precio-pozo/'), 'button button--wa')}</div></div>${(() => { const e = calculatorEstimate(CALC_DEFAULT_DEPTH, true); return calculatorLeadForm(CALC_DEFAULT_DEPTH, e.total); })()}<details class="included-toggle" id="included-toggle"><summary><span class="included-toggle__icon" aria-hidden="true">✓</span><span>Ver todo lo que incluye</span><span class="included-toggle__chev" aria-hidden="true"></span></summary><div class="included-cols">${includedColumns()}</div></details></div></div></section>
-    <section class="section" id="incluye"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Todo incluido</p><h2>Qué incluye el precio</h2></div><p>Sin sorpresas: esto es lo que trae el pozo terminado y funcionando.</p></div><div class="included-card included-cols">${includedColumns()}</div><p class="table-note">La profundidad real, el tipo de suelo y el acceso pueden modificar el valor final. El operador lo confirma antes de empezar.</p></div></section><section class="section section--sand"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Conceptos del presupuesto</p><h2>Qué incluye la cotización</h2></div><p>Confirmamos cada componente de forma separada para que puedas comparar perforación, entubado, filtro, bomba y tablero.</p></div><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Unidad</th><th>Precio</th></tr></thead><tbody>${priceRows()}</tbody></table></div><div class="prose">${relatedLinks('/servicios/precio-pozo/', false)}${relatedGuides('/servicios/precio-pozo/')}${crossLink('/servicios/precio-pozo/')}</div></div></section>
+    <section class="section" id="incluye"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Todo incluido</p><h2>Qué incluye el precio</h2></div><p>Sin sorpresas: esto es lo que trae el pozo terminado y funcionando.</p></div><div class="included-card included-cols">${includedColumns()}</div><p class="table-note">La profundidad real, el tipo de suelo y el acceso pueden modificar el valor final. El operador lo confirma antes de empezar.</p></div></section>
+    <section class="section section--sand" id="ejemplos"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Ejemplos de precio</p><h2>Cuánto cuesta un pozo artesiano según la profundidad</h2></div><p>Precios de referencia con el mismo cálculo de la calculadora, para suelo de tierra y con instalación completa.</p></div><div class="table-wrap"><table><thead><tr><th>Profundidad</th><th>Perforación con entubado y engravado</th><th>Instalación completa</th><th>Total de referencia</th></tr></thead><tbody>${[60, 100, 150, 180].map((d) => { const e = calculatorEstimate(d, true); return `<tr><th scope="row" data-label="Profundidad">${d} m</th><td data-label="Perforación">${formatGs(e.drilling)}</td><td data-label="Instalación">${formatGs(e.kit)}</td><td data-label="Total"><strong>${formatGs(e.total)}</strong></td></tr>`; }).join('')}</tbody></table></div><div class="prose"><h3>Qué hace cambiar el precio</h3><p>La profundidad real es lo que más pesa: cada metro adicional suma ${REF_RATE}. También influyen el tipo de suelo (la roca se cotiza aparte), el acceso del equipo a tu terreno y la potencia de la bomba si necesitás más que el equipo de 1 hp.</p><p>Son precios de referencia del sitio. El operador confirma el valor final después de revisar suelo, profundidad y acceso; no es una oferta cerrada.</p></div></div></section>
+    <section class="section section--faq"><div class="shell faq-grid"><div><p class="eyebrow">Preguntas frecuentes</p><h2>Precio de un pozo artesiano</h2></div>${faqBlock(calculatorFaqs)}</div></section><section class="section section--sand"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Conceptos del presupuesto</p><h2>Qué incluye la cotización</h2></div><p>Confirmamos cada componente de forma separada para que puedas comparar perforación, entubado, filtro, bomba y tablero.</p></div><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Unidad</th><th>Precio</th></tr></thead><tbody>${priceRows()}</tbody></table></div><div class="prose">${relatedLinks('/servicios/precio-pozo/', false)}${relatedGuides('/servicios/precio-pozo/')}${crossLink('/servicios/precio-pozo/')}</div></div></section>
     <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">Pozo artesiano</p><h2>Compartí profundidad, suelo y ubicación.</h2><div><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Pedir cotización</span>`, waMessage('precio', '/servicios/precio-pozo/'), 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></div></section></main>`,
 };
 pages.push(calculatorPage);

@@ -664,3 +664,5 @@ body.launcher-open { overflow: hidden; }
   .calc-lead__fields { grid-template-columns: 1fr; }
   .thanks-grid { grid-template-columns: 1fr; }
 }
+
+.quick-answer { margin: 0 0 22px; padding: 16px 18px; background: rgba(14,113,131,.09); border-left: 4px solid var(--water); font-size: .98rem; }
