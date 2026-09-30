@@ -10,5 +10,5 @@ return [
         'labels' => ['name' => 'Nombre', 'phone' => 'Teléfono', 'service' => 'Servicio', 'zona' => 'Ciudad y barrio', 'message' => 'Consulta', 'email' => 'Correo'],
         'outro' => ['Si hace falta, les mando fotos o medidas por acá.', 'Para cuándo lo necesito (hoy, esta semana, sin apuro): ___'],
     ],
-    'generated_at' => '2026-09-30T01:10:34.578Z',
+    'generated_at' => '2026-09-30T01:46:31.536Z',
 ];

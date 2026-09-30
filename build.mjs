@@ -260,6 +260,12 @@ function pathCard({ tone = 'water', icon = 'drop', kicker, title, line, actionLa
   </article>`;
 }
 
+function contactBar(page) {
+  const href = whatsappLink(waMessage(null, page.path));
+  if (!href) return '';
+  return `<nav class="contact-bar" aria-label="Contacto rápido"><a class="contact-bar__btn contact-bar__btn--wa" href="${href}" target="_blank" rel="noopener noreferrer">${svg('wa')}<span>WhatsApp</span></a><a class="contact-bar__btn contact-bar__btn--call" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>Llamar</span></a></nav>`;
+}
+
 function priceRows() {
   const rows = [
     ['Perforación — suelo de tierra', 'por metro', PRICES.drillingSoilPerMeter],
@@ -350,6 +356,7 @@ function genericServicePage(config) {
   return {
     ...config,
     service: true,
+    stickyBar: true,
     faqs: pageFaqs,
     crumbs: crumbItems,
     body: `<main>${breadcrumbs(crumbItems)}${serviceHero(config)}
@@ -566,11 +573,12 @@ function render(page) {
   <link rel="stylesheet" href="/assets/css/site.css?v=${esc(SITE.assetVersion)}">
   <script type="application/ld+json">${schema}</script>
 </head>
-<body data-page-label="${esc(page.short || page.h1 || '')}">
+<body data-page-label="${esc(page.short || page.h1 || '')}"${page.stickyBar ? ' class="has-contact-bar"' : ''}>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   ${header()}
   ${responsiveImages(page.body).replace(/<main(?![^>]*\bid=)([^>]*)>/, '<main id="main-content"$1>')}
   ${footer()}
+  ${page.stickyBar ? contactBar(page) : ''}
   ${launcher(page)}
   <script src="${esc(SITE.venderCrmUrl)}/vc-attribution.js" defer></script>
   <script src="/assets/js/site.js?v=${esc(SITE.assetVersion)}" defer></script>

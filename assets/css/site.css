@@ -563,6 +563,20 @@ body.launcher-open { overflow: hidden; }
   .wa-launcher__close { display: grid; }
 }
 
+@media (max-width: 700px) {
+  /* Sticky contact bar (service and zone pages). The closed FAB is offset above the bar. */
+  .has-contact-bar { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  .contact-bar { position: fixed; z-index: 80; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(255,255,255,.18); background: var(--ink); box-shadow: 0 -8px 24px rgba(6,26,32,.25); }
+  .contact-bar__btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; border-radius: var(--radius); font-size: .95rem; font-weight: 800; text-decoration: none; }
+  .contact-bar__btn svg { width: 20px; height: 20px; }
+  .contact-bar__btn--wa { background: var(--wa); color: var(--ink); }
+  .contact-bar__btn--call { border: 1px solid rgba(255,255,255,.55); background: transparent; color: var(--white); }
+  .contact-bar__btn:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; box-shadow: 0 0 0 5px var(--water-deep); }
+  .has-contact-bar .wa-launcher:not([open]) { bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+@media (min-width: 701px) { .contact-bar { display: none; } }
+
 @media (max-width: 380px) {
   .decision-hero h1 { font-size: 2.05rem; }
   .brand small { letter-spacing: .16em; }
