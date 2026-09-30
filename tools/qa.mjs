@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { SITE } from '../site.config.mjs';
 import { TOPICS, PAGES, waText, CALCULATOR_TEMPLATE, FORM_FALLBACK } from '../content/wa-messages.mjs';
 import { ZONES, GRANDFATHERED_ZONES, COVERAGE_CITIES } from '../content/zones.mjs';
+import { minifyCss, minifyJs } from './minify.mjs';
 import { GUIDES, PUBLISHED_GUIDES, DRAFT_GUIDES, SERVICE_MEANING_GROUPS, GUIDE_HUB, HAS_GUIDE_HUB, guidePath, guideWordCount, anchorId } from '../content/guides.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -253,6 +254,23 @@ for (const file of htmlFiles) {
   if (!/class="wa-ficha__form" action="\/contacto\.php" method="POST"/.test(html)) fail(`${rel}: launcher ficha rápida form missing`);
   const ficha = html.match(/<form class="wa-ficha__form"[\s\S]*?<\/form>/)?.[0] || '';
   if (!triageOk(ficha)) fail(`${rel}: ficha rápida needs the urgencia radios (${Object.keys(FORM_FALLBACK.urgency).join('/')}) and the zona select (coverage cities + Otra)`);
+  // Performance: inline critical CSS, full CSS non-blocking, deferred JS, LCP preload.
+  if (!/<style>[^<]{1000,}<\/style>/.test(html)) fail(`${rel}: inline critical CSS missing`);
+  if (!/<link rel="stylesheet" href="\/assets\/css\/site\.min\.css\?v=[^"]+" media="print" onload="this\.media='all'">/.test(html) || !/<noscript><link rel="stylesheet" href="\/assets\/css\/site\.min\.css/.test(html)) fail(`${rel}: full stylesheet must load non-blocking (media=print + onload, noscript fallback)`);
+  for (const [tag] of html.matchAll(/<link rel="stylesheet"[^>]*>/g)) {
+    if (!/media="print"/.test(tag) && !html.includes(`<noscript>${tag}</noscript>`)) fail(`${rel}: render-blocking stylesheet ${tag}`);
+  }
+  for (const [tag] of html.matchAll(/<script\s[^>]*src=[^>]*>/g)) {
+    if (!/\s(?:defer|async)\b/.test(tag)) fail(`${rel}: blocking script ${tag}`);
+    if (/vc-attribution/.test(tag)) fail(`${rel}: vc-attribution.js must load at idle from site.js, not as a script tag`);
+  }
+  if (!/src="\/assets\/js\/site\.min\.js\?v=/.test(html)) fail(`${rel}: site.min.js missing`);
+  const lcpImage = html.match(/<img\s[^>]*fetchpriority="high"[^>]*>/)?.[0];
+  if (lcpImage) {
+    const srcset = lcpImage.match(/\ssrcset="([^"]+)"/)?.[1];
+    const preload = html.match(/<link rel="preload" as="image"[^>]*>/)?.[0] || '';
+    if (!preload.includes(`href="${lcpImage.match(/\ssrc="([^"]+)"/)[1]}"`) || (srcset && !preload.includes(`imagesrcset="${srcset}"`))) fail(`${rel}: LCP image needs a matching <link rel="preload" as="image" imagesrcset>`);
+  }
   for (const [tag] of html.matchAll(/<a\s[^>]*target="_blank"[^>]*>/g)) {
     if (!/rel="[^"]*noopener/.test(tag)) fail(`${rel}: target="_blank" without rel="noopener": ${tag.slice(0, 90)}`);
   }
@@ -430,6 +448,12 @@ try {
 } catch { fail('config/site.generated.php: missing (run node build.mjs)'); }
 
 const siteJs = await readFile(join(root, 'assets', 'js', 'site.js'), 'utf8');
+// Minified assets must match their sources (edit site.css / site.js, then node build.mjs).
+try {
+  if ((await readFile(join(root, 'assets', 'css', 'site.min.css'), 'utf8')).trim() !== minifyCss(await readFile(join(root, 'assets', 'css', 'site.css'), 'utf8'))) fail('assets/css/site.min.css is stale (run node build.mjs)');
+  if ((await readFile(join(root, 'assets', 'js', 'site.min.js'), 'utf8')).trim() !== minifyJs(siteJs)) fail('assets/js/site.min.js is stale (run node build.mjs)');
+} catch { fail('assets/*/site.min.*: missing (run node build.mjs)'); }
+if (!/vcSrc/.test(siteJs) || !/requestIdleCallback/.test(siteJs)) fail('assets/js/site.js: idle loader for vc-attribution.js missing');
 if (!/data-wa-track/.test(siteJs) || !/\/wa\.php\?/.test(siteJs)) fail('assets/js/site.js: WhatsApp click tracking (data-wa-track -> /wa.php) missing');
 try {
   const generated = await readFile(join(root, 'config', 'site.generated.php'), 'utf8');

@@ -128,3 +128,9 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   the 6 services with serviceType, **no prices**). Service nodes get `@id`, `serviceType` and `areaServed`
   (zone pages: their own city). qa.mjs checks required properties per type, `@id` references, visible FAQ
   count = FAQPage count, breadcrumb ends at the page, and forbids ratings/reviews/prices.
+- **O5 — Performance**: critical CSS inlined (build-time extraction by component prefix, `tools/minify.mjs`),
+  full `site.min.css` non-blocking, LCP image preload with `imagesrcset`, `vc-attribution.js` at idle,
+  minified CSS/JS/HTML; browser-check now fails if the first screen moves > 2 px without the full CSS.
+  Slow 4G: FCP ≈ −60 % everywhere, render-blocking 1 → 0, text-LCP pages −55–65 %, hero-image pages +100–310 ms
+  (bandwidth contention); regular 4G: every tested page faster. Font subsetting skipped (no tool without
+  deps). Details: `docs/perf/PERF-2026-09-30.md`.

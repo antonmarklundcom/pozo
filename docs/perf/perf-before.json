@@ -1,0 +1,172 @@
+{
+  "measuredAt": "2026-09-30T02:44:17.050Z",
+  "base": "http://127.0.0.1:8796",
+  "results": [
+    {
+      "viewport": "390",
+      "path": "/",
+      "lcpMs": 1576,
+      "fcpMs": 1528,
+      "loadMs": 2761,
+      "kb": 459,
+      "gzipKb": 367,
+      "requests": 9,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 54,
+        "font": 113,
+        "script": 12,
+        "stylesheet": 49,
+        "image": 230
+      }
+    },
+    {
+      "viewport": "390",
+      "path": "/servicios/desague/",
+      "lcpMs": 1412,
+      "fcpMs": 1412,
+      "loadMs": 2109,
+      "kb": 374,
+      "gzipKb": 291,
+      "requests": 7,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 44,
+        "font": 91,
+        "script": 12,
+        "stylesheet": 49,
+        "image": 178
+      }
+    },
+    {
+      "viewport": "390",
+      "path": "/servicios/precio-pozo/",
+      "lcpMs": 1440,
+      "fcpMs": 1416,
+      "loadMs": 1673,
+      "kb": 248,
+      "gzipKb": 168,
+      "requests": 7,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 40,
+        "font": 91,
+        "script": 12,
+        "stylesheet": 49,
+        "image": 56
+      }
+    },
+    {
+      "viewport": "390",
+      "path": "/contacto/",
+      "lcpMs": 1176,
+      "fcpMs": 1176,
+      "loadMs": 1433,
+      "kb": 195,
+      "gzipKb": 112,
+      "requests": 6,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 43,
+        "font": 91,
+        "script": 12,
+        "stylesheet": 49
+      }
+    },
+    {
+      "viewport": "1366",
+      "path": "/",
+      "lcpMs": 4620,
+      "fcpMs": 1456,
+      "loadMs": 4591,
+      "kb": 855,
+      "gzipKb": 763,
+      "requests": 12,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 54,
+        "font": 113,
+        "script": 12,
+        "stylesheet": 49,
+        "image": 627
+      }
+    },
+    {
+      "viewport": "1366",
+      "path": "/servicios/desague/",
+      "lcpMs": 1448,
+      "fcpMs": 1360,
+      "loadMs": 1599,
+      "kb": 266,
+      "gzipKb": 183,
+      "requests": 7,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 44,
+        "font": 91,
+        "script": 12,
+        "stylesheet": 49,
+        "image": 70
+      }
+    },
+    {
+      "viewport": "1366",
+      "path": "/servicios/precio-pozo/",
+      "lcpMs": 1232,
+      "fcpMs": 1232,
+      "loadMs": 1464,
+      "kb": 212,
+      "gzipKb": 133,
+      "requests": 7,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 40,
+        "font": 91,
+        "image": 21,
+        "script": 12,
+        "stylesheet": 49
+      }
+    },
+    {
+      "viewport": "1366",
+      "path": "/contacto/",
+      "lcpMs": 1116,
+      "fcpMs": 1116,
+      "loadMs": 1366,
+      "kb": 195,
+      "gzipKb": 112,
+      "requests": 6,
+      "renderBlocking": 1,
+      "blocking": [
+        "http://127.0.0.1:8796/assets/css/site.css?v=20260930-4"
+      ],
+      "byTypeKb": {
+        "document": 43,
+        "font": 91,
+        "script": 12,
+        "stylesheet": 49
+      }
+    }
+  ]
+}

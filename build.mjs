@@ -5,9 +5,44 @@ import { SITE, PRICES, DEMO_MODE } from './site.config.mjs';
 import { TOPICS, LAUNCHER_TOPICS, PAGES, waText, CALCULATOR_TEMPLATE, FORM_FALLBACK } from './content/wa-messages.mjs';
 import { ZONES, COVERAGE_CITIES } from './content/zones.mjs';
 import { CROSS_LINKS } from './content/cross-links.mjs';
+import { criticalCss, minifyCss, minifyHtml, minifyJs } from './tools/minify.mjs';
 import { PUBLISHED_GUIDES, DRAFT_GUIDES, HAS_GUIDE_HUB, GUIDE_HUB, guidePath, anchorId } from './content/guides.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
+
+// --- Performance: critical CSS inline, the rest non-blocking, minified assets ---
+// assets/css/site.css and assets/js/site.js stay the editable sources; the build
+// writes site.min.css / site.min.js next to them. CRITICAL_COMPONENTS are the
+// class prefixes that can appear in the first screen of any page (header,
+// heroes, fixed WhatsApp controls); their rules plus base element styles are
+// inlined. tools/browser-check.mjs fails when the first screen lays out
+// differently without the full stylesheet, i.e. when a prefix is missing here.
+const CRITICAL_COMPONENTS = [
+  'js', 'skip-link', 'sr-only', 'shell', 'site-header', 'utility-bar', 'utility-status', 'utility-hours', 'nav-wrap', 'brand',
+  'brand-mark', 'main-nav', 'nav-services', 'services-menu', 'submenu-toggle', 'nav-actions', 'contact-toggle', 'menu-toggle',
+  'breadcrumbs', 'eyebrow', 'button', 'text-link', 'arrow-link', 'lede', 'microcopy', 'reveal', 'image-label',
+  'decision-hero', 'depth-ruler', 'path-cards', 'path-card', 'page-hero', 'hero-actions', 'hero-media', 'send-strip', 'urgent-box',
+  'services-hero', 'guide-hero', 'contact-hero', 'legal-hero', 'not-found', 'trust-bar', '=wa-launcher', 'wa-launcher__fab', '=wa-launcher__fab-label', '=wa-launcher__glyph', 'contact-bar', 'has-contact-bar',
+  // Start of the first section, visible in the first screen at 1366 x 900:
+  'section', 'section-heading', 'article-grid', 'prose', 'side-panel', 'calculator-grid', 'calculator', 'field', 'input-suffix',
+  'contact-grid', 'contact-channels', 'contact-option-list', 'contact-option', 'legal-copy', 'service-card__image',
+  'intro', 'estimate', 'zone-grid', 'zone-card', 'contact-form-block', 'lead-form', 'hp-field', 'choice-group', 'choice', 'consent', 'form-note',
+  // Short pages (/gracias/, 404) show the footer in the first screen:
+  'site-footer', 'footer-grid', 'footer-base',
+];
+const sourceCss = await readFile(join(root, 'assets', 'css', 'site.css'), 'utf8');
+const inlineCss = criticalCss(sourceCss, CRITICAL_COMPONENTS).replace(/<\/style/gi, '<\\/style');
+await writeFile(join(root, 'assets', 'css', 'site.min.css'), `${minifyCss(sourceCss)}\n`, 'utf8');
+await writeFile(join(root, 'assets', 'js', 'site.min.js'), `${minifyJs(await readFile(join(root, 'assets', 'js', 'site.js'), 'utf8'))}\n`, 'utf8');
+
+// Preload for the page's LCP image (the first fetchpriority="high" <img>).
+function lcpPreload(html) {
+  const tag = html.match(/<img\s[^>]*fetchpriority="high"[^>]*>/)?.[0];
+  if (!tag) return '';
+  const attr = (name) => tag.match(new RegExp(`\\s${name}="([^"]+)"`))?.[1];
+  const srcset = attr('srcset');
+  return `<link rel="preload" as="image" href="${attr('src')}"${srcset ? ` imagesrcset="${srcset}" imagesizes="${attr('sizes') || '100vw'}"` : ''} fetchpriority="high">`;
+}
 // Widths of the smaller WebP copies written by tools/prepare-images.py.
 const imageManifest = JSON.parse(await readFile(join(root, 'assets', 'images', 'manifest.json'), 'utf8'));
 const areas = COVERAGE_CITIES;
@@ -679,7 +714,9 @@ function responsiveImages(html) {
     const srcset = [...entry.variants.map((width) => `/assets/images/${stem}-${width}.webp ${width}w`), `/assets/images/${name} ${entry.width}w`].join(', ');
     const explicit = rest.match(/\sdata-sizes="([^"]+)"/);
     const sizes = explicit ? explicit[1] : /fetchpriority="high"/.test(rest) ? '100vw' : '(max-width: 700px) 100vw, (max-width: 1080px) 50vw, 400px';
-    return `<img src="/assets/images/${name}" srcset="${srcset}" sizes="${sizes}"${rest.replace(/\sdata-sizes="[^"]+"/, '')}>`;
+    // Lazy images yield bandwidth to the hero (LCP) while it is still loading.
+    const priority = /loading="lazy"/.test(rest) && !/fetchpriority=/.test(rest) ? ' fetchpriority="low"' : '';
+    return `<img src="/assets/images/${name}" srcset="${srcset}" sizes="${sizes}"${rest.replace(/\sdata-sizes="[^"]+"/, '')}${priority}>`;
   });
 }
 
@@ -688,7 +725,9 @@ function render(page) {
   const socialImage = `${SITE.url}/assets/images/${page.image || 'pozo-artesiano-perforacion.webp'}`;
   const robots = page.noindex ? 'noindex,follow' : (DEMO_MODE ? 'noindex,nofollow,noarchive' : 'index,follow');
   const schema = JSON.stringify(baseSchema(page)).replace(/</g, '\\u003c');
-  return trackWaLinks(`<!doctype html>
+  const body = responsiveImages(page.body).replace(/<main(?![^>]*\bid=)([^>]*)>/, '<main id="main-content"$1>');
+  const css = `/assets/css/site.min.css?v=${esc(SITE.assetVersion)}`;
+  return minifyHtml(trackWaLinks(`<!doctype html>
 <html lang="es-PY">
 <head>
   <meta charset="utf-8">
@@ -713,22 +752,24 @@ function render(page) {
   <meta name="twitter:image" content="${socialImage}">
   <meta name="theme-color" content="#0b2731">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  ${lcpPreload(body)}
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/barlow-condensed-700.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin-var.woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/site.css?v=${esc(SITE.assetVersion)}">
+  <style>${inlineCss}</style>
+  <link rel="stylesheet" href="${css}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="${css}"></noscript>
   <script type="application/ld+json">${schema}</script>
 </head>
-<body data-page-label="${esc(page.short || page.h1 || '')}"${page.stickyBar ? ' class="has-contact-bar"' : ''}>
+<body data-page-label="${esc(page.short || page.h1 || '')}" data-vc-src="${esc(SITE.venderCrmUrl)}/vc-attribution.js"${page.stickyBar ? ' class="has-contact-bar"' : ''}>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   ${header()}
-  ${responsiveImages(page.body).replace(/<main(?![^>]*\bid=)([^>]*)>/, '<main id="main-content"$1>')}
+  ${body}
   ${footer()}
   ${page.stickyBar ? contactBar(page) : ''}
   ${launcher(page)}
-  <script src="${esc(SITE.venderCrmUrl)}/vc-attribution.js" defer></script>
-  <script src="/assets/js/site.js?v=${esc(SITE.assetVersion)}" defer></script>
+  <script src="/assets/js/site.min.js?v=${esc(SITE.assetVersion)}" defer></script>
 </body>
-</html>`);
+</html>`));
 }
 
 async function outputPath(path) {
