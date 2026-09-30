@@ -18,6 +18,20 @@ RewriteRule ^pozos-septicos/?$ /servicios/septico/ [R=301,L]
 RewriteRule ^tratamiento-de-agua/?$ /servicios/agua/ [R=301,L]
 RewriteRule ^desague-san-lorenzo/?$ /zonas/san-lorenzo/ [R=301,L]
 RewriteRule ^desague-mariano-roque-alonso/?$ /zonas/mra/ [R=301,L]
+# v0 (July 2026) spellings that the rules above missed, and its .php files.
+RewriteRule ^pozos-artesianos/precio-metro/?$ /servicios/precio-pozo/ [R=301,L]
+RewriteRule ^tratamiento-agua/?$ /servicios/agua/ [R=301,L]
+RewriteRule ^pozos-artesianos-precio-metro\.php$ /servicios/precio-pozo/ [R=301,L]
+RewriteRule ^pozos-artesianos\.php$ /servicios/artesiano/ [R=301,L]
+RewriteRule ^pozos-ciegos\.php$ /servicios/pozo-ciego/ [R=301,L]
+RewriteRule ^desague-pozo-ciego\.php$ /servicios/desague/ [R=301,L]
+RewriteRule ^pozo-ciego-lleno\.php$ /servicios/pozo-lleno/ [R=301,L]
+RewriteRule ^pozos-septicos\.php$ /servicios/septico/ [R=301,L]
+RewriteRule ^tratamiento-agua\.php$ /servicios/agua/ [R=301,L]
+RewriteRule ^desague-san-lorenzo\.php$ /zonas/san-lorenzo/ [R=301,L]
+RewriteRule ^desague-mariano-roque-alonso\.php$ /zonas/mra/ [R=301,L]
+RewriteRule ^privacidad\.php$ /privacidad/ [R=301,L]
+RewriteRule ^index\.php$ / [R=301,L]
 
 # Short aliases matching common ad-display wording.
 RewriteRule ^pozo/artesiano/?$ /servicios/artesiano/ [R=301,L]
@@ -26,6 +40,7 @@ RewriteRule ^pozo/septico/?$ /servicios/septico/ [R=301,L]
 
 # Deny direct web access to non-public directories.
 RedirectMatch 404 ^/config/
+RedirectMatch 404 ^/content/
 RedirectMatch 404 ^/docs/
 RedirectMatch 404 ^/tools/
 RedirectMatch 404 ^/source-images/

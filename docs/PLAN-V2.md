@@ -1,6 +1,8 @@
 # Pozo.com.py v2 — plan and build guide
 
 Written 2026-09-02 by Fable 5.1 (planning only, no site code changed yet).
+
+> **Update 2026-09-30:** the contact number is **595992279599** (display `+595 992 279 599`). Earlier drafts of this plan named a different number; it was never correct for this site and has been removed. WhatsApp texts now live in `content/wa-messages.mjs` (see `docs/IMPROVE-PLAN-2026-09-30.md`).
 Builders: Opus/Sonnet subagents. Final integration and verification: one agent, using section 10.
 
 ## 0. Folders and how to use this document
@@ -34,7 +36,7 @@ Architecture, all good and to be preserved:
 
 Weak points v2 must fix:
 
-- Contact number is `595992279599` in `site.config.mjs`, hard-coded in `contacto.php` (`WHATSAPP_NUMBER`), hard-coded in `tools/qa.mjs` (two literals), and written literally in the services-hero button label in `build.mjs` ("Llamar al +595 992 279 599"). Four places, must become one.
+- Contact number was hard-coded in four places (`site.config.mjs`, `contacto.php`, `tools/qa.mjs`, a `build.mjs` label). It must live in `site.config.mjs` only.
 - Floating WhatsApp control is a bare 58px circle with the text "WA" and one generic message. No options, no context.
 - Display font stack is `"Arial Narrow", "Roboto Condensed", ...` which does not exist on Android or most Windows machines, so the condensed editorial look silently degrades to plain Arial. The premium hierarchy the CSS intends is not what most visitors see.
 - Home hero H1 "Soluciones que llegan más profundo" is a slogan, not a decision. The first screen does not separate the urgent visitor (pozo rebalsado, tonight) from the project visitor (pozo artesiano, weeks).
@@ -49,7 +51,7 @@ Weak points v2 must fix:
 
 Copy these into every builder prompt.
 
-- Contact number everywhere: `595995628862`, display `+595 995 628 862`, tel `+595995628862`, `https://wa.me/595995628862?text=...`. Zero occurrences of `595992279599` or `992 279 599` may remain in the repo except in this plan and `docs/`.
+- Contact number everywhere: `595992279599`, display `+595 992 279 599`, tel `+595992279599`, `https://wa.me/595992279599?text=...`. No other phone number may appear anywhere in the repo (pages, JS, JSON-LD, docs, tests); `tools/qa.mjs` fails the build on any other number or on a wa.me link with empty text.
 - No placeholder emails, prices, RUC, addresses, team names, reviews, guarantees, response times, "24/7", "gratis", "potable", or "servicio garantizado". Prices stay `A cotizar` while `PRICES` values are `null`.
 - Hours wording stays exactly: "Lun a Sáb 07:00–19:00 · Urgencias de desagüe, también domingo" and every Sunday mention keeps "sujetas a disponibilidad".
 - Illustrations keep the visible "Imagen ilustrativa" label and the footer editorial note. Never phrase imagery as proof of a real truck, crew or job.
@@ -67,9 +69,9 @@ export const SITE = {
   city: 'Asunción', region: 'Capital', country: 'PY',
   languages: ['es-PY', 'gn'],
   hoursText: 'Lun a Sáb 07:00–19:00 · Urgencias de desagüe, también domingo',
-  whatsapp: '595995628862',
-  phoneDisplay: '+595 995 628 862',
-  phoneHref: '+595995628862',
+  whatsapp: '595992279599',
+  phoneDisplay: '+595 992 279 599',
+  phoneHref: '+595992279599',
   leadEmail: '',                 // public display only; stays empty until a mailbox is verified
   venderCrmUrl: 'https://crm.clientes.com.py',
   capacity: '8 m³',
@@ -177,7 +179,7 @@ Update "Última actualización" to the build date.
 - Header: a `contact-toggle` control on the right of the nav (desktop and mobile), icon + label "Contacto" on desktop, icon only with `aria-label` on mobile. It opens the same panel. It sits left of the hamburger on mobile so the two controls never overlap.
 - Works without JavaScript: the FAB is the `<summary>` of a `<details id="wa-launcher">`. Native keyboard toggling, no JS needed. The header control without JS is a plain `<a href="#wa-launcher">` that scrolls to the open panel target; JS upgrades it into a `<button aria-expanded aria-controls="wa-launcher">` that toggles the same `<details>`.
 - JS enhancements: Escape closes, click outside closes, focus moves to the first option on open and back to the trigger on close, `aria-expanded` mirrored on both triggers, body scroll locked while the mobile sheet is open, the panel remembers nothing (no storage).
-- Every option is an `<a target="_blank" rel="noopener noreferrer" href="https://wa.me/595995628862?text=…">` built with `encodeURIComponent`. Newlines are `%0A`. Test each URL decodes cleanly.
+- Every option is an `<a target="_blank" rel="noopener noreferrer" href="https://wa.me/595992279599?text=…">` built with `encodeURIComponent`. Newlines are `%0A`. Test each URL decodes cleanly.
 - A last row inside the panel shows the phone `tel:` link and the hours line, so the launcher is also the phone entry point on mobile.
 
 ### 5.2 Markup (generated)
@@ -196,7 +198,7 @@ Update "Última actualización" to the build date.
       <li><a class="wa-option" href="…"><strong>Tratamiento / análisis de agua</strong><span>Sarro, hierro, color, cloración</span></a></li>
       <li><a class="wa-option" href="…"><strong>Hablar sobre otro caso</strong><span>Contanos qué pasa y dónde</span></a></li>
     </ul>
-    <footer><a href="tel:+595995628862">Llamar al +595 995 628 862</a><span>Lun a Sáb 07:00–19:00 · Urgencias de desagüe, también domingo</span><a href="/contacto/">Dejar mis datos en el formulario</a></footer>
+    <footer><a href="tel:+595992279599">Llamar al +595 992 279 599</a><span>Lun a Sáb 07:00–19:00 · Urgencias de desagüe, también domingo</span><a href="/contacto/">Dejar mis datos en el formulario</a></footer>
   </div>
 </details>
 ```
@@ -373,7 +375,7 @@ Gracias: keep noindex, add the launcher and the "Escribir por WhatsApp" button. 
 - Deny `/config/` and `/source-images/` and `/tools/` and `/docs/` from the web (`RedirectMatch 404`), woff2 expires, keep everything else.
 
 `tools/qa.mjs`
-- Read the number from `site.config.mjs` instead of literals. Fail on any `595992279599`. Assert the launcher exists with exactly 5 `.wa-option` links per HTML file (6 with ficha), each `href` starts with `https://wa.me/595995628862?text=` and decodes without `%` errors. Assert `contact-toggle` in every page. Assert `rel="noopener"` on every `target="_blank"`. Assert `config/site.generated.php` contains the number. Assert `contacto.php` contains `api.resend.com`, `Idempotency-Key`, `RESEND_API_KEY` and no `re_[A-Za-z0-9]{20,}` literal. Assert no `assets/fonts` file is referenced that does not exist.
+- Read the number from `site.config.mjs` instead of literals. Fail on any other number. Assert the launcher exists with exactly 5 `.wa-option` links per HTML file (6 with ficha), each `href` starts with `https://wa.me/595992279599?text=` and decodes without `%` errors. Assert `contact-toggle` in every page. Assert `rel="noopener"` on every `target="_blank"`. Assert `config/site.generated.php` contains the number. Assert `contacto.php` contains `api.resend.com`, `Idempotency-Key`, `RESEND_API_KEY` and no `re_[A-Za-z0-9]{20,}` literal. Assert no `assets/fonts` file is referenced that does not exist.
 
 `tools/package.ps1`, `tools/package-hostinger.py`
 - Add `config` to deploy dirs. Exclude `docs`, `source-images`, `tools`. ZIP name `pozo-com-py-hostinger-ready-2026-09-02.zip`. Forward-slash entries only (both scripts already do this).
@@ -409,10 +411,10 @@ Phase 3 additionally loads the `frontend-design` skill and the `py-onepager-imag
 
 Build and static
 - `node build.mjs` → "Built 14 pages" (15+ if zones added). `node tools/qa.mjs` green.
-- `grep -r "595992279599\|992 279 599" --exclude-dir=docs .` returns nothing.
-- Every `wa.me` link: number `595995628862`, `text=` decodes to the expected Spanish, contains the page label.
+- `node tools/qa.mjs` passes: it fails on any phone number other than 595992279599, in any file.
+- Every `wa.me` link: number `595992279599`, `text=` decodes to the expected Spanish, contains the page label.
 - `sitemap.xml` lists every indexable route once, none noindex. `robots.txt` unchanged shape.
-- JSON-LD on every page parses; `telephone` is `+595 995 628 862`.
+- JSON-LD on every page parses; `telephone` is `+595 992 279 599`.
 - `.htaccess`: `/config/`, `/docs/`, `/tools/`, `/source-images/` return 404 under `php -S` with the router or on Hostinger.
 
 PHP handler (`php -S 127.0.0.1:8765` in the v2 folder)
@@ -441,7 +443,7 @@ Final report must contain: what changed, files changed, tests run with outputs, 
 
 ## 11. Open decisions for Anton (answer any time, defaults apply)
 
-1. Display grouping of the number: this plan uses `+595 995 628 862`. If you prefer `+595 995 628862` as written, change `phoneDisplay` only.
+1. Display grouping of the number: `+595 992 279 599` (decided 2026-09-29). To change it, edit `phoneDisplay` in `site.config.mjs` only.
 2. Operator mailbox for `notify_to` (needed before Resend can be tested end to end).
 3. Whether to publish an email on the site (`leadEmail`). Default: no.
 4. Phase 2 ficha rápida and Phase 3 extra zone pages: default is to build the ficha, skip extra zones unless distinct local content is available.
