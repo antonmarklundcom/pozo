@@ -140,3 +140,9 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   all colour contrast, fixed: primary button on `--clay-dark` (3.9 → 5.6:1), white eyebrow on the teal closing
   band (3.5 → 5.7:1), light-teal footer ".COM.PY" and estimate eyebrow. Also fixed the consent label layout
   (text and link were separate grid items). Now 0 findings of any impact.
+- **O7 — Internal link graph**: `tools/link-graph.mjs` (now a verify step) splits contextual (`<main>`) from
+  chrome links and checks orphans, depth ≤ 3, service pages with contextual links from ≥ 3 pages, zones
+  from the hub + ≥ 1 service page, ≤ 1 sibling link. Before: pozo-lleno and septico had 2 contextual sources,
+  neither zone was linked from a service page. Fixed with build link blocks (no copy changes): "Servicios
+  relacionados" (`RELATED_SERVICES`) on service/zone pages and "Desagüe por zona" on desagüe + pozo-lleno.
+  All rules pass; report `docs/seo/link-graph.md` (all pages at depth 1, 0 orphans).

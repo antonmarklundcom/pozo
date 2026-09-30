@@ -426,6 +426,32 @@ function relatedGuides(path) {
   return `<aside class="related-guides" aria-labelledby="related-guides-title"><h2 id="related-guides-title">Guías relacionadas</h2><ul>${related.map((guide) => `<li><a href="${guidePath(guide)}">${esc(guide.h1)}</a><span>${esc(guide.description)}</span></li>`).join('')}</ul></aside>`;
 }
 
+// Internal link blocks (docs/seo/link-graph.md, checked by tools/link-graph.mjs):
+// related services per service page, and the zone pages from the desagüe pages.
+const RELATED_SERVICES = {
+  '/servicios/artesiano/': ['/servicios/precio-pozo/', '/servicios/agua/'],
+  '/servicios/precio-pozo/': ['/servicios/artesiano/', '/servicios/agua/'],
+  '/servicios/pozo-ciego/': ['/servicios/desague/', '/servicios/pozo-lleno/', '/servicios/septico/'],
+  '/servicios/desague/': ['/servicios/pozo-lleno/', '/servicios/pozo-ciego/', '/servicios/septico/'],
+  '/servicios/pozo-lleno/': ['/servicios/desague/', '/servicios/pozo-ciego/', '/servicios/septico/'],
+  '/servicios/septico/': ['/servicios/pozo-ciego/', '/servicios/desague/', '/servicios/pozo-lleno/'],
+  '/servicios/agua/': ['/servicios/artesiano/', '/servicios/precio-pozo/'],
+};
+const ZONE_RELATED_SERVICES = ['/servicios/desague/', '/servicios/pozo-lleno/', '/servicios/pozo-ciego/'];
+const ZONE_LINK_PAGES = ['/servicios/desague/', '/servicios/pozo-lleno/'];
+const linkLabel = (href) => services.find((service) => service.href === href)?.label || PAGES[href]?.label || href;
+
+function relatedLinks(path, isZone) {
+  const related = isZone ? ZONE_RELATED_SERVICES : RELATED_SERVICES[path] || [];
+  const zoneBlock = ZONE_LINK_PAGES.includes(path) && ZONES.length
+    ? `<div class="related-services"><h2>Desagüe por zona</h2><ul>${ZONES.map((zone) => `<li><a class="arrow-link" href="${zone.path}">${esc(zone.short)} <span aria-hidden="true">→</span></a></li>`).join('')}<li><a class="arrow-link" href="/zonas/">Todas las zonas <span aria-hidden="true">→</span></a></li></ul></div>`
+    : '';
+  const serviceBlock = related.length
+    ? `<div class="related-services"><h2>Servicios relacionados</h2><ul>${related.map((href) => `<li><a class="arrow-link" href="${href}">${esc(linkLabel(href))} <span aria-hidden="true">→</span></a></li>`).join('')}</ul></div>`
+    : '';
+  return serviceBlock + zoneBlock;
+}
+
 function faqBlock(items) {
   return `<div class="faq-list">${items.map(([question, answer]) => `<details><summary>${question}<span aria-hidden="true">+</span></summary><p>${answer}</p></details>`).join('')}</div>`;
 }
@@ -499,7 +525,7 @@ function genericServicePage(config) {
     faqs: pageFaqs,
     crumbs: crumbItems,
     body: `<main>${breadcrumbs(crumbItems)}${serviceHero(config)}
-      <section class="section" id="contenido"><div class="shell article-grid"><article class="prose"><p class="intro">${config.intro}</p>${config.sections.map(([heading, html]) => `<h2>${heading}</h2>${html}`).join('')}${relatedGuides(config.path)}${crossLink(config.path)}</article><aside class="side-panel"><p class="eyebrow">Datos para consultar</p><ul>${config.checklist.map((item) => `<li>${item}</li>`).join('')}</ul>${cta(`${svg('wa')}<span>Enviar estos datos</span>`, message, 'button button--wa')}<a class="side-panel__phone" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>${esc(SITE.phoneDisplay)}</span></a><p class="side-note">Sin precios ni disponibilidad automática: el operador confirma cada caso.</p></aside></div></section>
+      <section class="section" id="contenido"><div class="shell article-grid"><article class="prose"><p class="intro">${config.intro}</p>${config.sections.map(([heading, html]) => `<h2>${heading}</h2>${html}`).join('')}${relatedLinks(config.path, Boolean(config.zone))}${relatedGuides(config.path)}${crossLink(config.path)}</article><aside class="side-panel"><p class="eyebrow">Datos para consultar</p><ul>${config.checklist.map((item) => `<li>${item}</li>`).join('')}</ul>${cta(`${svg('wa')}<span>Enviar estos datos</span>`, message, 'button button--wa')}<a class="side-panel__phone" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>${esc(SITE.phoneDisplay)}</span></a><p class="side-note">Sin precios ni disponibilidad automática: el operador confirma cada caso.</p></aside></div></section>
       ${pageFaqs.length ? `<section class="section section--faq"><div class="shell faq-grid"><div><p class="eyebrow">Preguntas frecuentes</p><h2>Lo esencial antes de coordinar</h2></div>${faqBlock(pageFaqs)}</div></section>` : ''}
       <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">${config.short}</p><h2>${config.ctaTitle}</h2><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Consultar ahora</span>`, message, 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section>
     </main>`,
@@ -543,7 +569,7 @@ const calculatorPage = {
   crumbs: [['/', 'Inicio'], ['/servicios/', 'Servicios'], ['/servicios/artesiano/', 'Pozos artesianos'], ['/servicios/precio-pozo/', 'Precio por metro']],
   body: `<main>${breadcrumbs([['/', 'Inicio'], ['/servicios/', 'Servicios'], ['/servicios/artesiano/', 'Pozos artesianos'], ['/servicios/precio-pozo/', 'Precio por metro']])}${serviceHero({eyebrow:'Calculadora de alcance', h1:'Precio de pozo artesiano por metro', lead:'Prepará una estimación técnica de los componentes. El total en guaraníes aparecerá cuando se carguen las tarifas reales del operador.', image:'bomba-pozo-artesiano.webp', alt:'Ilustración de bomba para pozo artesiano', path:'/servicios/precio-pozo/', short:'Precio por metro'})}
     <section class="section" id="contenido"><div class="shell calculator-grid"><form class="calculator" id="well-calculator"><div class="field"><label for="depth">Profundidad estimada</label><div class="input-suffix"><input id="depth" name="depth" type="number" min="10" max="300" step="1" value="60" required><span>metros</span></div></div><div class="field"><label for="soil">Tipo de suelo esperado</label><select id="soil" name="soil"><option value="tierra">Tierra</option><option value="mixto">Mixto</option><option value="roca">Roca</option><option value="desconocido">No sé</option></select></div><fieldset><legend>Componentes a incluir</legend><label class="check"><input type="checkbox" name="casing" checked> Entubado</label><label class="check"><input type="checkbox" name="filter" checked> Filtro</label><label class="check"><input type="checkbox" name="pump" checked> Bomba</label><label class="check"><input type="checkbox" name="panel" checked> Tablero</label></fieldset><button class="button button--primary" type="submit">Preparar alcance</button></form><div class="estimate" id="estimate" aria-live="polite" data-wa-base="${esc(whatsappLink(''))}" data-wa-template="${esc(CALCULATOR_TEMPLATE)}"><p class="eyebrow">Alcance inicial</p><h2>60 metros · suelo de tierra</h2><ul><li><span>Perforación</span><strong>60 m · a cotizar</strong></li><li><span>Entubado</span><strong>60 m · a cotizar</strong></li><li><span>Filtro</span><strong>A cotizar</strong></li><li><span>Bomba</span><strong>Según potencia</strong></li><li><span>Tablero</span><strong>Según configuración</strong></li></ul><div class="estimate-total"><span>Total</span><strong>A cotizar</strong></div><p>Enviá este alcance para confirmar suelo, profundidad, componentes y precio.</p><div class="estimate-actions"><button class="button button--outline" id="copy-estimate" type="button">Copiar solicitud</button>${cta(`${svg('wa')}<span>Enviar por WhatsApp</span>`, waMessage('precio', '/servicios/precio-pozo/'), 'button button--wa')}</div></div></div></section>
-    <section class="section section--sand"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Conceptos del presupuesto</p><h2>Qué incluye la cotización</h2></div><p>Confirmamos cada componente de forma separada para que puedas comparar perforación, entubado, filtro, bomba y tablero.</p></div><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Unidad</th><th>Precio</th></tr></thead><tbody>${priceRows()}</tbody></table></div><div class="prose">${relatedGuides('/servicios/precio-pozo/')}${crossLink('/servicios/precio-pozo/')}</div></div></section>
+    <section class="section section--sand"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Conceptos del presupuesto</p><h2>Qué incluye la cotización</h2></div><p>Confirmamos cada componente de forma separada para que puedas comparar perforación, entubado, filtro, bomba y tablero.</p></div><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Unidad</th><th>Precio</th></tr></thead><tbody>${priceRows()}</tbody></table></div><div class="prose">${relatedLinks('/servicios/precio-pozo/', false)}${relatedGuides('/servicios/precio-pozo/')}${crossLink('/servicios/precio-pozo/')}</div></div></section>
     <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">Pozo artesiano</p><h2>Compartí profundidad, suelo y ubicación.</h2><div><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Pedir cotización</span>`, waMessage('precio', '/servicios/precio-pozo/'), 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></div></section></main>`,
 };
 pages.push(calculatorPage);

@@ -45,6 +45,7 @@ Where things live:
 | Performance check (LCP, bytes at 390/1366) | `node tools/perf.mjs` → `docs/perf/` |
 | Internal editorial notes (never published) | `docs/CONTENT-NOTES.md` |
 | SEO baseline, crawl, before/after diff | `docs/seo/` |
+| Internal link graph (orphans, depth, contextual links; part of verify) | `node tools/link-graph.mjs` → `docs/seo/link-graph.md`; link blocks in `build.mjs` (`RELATED_SERVICES`) |
 
 `tools/qa.mjs` fails on any phone number other than 595992279599 in any file, on a wa.me link with empty text or without the site/page line, on a previously published URL without a 301, on a route folder without `index.html`, and on internal notes visible to visitors.
 
