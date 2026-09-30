@@ -1,10 +1,11 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, PRICES, DEMO_MODE } from './site.config.mjs';
 import { TOPICS, LAUNCHER_TOPICS, PAGES, waText, CALCULATOR_TEMPLATE, FORM_FALLBACK } from './content/wa-messages.mjs';
 import { ZONES } from './content/zones.mjs';
 import { CROSS_LINKS } from './content/cross-links.mjs';
+import { PUBLISHED_GUIDES, DRAFT_GUIDES, HAS_GUIDE_HUB, GUIDE_HUB, guidePath, anchorId } from './content/guides.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 // Widths of the smaller WebP copies written by tools/prepare-images.py.
@@ -182,6 +183,23 @@ function baseSchema(page) {
       },
     });
   }
+  if (page.article) {
+    const url = `${SITE.url}${page.path}`;
+    graph.push({
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: page.h1,
+      description: page.description,
+      url,
+      mainEntityOfPage: url,
+      inLanguage: 'es-PY',
+      datePublished: page.article.published,
+      dateModified: page.article.updated || page.article.published,
+      author: { '@id': `${SITE.url}/#business` },
+      publisher: { '@id': `${SITE.url}/#business` },
+      ...(page.image ? { image: `${SITE.url}/assets/images/${page.image}` } : {}),
+    });
+  }
   if (page.faqs?.length) {
     graph.push({
       '@type': 'FAQPage',
@@ -233,7 +251,7 @@ function footer() {
   return `<footer class="site-footer">
     <div class="shell footer-grid">
       <div><a class="brand brand--footer" href="/"><span class="brand-mark" aria-hidden="true"><b></b></span><span><strong>POZO</strong><small>.COM.PY</small></span></a><p>${SITE.tagline}</p><p class="editorial-note">Las imágenes del sitio son ilustrativas: no muestran trabajos, equipos ni personal reales.</p></div>
-      <div><h2>Servicios</h2><a href="/servicios/">Ver todos</a><a href="/servicios/artesiano/">Pozos artesianos</a><a href="/servicios/pozo-ciego/">Pozos ciegos</a><a href="/servicios/desague/">Camión atmosférico</a><a href="/servicios/agua/">Tratamiento de agua</a></div>
+      <div><h2>Servicios</h2><a href="/servicios/">Ver todos</a><a href="/servicios/artesiano/">Pozos artesianos</a><a href="/servicios/pozo-ciego/">Pozos ciegos</a><a href="/servicios/desague/">Camión atmosférico</a><a href="/servicios/agua/">Tratamiento de agua</a>${HAS_GUIDE_HUB ? `<a href="${GUIDE_HUB}">Guías</a>` : ''}</div>
       <div><h2>Cobertura</h2><a href="/zonas/">Todas las zonas</a>${ZONES.map((zone) => `<a href="${zone.path}">${esc(zone.city)}</a>`).join('')}<span>Asunción y Gran Asunción</span></div>
       <div><h2>Contacto</h2>${phoneLink()}${email}<span>${SITE.hoursText}</span><a href="/privacidad/">Privacidad</a></div>
     </div>
@@ -285,6 +303,13 @@ function priceRows() {
 function crossLink(path) {
   const link = CROSS_LINKS[path];
   return link ? `<p class="cross-link">${esc(link.lead)} <a href="${esc(link.href)}">${esc(link.text)} <span aria-hidden="true">→</span></a></p>` : '';
+}
+
+// "Guías relacionadas": published guides that list this page in relatedServices.
+function relatedGuides(path) {
+  const related = PUBLISHED_GUIDES.filter((guide) => guide.relatedServices.includes(path));
+  if (!related.length) return '';
+  return `<aside class="related-guides" aria-labelledby="related-guides-title"><h2 id="related-guides-title">Guías relacionadas</h2><ul>${related.map((guide) => `<li><a href="${guidePath(guide)}">${esc(guide.h1)}</a><span>${esc(guide.description)}</span></li>`).join('')}</ul></aside>`;
 }
 
 function faqBlock(items) {
@@ -360,7 +385,7 @@ function genericServicePage(config) {
     faqs: pageFaqs,
     crumbs: crumbItems,
     body: `<main>${breadcrumbs(crumbItems)}${serviceHero(config)}
-      <section class="section" id="contenido"><div class="shell article-grid"><article class="prose"><p class="intro">${config.intro}</p>${config.sections.map(([heading, html]) => `<h2>${heading}</h2>${html}`).join('')}${crossLink(config.path)}</article><aside class="side-panel"><p class="eyebrow">Datos para consultar</p><ul>${config.checklist.map((item) => `<li>${item}</li>`).join('')}</ul>${cta(`${svg('wa')}<span>Enviar estos datos</span>`, message, 'button button--wa')}<a class="side-panel__phone" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>${esc(SITE.phoneDisplay)}</span></a><p class="side-note">Sin precios ni disponibilidad automática: el operador confirma cada caso.</p></aside></div></section>
+      <section class="section" id="contenido"><div class="shell article-grid"><article class="prose"><p class="intro">${config.intro}</p>${config.sections.map(([heading, html]) => `<h2>${heading}</h2>${html}`).join('')}${relatedGuides(config.path)}${crossLink(config.path)}</article><aside class="side-panel"><p class="eyebrow">Datos para consultar</p><ul>${config.checklist.map((item) => `<li>${item}</li>`).join('')}</ul>${cta(`${svg('wa')}<span>Enviar estos datos</span>`, message, 'button button--wa')}<a class="side-panel__phone" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>${esc(SITE.phoneDisplay)}</span></a><p class="side-note">Sin precios ni disponibilidad automática: el operador confirma cada caso.</p></aside></div></section>
       ${pageFaqs.length ? `<section class="section section--faq"><div class="shell faq-grid"><div><p class="eyebrow">Preguntas frecuentes</p><h2>Lo esencial antes de coordinar</h2></div>${faqBlock(pageFaqs)}</div></section>` : ''}
       <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">${config.short}</p><h2>${config.ctaTitle}</h2><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Consultar ahora</span>`, message, 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section>
     </main>`,
@@ -404,7 +429,7 @@ const calculatorPage = {
   crumbs: [['/', 'Inicio'], ['/servicios/', 'Servicios'], ['/servicios/artesiano/', 'Pozos artesianos'], ['/servicios/precio-pozo/', 'Precio por metro']],
   body: `<main>${breadcrumbs([['/', 'Inicio'], ['/servicios/', 'Servicios'], ['/servicios/artesiano/', 'Pozos artesianos'], ['/servicios/precio-pozo/', 'Precio por metro']])}${serviceHero({eyebrow:'Calculadora de alcance', h1:'Precio de pozo artesiano por metro', lead:'Prepará una estimación técnica de los componentes. El total en guaraníes aparecerá cuando se carguen las tarifas reales del operador.', image:'bomba-pozo-artesiano.webp', alt:'Ilustración de bomba para pozo artesiano', path:'/servicios/precio-pozo/', short:'Precio por metro'})}
     <section class="section" id="contenido"><div class="shell calculator-grid"><form class="calculator" id="well-calculator"><div class="field"><label for="depth">Profundidad estimada</label><div class="input-suffix"><input id="depth" name="depth" type="number" min="10" max="300" step="1" value="60" required><span>metros</span></div></div><div class="field"><label for="soil">Tipo de suelo esperado</label><select id="soil" name="soil"><option value="tierra">Tierra</option><option value="mixto">Mixto</option><option value="roca">Roca</option><option value="desconocido">No sé</option></select></div><fieldset><legend>Componentes a incluir</legend><label class="check"><input type="checkbox" name="casing" checked> Entubado</label><label class="check"><input type="checkbox" name="filter" checked> Filtro</label><label class="check"><input type="checkbox" name="pump" checked> Bomba</label><label class="check"><input type="checkbox" name="panel" checked> Tablero</label></fieldset><button class="button button--primary" type="submit">Preparar alcance</button></form><div class="estimate" id="estimate" aria-live="polite" data-wa-base="${esc(whatsappLink(''))}" data-wa-template="${esc(CALCULATOR_TEMPLATE)}"><p class="eyebrow">Alcance inicial</p><h2>60 metros · suelo de tierra</h2><ul><li><span>Perforación</span><strong>60 m · a cotizar</strong></li><li><span>Entubado</span><strong>60 m · a cotizar</strong></li><li><span>Filtro</span><strong>A cotizar</strong></li><li><span>Bomba</span><strong>Según potencia</strong></li><li><span>Tablero</span><strong>Según configuración</strong></li></ul><div class="estimate-total"><span>Total</span><strong>A cotizar</strong></div><p>Enviá este alcance para confirmar suelo, profundidad, componentes y precio.</p><div class="estimate-actions"><button class="button button--outline" id="copy-estimate" type="button">Copiar solicitud</button>${cta(`${svg('wa')}<span>Enviar por WhatsApp</span>`, waMessage('precio', '/servicios/precio-pozo/'), 'button button--wa')}</div></div></div></section>
-    <section class="section section--sand"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Conceptos del presupuesto</p><h2>Qué incluye la cotización</h2></div><p>Confirmamos cada componente de forma separada para que puedas comparar perforación, entubado, filtro, bomba y tablero.</p></div><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Unidad</th><th>Precio</th></tr></thead><tbody>${priceRows()}</tbody></table></div><div class="prose">${crossLink('/servicios/precio-pozo/')}</div></div></section>
+    <section class="section section--sand"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Conceptos del presupuesto</p><h2>Qué incluye la cotización</h2></div><p>Confirmamos cada componente de forma separada para que puedas comparar perforación, entubado, filtro, bomba y tablero.</p></div><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Unidad</th><th>Precio</th></tr></thead><tbody>${priceRows()}</tbody></table></div><div class="prose">${relatedGuides('/servicios/precio-pozo/')}${crossLink('/servicios/precio-pozo/')}</div></div></section>
     <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">Pozo artesiano</p><h2>Compartí profundidad, suelo y ubicación.</h2><div><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Pedir cotización</span>`, waMessage('precio', '/servicios/precio-pozo/'), 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></div></section></main>`,
 };
 pages.push(calculatorPage);
@@ -485,6 +510,47 @@ const zonasPage = {
     <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">¿Tu barrio no está en la lista?</p><h2>Escribinos con la ubicación y confirmamos si llegamos.</h2><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Consultar mi zona</span>`, waMessage(null, '/zonas/'), 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section></main>`,
 };
 pages.push(zonasPage);
+
+// --- Guides (content/guides.mjs) ------------------------------------------------
+const serviceLabel = (path) => services.find((service) => service.href === path)?.label || PAGES[path]?.label || path;
+
+function guidePage(guide) {
+  const path = guidePath(guide);
+  const short = guide.short || guide.h1;
+  const crumbItems = [['/', 'Inicio'], [GUIDE_HUB, 'Guías'], [path, short]];
+  const message = waMessage(null, path);
+  const toc = `<nav class="toc" aria-labelledby="toc-title"><p class="toc__title" id="toc-title">En esta guía</p><ol>${guide.sections.map(([heading]) => `<li><a href="#${anchorId(heading)}">${heading}</a></li>`).join('')}${guide.faqs?.length ? '<li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>' : ''}</ol></nav>`;
+  const figure = guide.image ? `<figure class="content-image"><img src="/assets/images/${guide.image}" alt="${esc(guide.alt)}" width="1200" height="675" loading="lazy"><figcaption>Imagen ilustrativa</figcaption></figure>` : '';
+  const relatedServices = `<div class="related-services"><h2 id="servicios-relacionados">Servicios relacionados</h2><ul>${guide.relatedServices.map((href) => `<li><a class="arrow-link" href="${href}">${esc(serviceLabel(href))} <span aria-hidden="true">→</span></a></li>`).join('')}</ul></div>`;
+  return {
+    path, short, title: guide.title, description: guide.description, h1: guide.h1,
+    image: guide.image, article: { published: guide.published, updated: guide.updated },
+    faqs: guide.faqs || [], crumbs: crumbItems, stickyBar: true,
+    body: `<main>${breadcrumbs(crumbItems)}<section class="services-hero guide-hero"><div class="shell"><p class="eyebrow eyebrow--light">Guía</p><h1>${guide.h1}</h1><p>${guide.lead}</p><div class="hero-actions">${cta(`${svg('wa')}<span>Consultar por WhatsApp</span>`, message, 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section>
+      <section class="section" id="contenido"><div class="shell article-grid"><article class="prose"><p class="intro">${guide.intro}</p>${toc}${figure}${guide.sections.map(([heading, html]) => `<h2 id="${anchorId(heading)}">${heading}</h2>${html}`).join('')}${relatedServices}</article><aside class="side-panel"><p class="eyebrow">¿Necesitás ayuda?</p><p class="side-note">Mandanos la ubicación y, si ayudan, fotos tomadas desde un lugar seguro. El operador confirma cada caso.</p>${cta(`${svg('wa')}<span>Escribir por WhatsApp</span>`, message, 'button button--wa')}<a class="side-panel__phone" href="tel:${esc(SITE.phoneHref)}">${svg('phone')}<span>${esc(SITE.phoneDisplay)}</span></a></aside></div></section>
+      ${guide.faqs?.length ? `<section class="section section--faq" id="preguntas-frecuentes"><div class="shell faq-grid"><div><p class="eyebrow">Preguntas frecuentes</p><h2>Dudas sobre este tema</h2></div>${faqBlock(guide.faqs)}</div></section>` : ''}
+      <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">${esc(short)}</p><h2>Contanos tu caso y la zona.</h2><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Consultar ahora</span>`, message, 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section>
+    </main>`,
+  };
+}
+
+for (const guide of PUBLISHED_GUIDES) pages.push(guidePage(guide));
+
+// The hub exists only once at least one guide is published (no empty page).
+if (HAS_GUIDE_HUB) {
+  const hubCrumbs = [['/', 'Inicio'], [GUIDE_HUB, 'Guías']];
+  pages.push({
+    path: GUIDE_HUB, short: 'Guías', collection: true,
+    title: 'Guías sobre pozos, desagüe y agua | Pozo.com.py',
+    description: 'Guías prácticas sobre pozos artesianos, pozos ciegos, desagüe y agua de pozo en Asunción y Gran Asunción.',
+    h1: 'Guías sobre pozos, desagüe y agua',
+    crumbs: hubCrumbs,
+    itemList: PUBLISHED_GUIDES.map((guide) => [guidePath(guide), guide.h1]),
+    body: `<main>${breadcrumbs(hubCrumbs)}<section class="services-hero"><div class="shell"><p class="eyebrow eyebrow--light">Guías</p><h1>Guías sobre pozos, desagüe y agua</h1><p>Respuestas prácticas para preparar una consulta, entender el problema y saber qué datos mandar.</p><div class="hero-actions">${cta(`${svg('wa')}<span>Consultar por WhatsApp</span>`, waMessage(null, GUIDE_HUB), 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section>
+      <section class="section" id="contenido"><div class="shell"><div class="zone-grid">${PUBLISHED_GUIDES.map((guide) => `<a class="zone-card reveal" href="${guidePath(guide)}"><strong>${esc(guide.h1)}</strong><span>${esc(guide.description)}</span><span class="zone-card__arrow" aria-hidden="true">${svg('arrow')}</span></a>`).join('')}</div></div></section>
+      <section class="closing-cta"><div class="shell"><p class="eyebrow eyebrow--light">¿No encontraste tu caso?</p><h2>Contanos el problema y la ubicación.</h2><div class="closing-cta__actions">${cta(`${svg('wa')}<span>Pedir orientación</span>`, waMessage('otro', GUIDE_HUB), 'button button--wa')}${phoneLink(`Llamar al ${SITE.phoneDisplay}`, 'button button--ghost')}</div></div></section></main>`,
+  });
+}
 
 const contactPage = {
   path: '/contacto/', short: 'Contacto', title: 'Contacto y cobertura | Pozo.com.py', description: 'Consultá por pozos artesianos, desagüe y sistemas sépticos en Asunción y Gran Asunción.', h1: 'Contacto y cobertura', crumbs: [['/', 'Inicio'], ['/contacto/', 'Contacto']],
@@ -590,6 +656,8 @@ async function outputPath(path) {
   return path === '/' ? join(root, 'index.html') : join(root, path.slice(1), 'index.html');
 }
 
+// guias/ is fully generated: clear it so an unpublished guide leaves no page behind.
+await rm(join(root, 'guias'), { recursive: true, force: true });
 for (const page of pages) {
   const target = await outputPath(page.path);
   await mkdir(dirname(target), { recursive: true });
@@ -636,4 +704,12 @@ return [
 `;
 await writeFile(generatedConfigPath, generatedConfig, 'utf8');
 
-console.log(`Built ${pages.length} pages. DEMO_MODE=${DEMO_MODE}`);
+// Draft guides: rendered for review and for qa.mjs, never to the site.
+await rm(join(root, '.preview'), { recursive: true, force: true });
+for (const guide of DRAFT_GUIDES) {
+  const target = join(root, '.preview', 'guias', guide.slug, 'index.html');
+  await mkdir(dirname(target), { recursive: true });
+  await writeFile(target, render(guidePage(guide)), 'utf8');
+}
+
+console.log(`Built ${pages.length} pages (${PUBLISHED_GUIDES.length} guides, ${DRAFT_GUIDES.length} drafts in .preview/). DEMO_MODE=${DEMO_MODE}`);

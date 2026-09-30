@@ -36,6 +36,7 @@ Where things live:
 | Number, hours, prices, asset version | `site.config.mjs` |
 | **Every WhatsApp text** (page/service → message, calculator, form redirect) | `content/wa-messages.mjs` |
 | Zone pages | `content/zones.mjs` |
+| Guides (`/guias/`, drafts preview in `.preview/`) | `content/guides.mjs` |
 | One sibling-site cross-link per page | `content/cross-links.mjs` |
 | Page templates and copy | `build.mjs` |
 | Internal editorial notes (never published) | `docs/CONTENT-NOTES.md` |

@@ -268,6 +268,22 @@ tbody td:last-child { color: var(--ink); font-weight: 800; }
 .zone-card__arrow { position: absolute; top: 50%; right: 20px; transform: translateY(-50%); color: var(--clay) !important; }
 .prose .cross-link { margin-top: 36px; padding: 18px 20px; border-left: 3px solid var(--water); background: var(--paper); font-size: .95rem; }
 .prose .cross-link a { font-weight: 700; }
+
+/* --- Guides: table of contents, related guides and services ---------------- */
+.toc { margin: 30px 0 0; padding: 20px 22px; border-left: 3px solid var(--clay); background: var(--sand); }
+.toc__title { margin: 0 0 8px; font-family: var(--display); font-size: 1.2rem; font-weight: 700; color: var(--ink); }
+.toc ol { margin: 0; padding-left: 20px; }
+.toc li { margin-bottom: 4px; }
+.toc a { display: inline-block; min-height: 32px; padding: 4px 0; font-weight: 600; }
+.prose h2[id] { scroll-margin-top: 110px; }
+.related-guides, .related-services { margin-top: 44px; }
+.related-guides h2, .related-services h2 { margin-top: 0; font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.related-guides ul, .related-services ul { margin: 0; padding: 0; list-style: none; }
+.related-guides li { padding: 14px 0; border-top: 1px solid var(--line); }
+.related-guides li a { display: inline-block; min-height: 32px; font-weight: 700; }
+.related-guides li span { display: block; color: var(--muted); font-size: .88rem; }
+.related-services li { margin: 0; }
+.related-services .arrow-link { min-height: var(--tap); }
 .faq-grid { display: grid; grid-template-columns: .66fr 1.34fr; gap: 80px; }
 .faq-grid > div:first-child > p:not(.eyebrow) { color: var(--muted); }
 .faq-list { border-top: 1px solid var(--line); }

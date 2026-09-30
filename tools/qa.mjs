@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { SITE } from '../site.config.mjs';
 import { TOPICS, PAGES, waText, CALCULATOR_TEMPLATE, FORM_FALLBACK } from '../content/wa-messages.mjs';
 import { ZONES, GRANDFATHERED_ZONES } from '../content/zones.mjs';
+import { GUIDES, PUBLISHED_GUIDES, DRAFT_GUIDES, SERVICE_MEANING_GROUPS, GUIDE_HUB, HAS_GUIDE_HUB, guidePath, guideWordCount, anchorId } from '../content/guides.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const base = (process.argv[2] || 'http://127.0.0.1:8765').replace(/\/$/, '');
@@ -42,7 +43,9 @@ async function walk(dir) {
 
 const allFiles = await walk(root);
 const fileSet = new Set(allFiles.map(posix));
-const htmlFiles = allFiles.filter((file) => file.endsWith('.html') && !posix(file).startsWith('docs/'));
+// .preview/ holds draft guides (never deployed); qa-screens/ is browser-check output.
+const NOT_SITE = /^(?:docs|\.preview|qa-screens)\//;
+const htmlFiles = allFiles.filter((file) => file.endsWith('.html') && !NOT_SITE.test(posix(file)));
 const TEXT_EXT = /\.(html|php|mjs|js|json|md|txt|xml|css|py|ps1|example)$|(^|\/)\.htaccess$/;
 
 function existsAsRoute(urlPath) {
@@ -196,7 +199,7 @@ for (const rel of fileSet) {
   const parts = rel.split('/').slice(0, -2);
   for (let i = 1; i <= parts.length; i += 1) {
     const folder = parts.slice(0, i).join('/');
-    if (['docs', 'tools', 'config', 'assets', 'source-images'].includes(parts[0])) break;
+    if (['docs', 'tools', 'config', 'assets', 'source-images', '.preview', 'qa-screens'].includes(parts[0])) break;
     if (!fileSet.has(`${folder}/index.html`)) fail(`${folder}/: route folder without index.html (would be 403)`);
   }
 }
@@ -207,6 +210,88 @@ for (const zone of ZONES) {
     fail(`content/zones.mjs: ${zone.path} needs at least 2 genuinely local sections`);
   }
   if (zone.title.length > 60) fail(`content/zones.mjs: ${zone.path} title exceeds 60 characters`);
+}
+
+// --- 4b. Guides: one meaning group each, long enough to be useful ----------------
+const guideGroups = new Map();
+const serviceGroups = new Set(Object.values(SERVICE_MEANING_GROUPS).map((group) => group.toLowerCase()));
+for (const [path, group] of Object.entries(SERVICE_MEANING_GROUPS)) {
+  if (!existsAsRoute(path)) fail(`content/guides.mjs: SERVICE_MEANING_GROUPS lists ${path}, which is not a page`);
+  if (!group.trim()) fail(`content/guides.mjs: SERVICE_MEANING_GROUPS ${path} has an empty group`);
+}
+for (const guide of GUIDES) {
+  const id = `content/guides.mjs: ${guide.slug || '(no slug)'}`;
+  const path = guidePath(guide);
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(guide.slug || '')) fail(`${id}: slug must be lowercase words joined by hyphens`);
+  for (const field of ['title', 'description', 'h1', 'meaningGroup', 'lead', 'intro', 'published']) {
+    if (!String(guide[field] || '').trim()) fail(`${id}: missing ${field}`);
+  }
+  if ((guide.title || '').length > 60) fail(`${id}: title exceeds 60 characters`);
+  if ((guide.description || '').length > 155) fail(`${id}: description exceeds 155 characters`);
+  if (guide.published && !/^\d{4}-\d{2}-\d{2}$/.test(guide.published)) fail(`${id}: published must be YYYY-MM-DD`);
+  if (guide.updated && !/^\d{4}-\d{2}-\d{2}$/.test(guide.updated)) fail(`${id}: updated must be YYYY-MM-DD`);
+  if (!Array.isArray(guide.sections) || !guide.sections.length) fail(`${id}: needs sections`);
+  const anchors = (guide.sections || []).map(([heading]) => anchorId(heading));
+  if (new Set(anchors).size !== anchors.length || anchors.some((anchor) => !anchor)) fail(`${id}: section headings must give unique, non-empty anchors`);
+  const group = String(guide.meaningGroup || '').toLowerCase();
+  if (serviceGroups.has(group)) fail(`${id}: meaningGroup "${guide.meaningGroup}" is owned by a service page (one group = one page)`);
+  if (group && guideGroups.has(group)) fail(`${id}: meaningGroup "${guide.meaningGroup}" is already used by ${guideGroups.get(group)}`);
+  guideGroups.set(group, guide.slug);
+  if (!Array.isArray(guide.relatedServices) || !guide.relatedServices.length) fail(`${id}: needs at least one relatedServices path`);
+  for (const service of guide.relatedServices || []) {
+    if (!/^\/servicios\//.test(service) || !existsAsRoute(service)) fail(`${id}: relatedServices ${service} is not a service page`);
+  }
+  if (guide.image && !fileSet.has(`assets/images/${guide.image}`)) fail(`${id}: image ${guide.image} is missing`);
+  if (guide.image && !String(guide.alt || '').trim()) fail(`${id}: image without alt text`);
+  if (guide.draft) {
+    if (existsAsRoute(path)) fail(`${id}: draft guide was built to the site at ${path}`);
+    if (sitemapPaths.includes(path)) fail(`${id}: draft guide listed in sitemap.xml`);
+    continue;
+  }
+  const words = guideWordCount(guide);
+  if (words < 700) fail(`${id}: published guide has ${words} words (minimum 700)`);
+  const faqCount = (guide.faqs || []).length;
+  if (faqCount < 4 || faqCount > 6) fail(`${id}: published guide needs 4-6 FAQs (has ${faqCount})`);
+  if (!existsAsRoute(path)) fail(`${id}: published guide has no page at ${path}`);
+}
+if (HAS_GUIDE_HUB !== existsAsRoute(GUIDE_HUB)) fail(`${GUIDE_HUB}: hub must exist exactly when at least one guide is published`);
+if (HAS_GUIDE_HUB !== sitemapPaths.includes(GUIDE_HUB)) fail(`sitemap.xml: ${GUIDE_HUB} must be listed exactly when the hub exists`);
+for (const rel of fileSet) {
+  const match = rel.match(/^guias\/([^/]+)\/index\.html$/);
+  if (match && !PUBLISHED_GUIDES.some((guide) => guide.slug === match[1])) fail(`${rel}: guide page without a published entry in content/guides.mjs`);
+}
+
+// Rendered guide template: published pages and draft previews share it.
+const guideRenders = [
+  ...PUBLISHED_GUIDES.map((guide) => ({ guide, file: `${guidePath(guide).slice(1)}index.html` })),
+  ...DRAFT_GUIDES.map((guide) => ({ guide, file: `.preview${guidePath(guide)}index.html` })),
+];
+for (const { guide, file } of guideRenders) {
+  if (!fileSet.has(file)) { fail(`${file}: guide was not rendered (run node build.mjs)`); continue; }
+  const html = await readFile(join(root, file), 'utf8');
+  if ((html.match(/<h1[\s>]/g) || []).length !== 1) fail(`${file}: expected one H1`);
+  if (!/<nav class="toc"/.test(html)) fail(`${file}: missing table of contents`);
+  const tocHtml = html.match(/<nav class="toc"[\s\S]*?<\/nav>/)?.[0] || '';
+  for (const [, anchor] of tocHtml.matchAll(/href="#([^"]+)"/g)) {
+    if (!html.includes(`id="${anchor}"`)) fail(`${file}: table of contents links to missing #${anchor}`);
+  }
+  const graph = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(([, json]) => { try { return JSON.parse(json)['@graph'] || []; } catch { return []; } });
+  const types = new Set(graph.map((item) => item['@type']));
+  for (const type of ['Article', 'BreadcrumbList', ...(guide.faqs?.length ? ['FAQPage'] : [])]) {
+    if (!types.has(type)) fail(`${file}: JSON-LD missing ${type}`);
+  }
+  const article = graph.find((item) => item['@type'] === 'Article');
+  if (article && (!article.headline || !article.datePublished || !article.author || !article.mainEntityOfPage)) fail(`${file}: Article JSON-LD needs headline, datePublished, author and mainEntityOfPage`);
+  if (!/<div class="related-services">/.test(html)) fail(`${file}: missing Servicios relacionados block`);
+}
+// Every published guide is linked from each related service page ("Guías relacionadas").
+for (const guide of PUBLISHED_GUIDES) {
+  for (const service of guide.relatedServices) {
+    const file = `${service.slice(1)}index.html`;
+    if (!fileSet.has(file)) continue;
+    const html = await readFile(join(root, file), 'utf8');
+    if (!html.includes(`class="related-guides"`) || !html.includes(`href="${guidePath(guide)}"`)) fail(`${file}: missing Guías relacionadas link to ${guidePath(guide)}`);
+  }
 }
 
 // --- 5. Redirects: no published URL may disappear ------------------------------
