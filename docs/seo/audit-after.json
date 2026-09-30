@@ -1,5 +1,5 @@
 {
-  "crawledAt": "2026-09-30T01:10:35.059Z",
+  "crawledAt": "2026-09-30T02:29:00.349Z",
   "base": "http://127.0.0.1:8765",
   "sitemap": {
     "status": 200,
@@ -609,6 +609,10 @@
         },
         {
           "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Tratamiento de agua de pozo).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Tratamiento de agua de pozo).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
         },
         {
@@ -680,6 +684,10 @@
         "https://obra.com.py/quintas/"
       ],
       "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozos artesianos).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
         {
           "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Pozos artesianos).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
@@ -790,6 +798,10 @@
         },
         {
           "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe de pozo ciego).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Desagüe de pozo ciego).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
         },
         {
@@ -874,6 +886,10 @@
         },
         {
           "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozos ciegos).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Pozos ciegos).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
         },
         {
@@ -944,6 +960,10 @@
         "https://obra.com.py/reformas/"
       ],
       "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego lleno).\nMi pozo ciego está lleno: hay olor, drenaje lento o rebalse.\nCiudad y barrio: ___\nQué pasa y desde cuándo: ___\n¿Afecta a un solo baño o a toda la casa? ___\nFecha del último desagüe: ___\nLes mando fotos tomadas desde distancia segura.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
         {
           "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego lleno).\nMi pozo ciego está lleno: hay olor, drenaje lento o rebalse.\nCiudad y barrio: ___\nQué pasa y desde cuándo: ___\n¿Afecta a un solo baño o a toda la casa? ___\nFecha del último desagüe: ___\nLes mando fotos tomadas desde distancia segura.\nPara cuándo: hoy mismo / mañana / esta semana"
@@ -1115,6 +1135,10 @@
         "https://obra.com.py/casas/"
       ],
       "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozos sépticos y biodigestores).\nQuiero consultar por una cámara séptica o un biodigestor.\nCiudad y barrio: ___\nTipo de propiedad y cantidad de personas: ___\nEspacio disponible (medidas aproximadas): ___ x ___ m\nSistema actual, si hay: ___\nLes mando fotos del lugar donde iría.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
         {
           "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Pozos sépticos y biodigestores).\nQuiero consultar por una cámara séptica o un biodigestor.\nCiudad y barrio: ___\nTipo de propiedad y cantidad de personas: ___\nEspacio disponible (medidas aproximadas): ___ x ___ m\nSistema actual, si hay: ___\nLes mando fotos del lugar donde iría.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
@@ -1315,6 +1339,10 @@
         },
         {
           "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Mariano Roque Alonso).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Mariano Roque Alonso, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Mariano Roque Alonso).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Mariano Roque Alonso, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
         },
         {
@@ -1383,6 +1411,10 @@
       ],
       "external": [],
       "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en San Lorenzo).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: San Lorenzo, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
         {
           "number": "595992279599",
           "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en San Lorenzo).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: San Lorenzo, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"

@@ -92,3 +92,20 @@ Status 2026-09-30: **S0–S3 blocked in the cloud session; S4 done earlier; no p
    para pozo, destape de cañerías.
 7. Confirm the obra.com.py target pages are live (they exist in the obra repo: /quintas/, /presupuesto/,
    /ampliaciones/, /casas/, /reformas/, /patios/, /piscinas/).
+
+## Runbook log
+
+Runs of `docs/RUNBOOK-OPUS-THEN-SONNET.md`. One PR per task, merged when green (section 0). All task PRs
+come from the session branch `claude/sweet-ptolemy-18qytq` (the cloud session may push only there), reset
+to the latest `main` after each merge — this replaces the runbook's `<run>/<task>` branch names.
+
+- **O0 — Land PR #1** (2026-09-30): branch already contained `main`; `node tools/verify.mjs` all green
+  (0 lost URLs, Playwright 1366/390, stubbed form test); no checks configured on GitHub; PR mergeable.
+  Marked ready and merged with a merge commit (d7d4c3b). Deploy repo `pozo.com.py` untouched.
+- **O1 — Guide system**: `content/guides.mjs` (fields, `SERVICE_MEANING_GROUPS`, word counter), guide
+  template (TOC, Article + FAQPage + BreadcrumbList JSON-LD, Servicios relacionados), `/guias/` hub built
+  only with ≥ 1 published guide (footer link + sitemap follow), "Guías relacionadas" on service pages,
+  guide PAGES entries generated in `wa-messages.mjs`. Drafts render to git-ignored `.preview/`.
+  qa.mjs: ≥ 700 words, 4–6 FAQs, unique meaningGroup not owned by a service page, template/JSON-LD/TOC
+  checks. One draft example shipped. Tested end to end with a temporary published fixture (verify green).
+

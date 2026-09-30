@@ -12,3 +12,5 @@ private/
 !*private*.example.php
 
 qa-screens/
+
+.preview/

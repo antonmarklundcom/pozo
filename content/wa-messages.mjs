@@ -16,6 +16,7 @@
 // another number, has no text, or misses the site/page line.
 
 import { ZONES } from './zones.mjs';
+import { GUIDES, guidePath, HAS_GUIDE_HUB, GUIDE_HUB } from './guides.mjs';
 
 export const SITE_LABEL = 'pozo.com.py';
 
@@ -131,6 +132,12 @@ export const PAGES = {
 };
 for (const zone of ZONES) {
   PAGES[zone.path] = { label: zone.short, topic: zone.topic || 'desague', zone: zone.city };
+}
+// Guides (content/guides.mjs). Drafts get an entry too: build.mjs renders them
+// to the git-ignored .preview/ folder, never to the site.
+if (HAS_GUIDE_HUB) PAGES[GUIDE_HUB] = { label: 'Guías', topic: 'otro' };
+for (const guide of GUIDES) {
+  PAGES[guidePath(guide)] = { label: guide.short || guide.h1, topic: guide.topic || PAGES[guide.relatedServices?.[0]]?.topic || 'otro' };
 }
 
 export function waText(path, topicId) {
