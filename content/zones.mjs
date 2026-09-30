@@ -14,6 +14,11 @@
 // chars), description (optional, <= 155), h1 (optional), topic (main CTA
 // topic in wa-messages.mjs, default 'desague'), local: [[heading, html], ...],
 // faqs: [[q, a], ...] (optional, appended to the shared FAQ).
+// The declared coverage (Asunción and Gran Asunción). Shown on /, /zonas/ and
+// /contacto/, and offered in the "Ciudad" select of both forms (plus "Otra").
+// Add a city here only when the operator confirms it (docs/OWNER-TODO.md).
+export const COVERAGE_CITIES = ['Asunción', 'San Lorenzo', 'Luque', 'Lambaré', 'Fernando de la Mora', 'Mariano Roque Alonso', 'Capiatá', 'Ñemby', 'Villa Elisa', 'Limpio'];
+
 export const ZONES = [
   {
     path: '/zonas/san-lorenzo/',

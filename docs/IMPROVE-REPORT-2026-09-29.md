@@ -115,3 +115,10 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   (refuses a path inside the docroot), then 302s to wa.me. Links stay wa.me in HTML; site.js swaps to
   `/wa.php` on click via `data-wa-track`. qa.mjs checks every link's track pair, the 302 text per page, the
   log line format; browser-check clicks a real link. `tools/wa-report.mjs`, privacy page updated.
+- **O3 — Lead triage**: contact form and ficha get a "¿Para cuándo?" radio (hoy / esta semana / sin apuro)
+  and a Ciudad select (`COVERAGE_CITIES`, moved into `content/zones.mjs`, + "Otra") with an optional
+  barrio field. `contacto.php` whitelists the urgency (labels from `FORM_FALLBACK.urgency` via the generated
+  config), sends `fields.urgencia`, `fields.zona` (city), `fields.barrio`; Resend subject gets `[URGENTE] `
+  for "hoy"; email and WhatsApp text carry urgency and zona (the "¿para cuándo?" ask line only when none
+  was chosen). form-test covers hoy / semana / invalid; qa checks both forms. Asset version bumped (also
+  covers the O2 site.js change, which had shipped without a bump).

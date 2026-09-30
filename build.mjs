@@ -3,14 +3,14 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, PRICES, DEMO_MODE } from './site.config.mjs';
 import { TOPICS, LAUNCHER_TOPICS, PAGES, waText, CALCULATOR_TEMPLATE, FORM_FALLBACK } from './content/wa-messages.mjs';
-import { ZONES } from './content/zones.mjs';
+import { ZONES, COVERAGE_CITIES } from './content/zones.mjs';
 import { CROSS_LINKS } from './content/cross-links.mjs';
 import { PUBLISHED_GUIDES, DRAFT_GUIDES, HAS_GUIDE_HUB, GUIDE_HUB, guidePath, anchorId } from './content/guides.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 // Widths of the smaller WebP copies written by tools/prepare-images.py.
 const imageManifest = JSON.parse(await readFile(join(root, 'assets', 'images', 'manifest.json'), 'utf8'));
-const areas = ['Asunción', 'San Lorenzo', 'Luque', 'Lambaré', 'Fernando de la Mora', 'Mariano Roque Alonso', 'Capiatá', 'Ñemby', 'Villa Elisa', 'Limpio'];
+const areas = COVERAGE_CITIES;
 const barrios = ['Villa Morra', 'Recoleta', 'Carmelitas', 'Sajonia', 'Trinidad', 'Barrio Jara'];
 
 const services = [
@@ -103,6 +103,15 @@ function contactToggle() {
   return `<a class="contact-toggle" href="#wa-launcher" data-launcher-trigger><span class="contact-toggle__icon">${svg('chat')}</span><span class="contact-toggle__label">Contacto</span><span class="sr-only">Abrir opciones de contacto</span></a>`;
 }
 
+// Lead triage controls shared by the contact form and the ficha rápida.
+const URGENCY_TEXT = { hoy: 'Hoy', semana: 'Esta semana', 'sin-apuro': 'Sin apuro' };
+function urgencyField(prefix) {
+  return `<fieldset class="choice-group"><legend>¿Para cuándo lo necesitás?</legend><div class="choice-group__options">${Object.keys(FORM_FALLBACK.urgency).map((value, index) => `<label class="choice" for="${prefix}-urg-${value}"><input id="${prefix}-urg-${value}" type="radio" name="urgencia" value="${value}"${index === 0 ? ' required' : ''}><span>${URGENCY_TEXT[value]}</span></label>`).join('')}</div></fieldset>`;
+}
+function zonaField(prefix) {
+  return `<div class="field"><label for="${prefix}-zona">Ciudad</label><select id="${prefix}-zona" name="zona" required><option value="">Elegí tu ciudad</option>${COVERAGE_CITIES.map((city) => `<option>${esc(city)}</option>`).join('')}<option value="Otra">Otra ciudad</option></select></div><div class="field"><label for="${prefix}-barrio">Barrio o referencia <span>(opcional)</span></label><input id="${prefix}-barrio" name="barrio" maxlength="200" autocomplete="address-level3"></div>`;
+}
+
 function launcherOption(id, path) {
   const option = TOPICS[id];
   const href = whatsappLink(waMessage(id, path));
@@ -124,7 +133,8 @@ function fichaRow() {
       <div class="field"><label for="ficha-name">Nombre</label><input id="ficha-name" name="name" autocomplete="name" maxlength="200" required></div>
       <div class="field"><label for="ficha-phone">WhatsApp o teléfono</label><input id="ficha-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="09xx xxx xxx" required></div>
       <div class="field"><label for="ficha-service">¿Qué necesitás?</label><select id="ficha-service" name="service" required><option value="">Elegí una opción</option>${options}</select></div>
-      <div class="field"><label for="ficha-zona">Ciudad o barrio <span>(opcional)</span></label><input id="ficha-zona" name="zona" maxlength="200" autocomplete="address-level2"></div>
+      ${zonaField('ficha')}
+      ${urgencyField('ficha')}
       <label class="consent"><input id="ficha-consent" type="checkbox" name="consent" value="1" required> Leí la <a href="/privacidad/">política de privacidad</a> y acepto el uso de estos datos para responder mi consulta.</label>
       <button class="button button--primary" type="submit">Enviar y continuar en WhatsApp</button>
     </form>
@@ -588,7 +598,7 @@ const contactPage = {
         <p class="eyebrow">Solicitá contacto</p>
         <h2>Datos para responderte mejor</h2>
         <p class="contact-form-block__lead">Enviá tu teléfono, servicio y ubicación. Registramos la solicitud y después abrimos WhatsApp con el mensaje preparado.</p>
-        <form class="lead-form" id="lead-form" action="/contacto.php" method="POST"><input type="hidden" name="form_id" value="contacto"><input type="hidden" name="page_url" value=""><div class="hp-field" aria-hidden="true"><label for="lead-website">Dejá este campo vacío</label><input id="lead-website" name="website" tabindex="-1" autocomplete="off"></div><div class="field"><label for="lead-name">Nombre</label><input id="lead-name" name="name" autocomplete="name" maxlength="200" required></div><div class="field"><label for="lead-phone">WhatsApp o teléfono</label><input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="0992 279 599" required></div><div class="field"><label for="lead-email">Correo <span>(opcional)</span></label><input id="lead-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="320"></div><div class="field"><label for="lead-zona">Ciudad o barrio <span>(opcional)</span></label><input id="lead-zona" name="zona" autocomplete="address-level2" maxlength="200"></div><div class="field"><label for="lead-service">Servicio</label><select id="lead-service" name="service" required><option value="">Elegí una opción</option><option>Pozos artesianos</option><option>Precio por metro</option><option>Pozos ciegos</option><option>Desagüe de pozo ciego</option><option>Pozo ciego lleno</option><option>Sistema séptico</option><option>Tratamiento de agua</option><option>Otra consulta</option></select></div><div class="field"><label for="lead-message">¿Qué necesitás y dónde?</label><textarea id="lead-message" name="message" rows="5" maxlength="5000" required></textarea></div><label class="consent"><input type="checkbox" name="consent" value="1" required> Leí la <a href="/privacidad/">política de privacidad</a> y acepto el uso de estos datos para responder mi consulta.</label><button class="button button--primary" type="submit">Enviar y continuar en WhatsApp</button><p class="form-note">Registramos la consulta, avisamos al equipo y abrimos WhatsApp con tu mensaje.</p><p class="form-status" id="form-status" aria-live="polite"></p></form>
+        <form class="lead-form" id="lead-form" action="/contacto.php" method="POST"><input type="hidden" name="form_id" value="contacto"><input type="hidden" name="page_url" value=""><div class="hp-field" aria-hidden="true"><label for="lead-website">Dejá este campo vacío</label><input id="lead-website" name="website" tabindex="-1" autocomplete="off"></div><div class="field"><label for="lead-name">Nombre</label><input id="lead-name" name="name" autocomplete="name" maxlength="200" required></div><div class="field"><label for="lead-phone">WhatsApp o teléfono</label><input id="lead-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="0992 279 599" required></div><div class="field"><label for="lead-email">Correo <span>(opcional)</span></label><input id="lead-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="320"></div>${zonaField('lead')}${urgencyField('lead')}<div class="field"><label for="lead-service">Servicio</label><select id="lead-service" name="service" required><option value="">Elegí una opción</option><option>Pozos artesianos</option><option>Precio por metro</option><option>Pozos ciegos</option><option>Desagüe de pozo ciego</option><option>Pozo ciego lleno</option><option>Sistema séptico</option><option>Tratamiento de agua</option><option>Otra consulta</option></select></div><div class="field"><label for="lead-message">¿Qué necesitás y dónde?</label><textarea id="lead-message" name="message" rows="5" maxlength="5000" required></textarea></div><label class="consent"><input type="checkbox" name="consent" value="1" required> Leí la <a href="/privacidad/">política de privacidad</a> y acepto el uso de estos datos para responder mi consulta.</label><button class="button button--primary" type="submit">Enviar y continuar en WhatsApp</button><p class="form-note">Registramos la consulta, avisamos al equipo y abrimos WhatsApp con tu mensaje.</p><p class="form-status" id="form-status" aria-live="polite"></p></form>
       </div>
     </div></section>
     ${strata}
@@ -717,7 +727,9 @@ return [
     'wa_form' => [
         'intro' => [${Object.entries(FORM_FALLBACK.intro).map(([key, text]) => `${phpString(key)} => ${phpString(text)}`).join(', ')}],
         'labels' => [${Object.entries(FORM_FALLBACK.labels).map(([key, text]) => `${phpString(key)} => ${phpString(text)}`).join(', ')}],
+        'urgency' => [${Object.entries(FORM_FALLBACK.urgency).map(([key, text]) => `${phpString(key)} => ${phpString(text)}`).join(', ')}],
         'outro' => [${FORM_FALLBACK.outro.map(phpString).join(', ')}],
+        'ask_when' => ${phpString(FORM_FALLBACK.askWhen)},
     ],
     // Read by wa.php: every page of the message map with its default topic and
     // the text for each topic (content/wa-messages.mjs).

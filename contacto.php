@@ -58,13 +58,16 @@ function whatsappFallback(array $lead, string $whatsappNumber, array $waForm, st
     $labels = (array)($waForm['labels'] ?? []);
     $pageName = (string)(parse_url($page, PHP_URL_PATH) ?: '/');
     $lines = [str_replace('{page}', $pageName, (string)($intro[$formId] ?? $intro['contacto'] ?? ''))];
-    foreach (['name', 'phone', 'service', 'zona', 'message', 'email'] as $field) {
+    foreach (['name', 'phone', 'service', 'zona', 'urgencia', 'message', 'email'] as $field) {
         if (($lead[$field] ?? '') !== '') {
             $lines[] = ($labels[$field] ?? ucfirst($field)) . ': ' . $lead[$field];
         }
     }
     foreach ((array)($waForm['outro'] ?? []) as $line) {
         $lines[] = (string)$line;
+    }
+    if (($lead['urgencia'] ?? '') === '') {
+        $lines[] = (string)($waForm['ask_when'] ?? '');
     }
     $lines = array_values(array_filter($lines, static fn($line) => $line !== ''));
     redirectTo('https://wa.me/' . $whatsappNumber . '?text=' . rawurlencode(implode("\n", $lines)));
@@ -87,14 +90,26 @@ if (value('website', 200) !== '') {
 $formId = value('form_id', 40) ?: 'contacto';
 $source = CONTACT_SOURCES[$formId] ?? CONTACT_SOURCES['contacto'];
 
+// Triage: "¿Para cuándo?" only accepts the values the forms offer (labels come
+// from FORM_FALLBACK.urgency via config/site.generated.php); anything else is
+// ignored. zona is the city select (or free text from an older cached page);
+// barrio is optional and only shown next to it.
+$urgencyLabels = (array)($waForm['urgency'] ?? []);
+$urgencyKey = value('urgencia', 20);
+$urgencyKey = isset($urgencyLabels[$urgencyKey]) ? $urgencyKey : '';
+$city = value('zona', 200);
+$barrio = value('barrio', 200);
+
 $lead = [
     'name' => value('name', 200),
     'phone' => value('phone', 30),
     'email' => value('email', 320),
     'service' => value('service', 120),
     'message' => value('message', 5000),
-    'zona' => value('zona', 200),
+    'zona' => implode(', ', array_filter([$city, $barrio], static fn($part) => $part !== '')),
+    'urgencia' => $urgencyKey !== '' ? (string)$urgencyLabels[$urgencyKey] : '',
 ];
+$isUrgent = $urgencyKey === 'hoy';
 
 if (
     $lead['name'] === '' ||
@@ -150,7 +165,9 @@ $payload = [
     'fields' => array_filter([
         'servicio' => $lead['service'],
         'pagina' => $convertingPage,
-        'zona' => $lead['zona'],
+        'zona' => $city,
+        'barrio' => $barrio,
+        'urgencia' => $lead['urgencia'],
     ], static fn($item) => $item !== null && $item !== ''),
     'idempotency_key' => $idempotencyKey,
 ];
@@ -262,7 +279,7 @@ if ($resendApiKey === '' || empty($notifyTo)) {
 } else {
     $safeName = stripControlChars($lead['name']);
     $safeService = stripControlChars($lead['service']);
-    $subject = stripControlChars(sprintf('Consulta: %s · %s', $safeService, $safeName));
+    $subject = stripControlChars(($isUrgent ? '[URGENTE] ' : '') . sprintf('Consulta: %s · %s', $safeService, $safeName));
 
     $waLink = 'https://wa.me/' . $digits;
     $textLines = [
@@ -271,6 +288,8 @@ if ($resendApiKey === '' || empty($notifyTo)) {
         'Nombre: ' . $safeName,
         'Teléfono: ' . $lead['phone'],
         'Servicio: ' . $safeService,
+        'Ciudad y barrio: ' . (stripControlChars($lead['zona']) ?: '—'),
+        'Para cuándo: ' . ($lead['urgencia'] ?: '—'),
         'Mensaje: ' . stripControlChars($lead['message']),
     ];
     if ($lead['email'] !== '') {
@@ -286,6 +305,8 @@ if ($resendApiKey === '' || empty($notifyTo)) {
         ['Nombre', $safeName],
         ['Teléfono', $lead['phone']],
         ['Servicio', $safeService],
+        ['Ciudad y barrio', stripControlChars($lead['zona']) ?: '—'],
+        ['Para cuándo', $lead['urgencia'] ?: '—'],
         ['Mensaje', stripControlChars($lead['message'])],
     ];
     if ($lead['email'] !== '') {
