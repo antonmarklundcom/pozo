@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, PRICES, DEMO_MODE } from './site.config.mjs';
@@ -7,6 +7,8 @@ import { ZONES } from './content/zones.mjs';
 import { CROSS_LINKS } from './content/cross-links.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
+// Widths of the smaller WebP copies written by tools/prepare-images.py.
+const imageManifest = JSON.parse(await readFile(join(root, 'assets', 'images', 'manifest.json'), 'utf8'));
 const areas = ['Asunción', 'San Lorenzo', 'Luque', 'Lambaré', 'Fernando de la Mora', 'Mariano Roque Alonso', 'Capiatá', 'Ñemby', 'Villa Elisa', 'Limpio'];
 const barrios = ['Villa Morra', 'Recoleta', 'Carmelitas', 'Sajonia', 'Trinidad', 'Barrio Jara'];
 
@@ -242,7 +244,7 @@ function footer() {
 function serviceHero(config) {
   const { eyebrow, h1, lead, image, alt } = config;
   const message = waMessage(null, config.path);
-  return `<section class="page-hero"><div class="shell page-hero__grid"><div class="page-hero__copy">${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h1>${h1}</h1><p class="lede">${lead}</p><div class="hero-actions">${cta(`${svg('wa')}<span>Consultar por WhatsApp</span>`, message, 'button button--wa')}${phoneLink('Llamar', 'text-link text-link--phone')}<a class="text-link" href="#contenido">Ver detalles <span aria-hidden="true">↓</span></a></div><p class="microcopy">Respuesta y cobertura sujetas a confirmación del operador.</p>${config.leadBox || ''}</div><figure class="hero-media"><img src="/assets/images/${image}" alt="${alt}" width="1200" height="675"><figcaption>Imagen ilustrativa</figcaption></figure></div></section>`;
+  return `<section class="page-hero"><div class="shell page-hero__grid"><div class="page-hero__copy">${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}<h1>${h1}</h1><p class="lede">${lead}</p><div class="hero-actions">${cta(`${svg('wa')}<span>Consultar por WhatsApp</span>`, message, 'button button--wa')}${phoneLink('Llamar', 'text-link text-link--phone')}<a class="text-link" href="#contenido">Ver detalles <span aria-hidden="true">↓</span></a></div><p class="microcopy">Respuesta y cobertura sujetas a confirmación del operador.</p>${config.leadBox || ''}</div><figure class="hero-media"><img src="/assets/images/${image}" alt="${alt}" width="1200" height="675" fetchpriority="high" data-sizes="(max-width: 700px) calc(100vw - 32px), 420px"><figcaption>Imagen ilustrativa</figcaption></figure></div></section>`;
 }
 
 // A large tappable decision card: icon, title, one line, action, side link.
@@ -513,6 +515,22 @@ pages.push({
   body: `<main><section class="contact-hero"><div class="shell"><p class="eyebrow eyebrow--light">Gracias por contactarnos</p><h1>Recibimos tu consulta.</h1><p>Vamos a revisar los datos y responder por teléfono o WhatsApp. Si se trata de una urgencia, también podés escribirnos directamente.</p><div class="hero-actions">${cta(`${svg('wa')}<span>Escribir por WhatsApp</span>`, waMessage(null, '/gracias/'), 'button button--wa')}<a class="button button--ghost" href="/">Volver al inicio</a></div></div></section></main>`,
 });
 
+// Adds srcset/sizes to every site image that has smaller copies, so a phone
+// downloads the 480 px file instead of the full-width original. The LCP hero
+// (fetchpriority="high") spans the viewport unless the tag sets data-sizes;
+// everything else is at most half the viewport.
+function responsiveImages(html) {
+  return html.replace(/<img src="\/assets\/images\/([a-z0-9-]+\.webp)"([^>]*)>/g, (tag, name, rest) => {
+    const entry = imageManifest[name];
+    if (!entry || !entry.variants.length || /\ssrcset=/.test(rest)) return tag;
+    const stem = name.slice(0, -5);
+    const srcset = [...entry.variants.map((width) => `/assets/images/${stem}-${width}.webp ${width}w`), `/assets/images/${name} ${entry.width}w`].join(', ');
+    const explicit = rest.match(/\sdata-sizes="([^"]+)"/);
+    const sizes = explicit ? explicit[1] : /fetchpriority="high"/.test(rest) ? '100vw' : '(max-width: 700px) 100vw, (max-width: 1080px) 50vw, 400px';
+    return `<img src="/assets/images/${name}" srcset="${srcset}" sizes="${sizes}"${rest.replace(/\sdata-sizes="[^"]+"/, '')}>`;
+  });
+}
+
 function render(page) {
   const canonical = page.noCanonical ? '' : `${SITE.url}${page.path}`;
   const socialImage = `${SITE.url}/assets/images/${page.image || 'pozo-artesiano-perforacion.webp'}`;
@@ -551,7 +569,7 @@ function render(page) {
 <body data-page-label="${esc(page.short || page.h1 || '')}">
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   ${header()}
-  ${page.body.replace(/<main(?![^>]*\bid=)([^>]*)>/, '<main id="main-content"$1>')}
+  ${responsiveImages(page.body).replace(/<main(?![^>]*\bid=)([^>]*)>/, '<main id="main-content"$1>')}
   ${footer()}
   ${launcher(page)}
   <script src="${esc(SITE.venderCrmUrl)}/vc-attribution.js" defer></script>

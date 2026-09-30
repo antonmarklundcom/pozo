@@ -1,0 +1,67 @@
+{
+  "pozo-artesiano-perforacion.webp": {
+    "width": 2000,
+    "height": 1116,
+    "variants": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "pozo-artesiano-servicio.webp": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "bomba-pozo-artesiano.webp": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "desague-pozo-ciego-camion.webp": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "pozo-ciego-lleno-inspeccion.webp": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "pozo-septico-instalacion.webp": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "tratamiento-agua-filtros.webp": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      480,
+      800
+    ]
+  },
+  "analisis-calidad-agua.webp": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      480,
+      800
+    ]
+  }
+}

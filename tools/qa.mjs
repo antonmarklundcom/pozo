@@ -172,6 +172,11 @@ for (const file of htmlFiles) {
   for (const [, asset] of html.matchAll(/(?:href|src)="(\/assets\/[^"?]+)/g)) {
     if (!fileSet.has(asset.slice(1))) fail(`${rel}: references a missing asset ${asset}`);
   }
+  for (const [, srcset] of html.matchAll(/srcset="([^"]+)"/g)) {
+    for (const candidate of srcset.split(',').map((item) => item.trim().split(/\s+/)[0])) {
+      if (!fileSet.has(candidate.slice(1))) fail(`${rel}: srcset references a missing file ${candidate}`);
+    }
+  }
   for (const [tag] of html.matchAll(/<img\s[^>]*>/g)) {
     if (!/\salt="[^"]+"/.test(tag)) fail(`${rel}: <img> without alt`);
     if (!/\swidth="\d+"/.test(tag) || !/\sheight="\d+"/.test(tag)) fail(`${rel}: <img> without width/height`);
