@@ -40,3 +40,8 @@ Only things an agent cannot do. Everything else is handled by the runbook runs
    email (`…@….iam.gserviceaccount.com`) with "Restricted" access.
 3. Run `GSC_KEY_FILE=/path/key.json node tools/gsc-report.mjs` on the PC (or give a session the key as a
    secret file, never in git). Output: `docs/seo/gsc-<date>.csv` + a high-impression / low-CTR summary.
+
+## Google Business Profile (`docs/GBP-POZO.md`)
+
+Confirmar: nombre comercial real, dirección (o negocio sin local, área de servicio), categoría principal,
+horario del domingo, y crear/verificar el perfil. El paquete está listo para copiar y pegar.

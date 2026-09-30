@@ -179,3 +179,7 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
 - **N1 — WhatsApp reply templates**: `docs/WHATSAPP-RESPUESTAS.md`, one operator reply per topic in
   `wa-messages.mjs` (13), each with a quick-reply shortcut (`/urgente`, `/precio`, …), a label table and four
   follow-up shortcuts. No prices, times or guarantees. Docs only; verify green.
+- **N2 — Google Business Profile pack**: `docs/GBP-POZO.md` (NAP, categorías, 7 servicios, descripción de
+  723 caracteres, 12 publicaciones semanales, 10 Q&A tomadas de las FAQ del sitio, lista de fotos reales,
+  texto de pedido de reseña sin incentivos, rutina mensual). Hecho con la skill gbp-optimizer; sin
+  precios, plazos ni garantías. Pendientes del dueño en `docs/OWNER-TODO.md`.
