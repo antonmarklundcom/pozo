@@ -157,3 +157,11 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   CTR under half the usual CTR for their position. Key only via `GSC_KEY_FILE` (example
   `docs/gsc.example.json`; `.gitignore` + a qa.mjs private-key guard). No key here → exit 2; key request and
   setup steps added to `docs/OWNER-TODO.md`. Tested end to end against a local stub (signature verified).
+- **O10 — Site kit**: generic tools moved (git mv) to `tools/kit/` — router, qa-core, crawl, seo-diff,
+  link-graph, browser-check, form-test, smoke-live, perf, gsc-report, minify, verify — reading every site
+  value from `kit.config.mjs` (origin, number, legacy URLs, denied paths, third-party/sibling hosts,
+  link-graph rules, form contract, hooks). pozo rules stay in `tools/qa.mjs` (hooks on `runQa()`) and
+  `tools/site/*-hooks.mjs`; old `tools/*.mjs` paths are one-line wrappers. `/kit.config.mjs` denied in
+  `.htaccess`. Verify green with identical QA counts; sabotage tests (core title rule, site wa-track rule,
+  link-graph threshold) still fail as expected. Guide: `docs/SITE-KIT.md`. No other repo touched.
+  Also fixed `tools/package-hostinger.py` (backup ZIP allowlist): it missed `wa.php` (O2) and `guias/` (O1).

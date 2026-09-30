@@ -5,7 +5,7 @@ import { SITE, PRICES, DEMO_MODE } from './site.config.mjs';
 import { TOPICS, LAUNCHER_TOPICS, PAGES, waText, CALCULATOR_TEMPLATE, FORM_FALLBACK } from './content/wa-messages.mjs';
 import { ZONES, COVERAGE_CITIES } from './content/zones.mjs';
 import { CROSS_LINKS } from './content/cross-links.mjs';
-import { criticalCss, minifyCss, minifyHtml, minifyJs } from './tools/minify.mjs';
+import { criticalCss, minifyCss, minifyHtml, minifyJs } from './tools/kit/minify.mjs';
 import { PUBLISHED_GUIDES, DRAFT_GUIDES, HAS_GUIDE_HUB, GUIDE_HUB, guidePath, anchorId } from './content/guides.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));

@@ -47,7 +47,7 @@ RedirectMatch 404 ^/source-images/
 
 # Git deploys put the whole repo in public_html: hide repo internals.
 RedirectMatch 404 ^/\.git
-RedirectMatch 404 ^/(build\.mjs|site\.config\.mjs|README\.md|\.gitignore)$
+RedirectMatch 404 ^/(build\.mjs|site\.config\.mjs|kit\.config\.mjs|README\.md|\.gitignore)$
 RedirectMatch 404 ^/[^/]*\.(py|ps1)$
 
 <IfModule mod_headers.c>
