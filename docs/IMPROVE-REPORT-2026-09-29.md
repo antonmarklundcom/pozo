@@ -195,3 +195,11 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
 - **N5 — Owner summary refresh**: README got a "Start here" pointer and rows for `OWNER-TODO.md`, the report,
   the runbook, `WHATSAPP-RESPUESTAS.md` and `GBP-POZO.md`. `docs/OWNER-TODO.md` now lists what the Sonnet run
   skipped (N6–N10) and why. Docs only.
+- **N6–N10 — skipped (gates).** N6: `pozo.com.py` is not in the session's network allowlist
+  (`host_not_allowed`; smoke-live cannot reach it). N7–N10 (🔑): no keyword-library MCP connected in the
+  session; nothing was guessed. All listed in `docs/OWNER-TODO.md`; the ready-to-paste prompt for the next
+  session is `docs/NEXT-SESSION-PROMPT.md`. Image gate was CLOSED: no images generated, no credits used.
+- **N-end (2026-09-30).** `node tools/verify.mjs` green on `main` after PRs #13–#17 (N1–N5). SEO diff
+  (`docs/seo/seo-diff.md`): 0 lost or broken URLs; titles, meta descriptions, H1s and canonicals unchanged on
+  every page; the only page-text changes in this run are alt attributes (N3) and one trust-bar phrase (N4).
+  Live crawl before/after not possible from this session (host blocked).
