@@ -134,3 +134,9 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   Slow 4G: FCP ≈ −60 % everywhere, render-blocking 1 → 0, text-LCP pages −55–65 %, hero-image pages +100–310 ms
   (bandwidth contention); regular 4G: every tested page faster. Font subsetting skipped (no tool without
   deps). Details: `docs/perf/PERF-2026-09-30.md`.
+- **O6 — Accessibility**: `tools/browser-check.mjs` loads axe-core from the global npm root (like Playwright;
+  `npm i -g axe-core`, exits with that hint if missing) and runs WCAG 2.0/2.1/2.2 A+AA rules on every page at
+  390 and 1366, plus the open launcher/ficha on `/` and `/contacto/`; serious/critical fail. Findings were
+  all colour contrast, fixed: primary button on `--clay-dark` (3.9 → 5.6:1), white eyebrow on the teal closing
+  band (3.5 → 5.7:1), light-teal footer ".COM.PY" and estimate eyebrow. Also fixed the consent label layout
+  (text and link were separate grid items). Now 0 findings of any impact.

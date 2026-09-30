@@ -13,7 +13,7 @@ export const SITE = {
   leadEmail: '',
   venderCrmUrl: 'https://crm.clientes.com.py',
   capacity: '8 m³',
-  assetVersion: '20260930-5',
+  assetVersion: '20260930-6',
   // Organization logo for structured data (512 x 512 PNG of the favicon mark).
   logo: '/assets/images/logo-pozo-512.png',
   // Official profiles of the business (Google Business Profile, Facebook,

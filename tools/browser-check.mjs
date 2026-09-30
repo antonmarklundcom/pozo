@@ -7,9 +7,11 @@
 // console errors, page errors, failed requests, broken images, <title> and
 // one <h1>, horizontal scroll, and a full-page screenshot per width. Also
 // opens the WhatsApp launcher and checks its five options are visible.
+// Accessibility: axe-core (WCAG 2.x A/AA rules) on every page and width, plus
+// the open launcher with the ficha form; serious/critical findings fail.
 // Playwright is not a project dependency: it is resolved from the project,
 // then from the global npm root (npm i -g playwright).
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -27,6 +29,28 @@ async function loadPlaywright() {
 }
 
 const { chromium } = await loadPlaywright();
+
+// axe-core, like Playwright, is a global tool (npm i -g axe-core), never a project dependency.
+async function loadAxeSource() {
+  const candidates = [];
+  try { candidates.push(createRequire(import.meta.url).resolve('axe-core/axe.min.js')); } catch { /* not local */ }
+  try { candidates.push(join(execSync('npm root -g').toString().trim(), 'axe-core', 'axe.min.js')); } catch { /* no npm */ }
+  for (const file of candidates) {
+    try { return await readFile(file, 'utf8'); } catch { /* try next */ }
+  }
+  console.error('axe-core not found. Install it once as a global tool: npm i -g axe-core');
+  process.exit(1);
+}
+const axeSource = await loadAxeSource();
+const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
+async function axeFindings(page, context = 'document') {
+  if (!(await page.evaluate(() => typeof window.axe !== 'undefined'))) await page.addScriptTag({ content: axeSource });
+  const result = await page.evaluate(async ({ tags, scope }) => {
+    const run = await window.axe.run(scope === 'document' ? document : document.querySelector(scope), { runOnly: { type: 'tag', values: tags }, resultTypes: ['violations'] });
+    return run.violations.map((violation) => ({ id: violation.id, impact: violation.impact, help: violation.help, nodes: violation.nodes.map((node) => node.target.join(' ')).slice(0, 5) }));
+  }, { tags: AXE_TAGS, scope: context });
+  return result;
+}
 const launchOptions = process.env.PW_CHROMIUM_PATH ? { executablePath: process.env.PW_CHROMIUM_PATH } : {};
 const browser = await chromium.launch(launchOptions);
 
@@ -72,6 +96,7 @@ for (const viewport of widths) {
       document.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-in'));
     });
     await page.waitForTimeout(500);
+    const a11y = await axeFindings(page);
     const info = await page.evaluate(() => ({
       title: document.title,
       h1: [...document.querySelectorAll('h1')].map((node) => node.textContent.trim()),
@@ -86,13 +111,19 @@ for (const viewport of widths) {
       await page.locator('.wa-launcher__fab').click();
       await page.waitForTimeout(250);
       launcherOk = (await page.locator('.wa-launcher__panel a.wa-option:visible').count()) === 5;
+      // The open panel and the ficha form are checked too (hidden while closed).
+      if (path === '/' || path === '/contacto/') {
+        await page.locator('.wa-ficha__toggle').click();
+        await page.waitForTimeout(200);
+        a11y.push(...(await axeFindings(page, '#wa-launcher')).map((item) => ({ ...item, id: `${item.id} (launcher open)` })));
+      }
       await page.keyboard.press('Escape');
     } catch { launcherOk = false; }
     const expectedStatus = path === '/esta-url-no-existe/' ? 404 : 200;
     const status = response ? response.status() : 0;
     const file = `${viewport.name}${path.replace(/\/$/, '').replace(/\//g, '_') || '_home'}.png`;
     await page.screenshot({ path: join(outDir, file), fullPage: true });
-    const record = { viewport: viewport.name, path, status, ...info, consoleErrors, failedRequests, thirdParty, launcherOk, screenshot: join(outDir, file) };
+    const record = { viewport: viewport.name, path, status, ...info, consoleErrors, failedRequests, thirdParty, launcherOk, a11y, screenshot: join(outDir, file) };
     results.push(record);
     const issues = [];
     if (status !== expectedStatus) issues.push(`HTTP ${status}`);
@@ -103,6 +134,8 @@ for (const viewport of widths) {
     if (info.h1.length !== 1) issues.push(`${info.h1.length} <h1>`);
     if (info.scrollWidth > info.innerWidth) issues.push(`horizontal scroll (${info.scrollWidth} > ${info.innerWidth})`);
     if (!launcherOk) issues.push('WhatsApp launcher did not show 5 options');
+    const blocking = a11y.filter((item) => item.impact === 'serious' || item.impact === 'critical');
+    if (blocking.length) issues.push(`accessibility (axe): ${blocking.map((item) => `${item.impact} ${item.id}: ${item.help} [${item.nodes.join(', ')}]`).join(' | ')}`);
     if (issues.length) problems.push(`${viewport.name} ${path}: ${issues.join('; ')}`);
     await page.close();
   }
@@ -167,6 +200,8 @@ await browser.close();
 await writeFile(join(outDir, 'browser-check.json'), `${JSON.stringify(results, null, 2)}\n`, 'utf8');
 const thirdPartyCount = results.filter((result) => result.thirdParty.length).length;
 console.log(`Checked ${paths.length} URLs x ${widths.length} widths. Screenshots and JSON in ${outDir}/.`);
+const minor = results.flatMap((result) => result.a11y.filter((item) => item.impact !== 'serious' && item.impact !== 'critical').map((item) => `${result.viewport} ${result.path} ${item.impact} ${item.id}`));
+console.log(`Accessibility (axe-core, ${AXE_TAGS.join('/')}): ${results.reduce((sum, result) => sum + result.a11y.filter((item) => item.impact === 'serious' || item.impact === 'critical').length, 0)} serious/critical, ${minor.length} moderate/minor${minor.length ? ` (${[...new Set(minor.map((line) => line.split(' ').slice(2).join(' ')))].join(', ')})` : ''}.`);
 if (thirdPartyCount) console.log(`Note: third-party requests failed on ${thirdPartyCount} page loads (CRM attribution script; expected without internet).`);
 if (problems.length) {
   console.error(`Browser check failed with ${problems.length} issue(s):`);

@@ -27,6 +27,8 @@ node tools/verify.mjs     # build + QA + crawl + SEO diff + browser check + stub
 # Windows without php on PATH:  $env:PHP_BIN="C:\php\php.exe"; node tools/verify.mjs
 ```
 
+The browser check needs two global tools (never project dependencies): `npm i -g playwright axe-core` (Playwright uses its own Chromium; `PW_CHROMIUM_PATH` can point at another one).
+
 Node.js is only used locally to regenerate pages and `config/site.generated.php`. Hostinger serves the generated HTML and executes `contacto.php`.
 
 Where things live:

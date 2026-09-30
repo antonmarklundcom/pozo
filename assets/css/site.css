@@ -22,6 +22,7 @@
   --water-deep: #0a5563;
   --clay: #c5673d;
   --clay-dark: #a1512c;
+  --clay-deep: #87431f;
   --sand: #eee6d8;
   --sand-2: #e4d9c4;
   --paper: #f7f5ef;
@@ -71,6 +72,8 @@ h3 { font-size: 1.35rem; }
 .microcopy--light { color: rgba(255,255,255,.72); }
 .eyebrow { margin: 0 0 14px; color: var(--water); font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .eyebrow--light { color: var(--water-light); }
+/* On the teal closing band the light eyebrow is 3.5:1; white is 5.7:1. */
+.closing-cta .eyebrow--light { color: var(--white); }
 
 /* --- Strata divider: three soil bands between surfaces ------------------- */
 .strata { display: flex; flex-direction: column; height: 26px; background: var(--sand); }
@@ -126,8 +129,9 @@ h3 { font-size: 1.35rem; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; padding: 13px 20px; border: 1px solid transparent; border-radius: var(--radius); font-size: .82rem; font-weight: 800; letter-spacing: .015em; line-height: 1.2; text-align: center; text-decoration: none; cursor: pointer; transition: transform .18s ease, background .18s ease, border-color .18s ease; }
 .button svg { width: 19px; height: 19px; }
 .button:hover { transform: translateY(-2px); }
-.button--primary { background: var(--clay); color: var(--white); box-shadow: 0 12px 30px rgba(197,103,61,.24); }
-.button--primary:hover { background: var(--clay-dark); }
+/* White on --clay is 3.9:1; --clay-dark gives 5.6:1 (WCAG AA for small bold text). */
+.button--primary { background: var(--clay-dark); color: var(--white); box-shadow: 0 12px 30px rgba(197,103,61,.24); }
+.button--primary:hover { background: var(--clay-deep); }
 .button--wa { background: var(--wa); color: var(--ink); box-shadow: 0 12px 30px rgba(18,140,126,.24); }
 .button--wa:hover { background: #1fbe5b; }
 .button--ghost { border-color: rgba(255,255,255,.55); color: var(--white); }
@@ -381,6 +385,7 @@ fieldset { margin: 0 0 24px; padding: 20px; border: 1px solid var(--line); }
 .wa-ficha__form .choice-group { margin-bottom: 14px; }
 .wa-ficha__form .choice-group legend { font-size: .74rem; }
 .estimate { padding: 34px; background: var(--ink); color: var(--white); }
+.estimate .eyebrow { color: var(--water-light); }
 .estimate h2 { margin-bottom: 24px; font-size: clamp(1.8rem, 3.4vw, 3rem); }
 .estimate ul { margin: 0; padding: 0; list-style: none; }
 .estimate li { display: flex; justify-content: space-between; gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--line-light); font-size: .84rem; }
@@ -431,6 +436,7 @@ fieldset { margin: 0 0 24px; padding: 20px; border: 1px solid var(--line); }
 .site-footer { padding: 70px 0 20px; background: #061a21; color: var(--white); }
 .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 46px; }
 .brand--footer { color: var(--white); }
+.brand--footer small { color: var(--water-light); }
 .footer-grid h2 { margin: 4px 0 18px; color: var(--water-light); font-family: var(--body); font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .footer-grid > div { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
 .footer-grid p, .footer-grid a, .footer-grid span { color: rgba(255,255,255,.66); font-size: .79rem; }
