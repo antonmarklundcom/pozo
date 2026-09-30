@@ -108,6 +108,26 @@ for (const viewport of widths) {
   }
   await context.close();
 }
+// WhatsApp click tracking: the HTML link is wa.me; a click opens /wa.php?p=&t=.
+{
+  const context = await browser.newContext({ viewport: { width: 1366, height: 900 }, locale: 'es-PY' });
+  let tracked = '';
+  await context.route('**/wa.php?*', (route) => { tracked = route.request().url(); return route.fulfill({ status: 204, body: '' }); });
+  await context.route('https://wa.me/**', (route) => route.fulfill({ status: 204, body: '' }));
+  const page = await context.newPage();
+  await page.goto(`${base}/servicios/desague/`, { waitUntil: 'load' });
+  const link = page.locator('.side-panel a[data-wa-track]').first();
+  const before = await link.getAttribute('href');
+  const popup = context.waitForEvent('page', { timeout: 5000 }).catch(() => null);
+  await link.click();
+  await popup;
+  await page.waitForTimeout(300);
+  const after = await link.getAttribute('href');
+  if (!/^https:\/\/wa\.me\//.test(before || '')) problems.push(`wa tracking: link should start as wa.me (got ${before})`);
+  if (!/^\/wa\.php\?p=%2Fservicios%2Fdesague%2F&t=desague$/.test(after || '')) problems.push(`wa tracking: clicked link should become /wa.php?p=…&t=… (got ${after})`);
+  if (!tracked.includes('/wa.php?p=%2Fservicios%2Fdesague%2F&t=desague')) problems.push(`wa tracking: the click did not request /wa.php (got "${tracked}")`);
+  await context.close();
+}
 await browser.close();
 
 await writeFile(join(outDir, 'browser-check.json'), `${JSON.stringify(results, null, 2)}\n`, 'utf8');

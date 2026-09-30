@@ -11,15 +11,20 @@
 // 7. node tools/form-test.mjs (CRM + Resend stubbed)
 // Stops at the first failing step and exits non-zero.
 import { spawn, spawnSync } from 'node:child_process';
+import { rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const PHP = process.env.PHP_BIN || 'php';
 const BASE = 'http://127.0.0.1:8765';
-const node = (args) => spawnSync(process.execPath, args, { cwd: root, stdio: 'inherit' }).status === 0;
+// wa.php logs clicks to a throwaway file during the run (qa.mjs checks the line format).
+const WA_LOG = join(tmpdir(), `pozo-wa-clicks-${process.pid}.log`);
+const env = { ...process.env, POZO_WA_LOG: WA_LOG };
+const node = (args) => spawnSync(process.execPath, args, { cwd: root, stdio: 'inherit', env }).status === 0;
 
-const server = spawn(PHP, ['-S', '127.0.0.1:8765', join('tools', 'router.php')], { cwd: root, stdio: 'ignore' });
+const server = spawn(PHP, ['-S', '127.0.0.1:8765', join('tools', 'router.php')], { cwd: root, stdio: 'ignore', env });
 let ok = false;
 try {
   await new Promise((resolve) => setTimeout(resolve, 800));
@@ -31,6 +36,7 @@ try {
     && node([join('tools', 'form-test.mjs')]);
 } finally {
   server.kill();
+  rmSync(WA_LOG, { force: true });
 }
 console.log(ok ? '\nverify: all steps passed' : '\nverify: FAILED (see the step output above)');
 process.exit(ok ? 0 : 1);

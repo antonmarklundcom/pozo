@@ -17,6 +17,18 @@
     document.cookie = `vc_attr=${encodeURIComponent(JSON.stringify(attribution))}; Max-Age=7776000; Path=/; SameSite=Lax; Secure`;
   }
 
+  // --- WhatsApp click counter ------------------------------------------------
+  // Links stay direct wa.me in the HTML (no-JS visitors go straight there).
+  // At the moment of the click the href becomes /wa.php?p=<page>&t=<topic>,
+  // which logs the click without IP or phone and redirects to the same text.
+  const trackWhatsApp = (event) => {
+    const link = event.target.closest && event.target.closest('a[data-wa-track]');
+    if (!link || !/^https:\/\/wa\.me\//.test(link.getAttribute('href') || '')) return;
+    link.setAttribute('href', `/wa.php?${link.dataset.waTrack}`);
+  };
+  document.addEventListener('click', trackWhatsApp, true);
+  document.addEventListener('auxclick', trackWhatsApp, true);
+
   // --- Header navigation ---------------------------------------------------
   const menuButton = document.querySelector('.menu-toggle');
   const mainNav = document.querySelector('.main-nav');

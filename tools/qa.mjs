@@ -95,7 +95,7 @@ for (const [path, page] of Object.entries(PAGES)) {
 if (!/\{depth\}/.test(CALCULATOR_TEMPLATE) || !CALCULATOR_TEMPLATE.includes('pozo.com.py')) fail('wa-messages: CALCULATOR_TEMPLATE is incomplete');
 if (!Object.values(FORM_FALLBACK.intro).every((text) => text.includes('pozo.com.py'))) fail('wa-messages: FORM_FALLBACK intro must name the site');
 // Messages live in one file: no hand-written wa.me texts anywhere else.
-for (const source of ['build.mjs', 'assets/js/site.js', 'contacto.php']) {
+for (const source of ['build.mjs', 'assets/js/site.js', 'contacto.php', 'wa.php']) {
   const text = await readFile(join(root, source), 'utf8');
   if (/wa\.me\/\d/.test(text)) fail(`${source}: hard-coded wa.me number (use SITE.whatsapp)`);
   if (/(?:'|`)Hola, (?:quiero|necesito|tengo|mi pozo|les escribo|envié)/.test(text)) fail(`${source}: WhatsApp text written outside content/wa-messages.mjs`);
@@ -162,6 +162,16 @@ for (const file of htmlFiles) {
     try { text = decodeURIComponent(href.split('?text=')[1]); } catch { fail(`${rel}: wa.me text does not decode`); continue; }
     if (!text.trim()) fail(`${rel}: wa.me link with empty text`);
     else if (!text.includes('pozo.com.py') || (label && !text.includes(`(página: ${label})`))) fail(`${rel}: wa.me text does not name the site and page: ${text.split('\n')[0]}`);
+  }
+  // Click tracking: every wa.me link says which /wa.php?p=&t= gives the same text.
+  for (const [tag] of html.matchAll(/<a\s[^>]*href="https:\/\/wa\.me\/[^"]*"[^>]*>/g)) {
+    const track = tag.match(/data-wa-track="([^"]+)"/)?.[1];
+    if (!track) { fail(`${rel}: wa.me link without data-wa-track: ${tag.slice(0, 90)}`); continue; }
+    const params = new URLSearchParams(track.replace(/&amp;/g, '&'));
+    const linkText = decodeURIComponent(tag.match(/\?text=([^"]*)"/)[1]);
+    let expected = '';
+    try { expected = waText(params.get('p'), params.get('t')); } catch { /* reported below */ }
+    if (expected !== linkText) fail(`${rel}: data-wa-track ${params.get('p')} / ${params.get('t')} does not give the link's text`);
   }
 
   const waOptions = [...html.matchAll(/<a class="wa-option[^"]*" href="([^"]+)"/g)];
@@ -344,6 +354,16 @@ try {
   if (!generatedConfig.includes("'wa_form'")) fail('config/site.generated.php: wa_form texts missing (run node build.mjs)');
 } catch { fail('config/site.generated.php: missing (run node build.mjs)'); }
 
+const siteJs = await readFile(join(root, 'assets', 'js', 'site.js'), 'utf8');
+if (!/data-wa-track/.test(siteJs) || !/\/wa\.php\?/.test(siteJs)) fail('assets/js/site.js: WhatsApp click tracking (data-wa-track -> /wa.php) missing');
+try {
+  const generated = await readFile(join(root, 'config', 'site.generated.php'), 'utf8');
+  for (const path of Object.keys(PAGES)) {
+    if (!generated.includes(`'${path.replace(/'/g, "\\'")}' => ['topic' =>`)) fail(`config/site.generated.php: wa_pages misses ${path} (run node build.mjs)`);
+  }
+} catch { /* reported above */ }
+if (!/Disallow: \/wa\.php/.test(await readFile(join(root, 'robots.txt'), 'utf8'))) fail('robots.txt: /wa.php must be disallowed');
+
 // --- 7. Fonts, CSS invariants, images ------------------------------------------
 const css = await readFile(join(root, 'assets', 'css', 'site.css'), 'utf8');
 if (!/\.hero-media\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9/s.test(css)) fail('assets/css/site.css: service hero media must keep a 16:9 ratio');
@@ -379,6 +399,42 @@ try {
     }
   } else {
     console.warn('! Server is not tools/router.php: .htaccess redirects and denials were not tested over HTTP.');
+  }
+
+  // wa.php: known (page, topic) -> 302 to wa.me with exactly the map's text.
+  const waTarget = async (query, init = {}) => {
+    const response = await fetch(`${base}/wa.php?${query}`, { redirect: 'manual', ...init });
+    const location = response.headers.get('location') || '';
+    const text = location.startsWith(`https://wa.me/${NUMBER}?text=`) ? decodeURIComponent(location.split('?text=')[1]) : null;
+    return { status: response.status, text };
+  };
+  for (const [path, page] of Object.entries(PAGES)) {
+    for (const topicId of new Set([page.topic, 'urgente'])) {
+      const { status, text } = await waTarget(`p=${encodeURIComponent(path)}&t=${encodeURIComponent(topicId)}`);
+      if (status !== 302 || text !== waText(path, topicId)) fail(`/wa.php ${path} / ${topicId}: expected 302 to wa.me with the map text (HTTP ${status})`);
+    }
+  }
+  const fallback = await waTarget('p=%2Fno-existe%2F&t=inventado');
+  if (fallback.status !== 302 || fallback.text !== waText('/')) fail('/wa.php: unknown page/topic must fall back to the home text');
+  const posted = await fetch(`${base}/wa.php?p=%2F`, { method: 'POST', redirect: 'manual' });
+  if (posted.status !== 405) fail(`/wa.php: POST must answer 405 (HTTP ${posted.status})`);
+  // Log line (only when the server was started with POZO_WA_LOG, as verify.mjs does).
+  if (process.env.POZO_WA_LOG) {
+    const campaign = `qa-${Date.now()}`;
+    const cookie = `vc_attr=${encodeURIComponent(JSON.stringify({ referrer: 'https://www.google.com/search?q=x', landing_page: `${base}/`, utm_source: 'google', utm_campaign: campaign }))}`;
+    await waTarget(`p=${encodeURIComponent('/servicios/desague/')}&t=urgente`, { headers: { Cookie: cookie, Referer: `${base}/servicios/desague/` } });
+    let lines = [];
+    try { lines = (await readFile(process.env.POZO_WA_LOG, 'utf8')).trim().split('\n').map((line) => JSON.parse(line)); } catch (error) { fail(`wa.php log ${process.env.POZO_WA_LOG}: unreadable (${error.message})`); }
+    const entry = lines.find((line) => line.utm?.utm_campaign === campaign);
+    if (!entry) fail('wa.php: click was not logged');
+    else {
+      const keys = Object.keys(entry).sort().join(',');
+      if (keys !== 'page,ref,requested,topic,ts,utm') fail(`wa.php log: unexpected fields ${keys}`);
+      if (entry.page !== '/servicios/desague/' || entry.topic !== 'urgente' || entry.requested !== true) fail('wa.php log: wrong page/topic');
+      if (entry.ref !== 'www.google.com' || entry.utm.utm_source !== 'google') fail(`wa.php log: referrer host / first-touch utm not recorded (${entry.ref})`);
+      if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(entry.ts)) fail('wa.php log: ts must be UTC ISO');
+    }
+    if (lines.some((line) => /\b\d{1,3}(?:\.\d{1,3}){3}\b|595\d{9}/.test(JSON.stringify(line)))) fail('wa.php log: contains an IP address or a phone number');
   }
 } catch (error) {
   fail(`HTTP checks could not reach ${base} (${error.message}). Start: php -S 127.0.0.1:8765 tools/router.php`);

@@ -109,3 +109,9 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   qa.mjs: ≥ 700 words, 4–6 FAQs, unique meaningGroup not owned by a service page, template/JSON-LD/TOC
   checks. One draft example shipped. Tested end to end with a temporary published fixture (verify green).
 
+- **O2 — WhatsApp click tracking**: `wa.php?p=&t=` looks the text up in `config/site.generated.php`
+  (build now writes the full PAGES × TOPICS table), logs one JSON line (UTC ts, page, topic, referrer host,
+  first-touch utm from `vc_attr`; no IP/phone) to `POZO_WA_LOG` / `wa_log` / `private/wa-clicks.log`
+  (refuses a path inside the docroot), then 302s to wa.me. Links stay wa.me in HTML; site.js swaps to
+  `/wa.php` on click via `data-wa-track`. qa.mjs checks every link's track pair, the 302 text per page, the
+  log line format; browser-check clicks a real link. `tools/wa-report.mjs`, privacy page updated.

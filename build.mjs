@@ -39,6 +39,26 @@ function whatsappLink(message) {
   return SITE.whatsapp ? `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}` : '';
 }
 
+// --- WhatsApp click tracking (wa.php) ------------------------------------------
+// Every wa.me text belongs to one (page, topic) pair of the message map. The
+// HTML keeps the direct wa.me link (works without JS); data-wa-track tells
+// site.js which /wa.php?p=&t= URL to use at the moment of the click.
+const WA_TRACK = new Map();
+for (const [path, page] of Object.entries(PAGES)) {
+  for (const topicId of [page.topic, ...Object.keys(TOPICS)]) {
+    const text = waText(path, topicId);
+    if (!WA_TRACK.has(text)) WA_TRACK.set(text, { path, topic: topicId });
+  }
+}
+
+function trackWaLinks(html) {
+  return html.replace(/(<a\s[^>]*?href="https:\/\/wa\.me\/\d+\?text=([^"]*)")(?![^>]*data-wa-track=)/g, (tag, _, encoded) => {
+    const hit = WA_TRACK.get(decodeURIComponent(encoded));
+    if (!hit) return tag;
+    return `${tag} data-wa-track="p=${encodeURIComponent(hit.path)}&amp;t=${encodeURIComponent(hit.topic)}"`;
+  });
+}
+
 function phoneLink(label = SITE.phoneDisplay, className = '') {
   return `<a${className ? ` class="${className}"` : ''} href="tel:${esc(SITE.phoneHref)}">${esc(label)}</a>`;
 }
@@ -579,7 +599,7 @@ pages.push(contactPage);
 
 const privacyPage = {
   path: '/privacidad/', short: 'Privacidad', title: 'Política de privacidad | Pozo.com.py', description: 'Política de tratamiento de datos de contacto enviados a Pozo.com.py.', h1: 'Política de privacidad', crumbs: [['/', 'Inicio'], ['/privacidad/', 'Privacidad']],
-  body: `<main>${breadcrumbs([['/', 'Inicio'], ['/privacidad/', 'Privacidad']])}<section class="legal-hero"><div class="shell"><p class="eyebrow">Información legal</p><h1>Política de privacidad</h1><p>Cómo usamos y protegemos los datos enviados en una consulta.</p></div></section><section class="section"><article class="shell legal-copy"><p><strong>Responsable del sitio:</strong> Pozo.com.py, con base de atención en Asunción, Paraguay. Podés comunicarte al <a href="tel:${esc(SITE.phoneHref)}">${esc(SITE.phoneDisplay)}</a>.</p><h2>Datos que recibimos</h2><p>Cuando hacés una consulta podemos recibir nombre, teléfono, correo opcional, ubicación, servicio solicitado, descripción del trabajo, procedencia de la visita y mensajes. Si continuás por WhatsApp también podés compartir fotografías. No solicitamos datos sensibles ni información que no sea necesaria para responder.</p><h2>Para qué los usamos</h2><p>Usamos los datos para responder la consulta, evaluar cobertura, preparar una cotización, coordinar el servicio y registrar el origen comercial de la solicitud. No vendemos los datos ni los usamos para finalidades incompatibles con la consulta.</p><h2>Proveedores y canales</h2><p>El formulario puede enviar la solicitud a nuestro sistema de gestión comercial y generar un aviso por correo electrónico a través de un proveedor de envío transaccional. WhatsApp, el proveedor de correo y el proveedor de alojamiento procesan información bajo sus propias condiciones. Solamente compartimos los datos necesarios para operar estos canales y atender el pedido.</p><h2>Conservación y seguridad</h2><p>Conservamos la información durante el tiempo necesario para gestionar la consulta, realizar seguimiento y cumplir obligaciones aplicables. Aplicamos acceso limitado y medidas razonables de seguridad. Ningún sistema es completamente infalible, por eso recomendamos no enviar documentos personales, información financiera ni imágenes innecesarias.</p><h2>Tus opciones</h2><p>Podés solicitar información, corrección o eliminación de los datos vinculados a tu consulta escribiendo por WhatsApp al <a href="${whatsappLink(waMessage(null, '/privacidad/'))}" target="_blank" rel="noopener noreferrer">${esc(SITE.phoneDisplay)}</a>. La solicitud puede requerir una verificación razonable de identidad.</p><h2>Marco aplicable</h2><p>Tratamos los datos conforme al marco paraguayo aplicable. La <a href="https://www.bacn.gov.py/leyes-paraguayas/9417/ley" target="_blank" rel="noopener">Ley N.º 6534/2020</a> regula datos personales crediticios. La <a href="https://www.bacn.gov.py/leyes-paraguayas/12924/ley-n-75932025-de-proteccion-de-datos-personales-en-la-republica-del-paraguay" target="_blank" rel="noopener">Ley N.º 7593/2025</a> establece un régimen general de protección de datos y prevé su entrada en vigor después del plazo indicado en su artículo 57. Esta política se actualizará cuando corresponda.</p><p class="side-note">Última actualización: 2 de septiembre de 2026.</p></article></section></main>`,
+  body: `<main>${breadcrumbs([['/', 'Inicio'], ['/privacidad/', 'Privacidad']])}<section class="legal-hero"><div class="shell"><p class="eyebrow">Información legal</p><h1>Política de privacidad</h1><p>Cómo usamos y protegemos los datos enviados en una consulta.</p></div></section><section class="section"><article class="shell legal-copy"><p><strong>Responsable del sitio:</strong> Pozo.com.py, con base de atención en Asunción, Paraguay. Podés comunicarte al <a href="tel:${esc(SITE.phoneHref)}">${esc(SITE.phoneDisplay)}</a>.</p><h2>Datos que recibimos</h2><p>Cuando hacés una consulta podemos recibir nombre, teléfono, correo opcional, ubicación, servicio solicitado, descripción del trabajo, procedencia de la visita y mensajes. Si continuás por WhatsApp también podés compartir fotografías. No solicitamos datos sensibles ni información que no sea necesaria para responder.</p><h2>Para qué los usamos</h2><p>Usamos los datos para responder la consulta, evaluar cobertura, preparar una cotización, coordinar el servicio y registrar el origen comercial de la solicitud. No vendemos los datos ni los usamos para finalidades incompatibles con la consulta.</p><h2>Clics en los botones de WhatsApp</h2><p>Cuando tocás un botón de WhatsApp del sitio, antes de abrir la conversación registramos la fecha y hora, la página, el tema del botón, el sitio desde el que llegaste y, si existe, la campaña de origen de tu primera visita. No registramos tu dirección IP, tu número de teléfono ni el contenido de la conversación. Usamos este registro solamente para saber qué páginas y temas ayudan a las personas a escribirnos. Si JavaScript está desactivado, el botón abre WhatsApp directamente y no se registra nada.</p><h2>Proveedores y canales</h2><p>El formulario puede enviar la solicitud a nuestro sistema de gestión comercial y generar un aviso por correo electrónico a través de un proveedor de envío transaccional. WhatsApp, el proveedor de correo y el proveedor de alojamiento procesan información bajo sus propias condiciones. Solamente compartimos los datos necesarios para operar estos canales y atender el pedido.</p><h2>Conservación y seguridad</h2><p>Conservamos la información durante el tiempo necesario para gestionar la consulta, realizar seguimiento y cumplir obligaciones aplicables. Aplicamos acceso limitado y medidas razonables de seguridad. Ningún sistema es completamente infalible, por eso recomendamos no enviar documentos personales, información financiera ni imágenes innecesarias.</p><h2>Tus opciones</h2><p>Podés solicitar información, corrección o eliminación de los datos vinculados a tu consulta escribiendo por WhatsApp al <a href="${whatsappLink(waMessage(null, '/privacidad/'))}" target="_blank" rel="noopener noreferrer">${esc(SITE.phoneDisplay)}</a>. La solicitud puede requerir una verificación razonable de identidad.</p><h2>Marco aplicable</h2><p>Tratamos los datos conforme al marco paraguayo aplicable. La <a href="https://www.bacn.gov.py/leyes-paraguayas/9417/ley" target="_blank" rel="noopener">Ley N.º 6534/2020</a> regula datos personales crediticios. La <a href="https://www.bacn.gov.py/leyes-paraguayas/12924/ley-n-75932025-de-proteccion-de-datos-personales-en-la-republica-del-paraguay" target="_blank" rel="noopener">Ley N.º 7593/2025</a> establece un régimen general de protección de datos y prevé su entrada en vigor después del plazo indicado en su artículo 57. Esta política se actualizará cuando corresponda.</p><p class="side-note">Última actualización: 30 de septiembre de 2026.</p></article></section></main>`,
 };
 pages.push(privacyPage);
 
@@ -609,7 +629,7 @@ function render(page) {
   const socialImage = `${SITE.url}/assets/images/${page.image || 'pozo-artesiano-perforacion.webp'}`;
   const robots = page.noindex ? 'noindex,follow' : (DEMO_MODE ? 'noindex,nofollow,noarchive' : 'index,follow');
   const schema = JSON.stringify(baseSchema(page)).replace(/</g, '\\u003c');
-  return `<!doctype html>
+  return trackWaLinks(`<!doctype html>
 <html lang="es-PY">
 <head>
   <meta charset="utf-8">
@@ -649,7 +669,7 @@ function render(page) {
   <script src="${esc(SITE.venderCrmUrl)}/vc-attribution.js" defer></script>
   <script src="/assets/js/site.js?v=${esc(SITE.assetVersion)}" defer></script>
 </body>
-</html>`;
+</html>`);
 }
 
 async function outputPath(path) {
@@ -679,7 +699,7 @@ await writeFile(join(root, '404.html'), render(notFoundPage), 'utf8');
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.filter((page) => !page.excludeSitemap).map((page) => `  <url><loc>${SITE.url}${page.path}</loc><changefreq>${page.path === '/' ? 'weekly' : 'monthly'}</changefreq><priority>${page.path === '/' ? '1.0' : '0.8'}</priority></url>`).join('\n')}\n</urlset>\n`;
 await writeFile(join(root, 'sitemap.xml'), sitemap, 'utf8');
-await writeFile(join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`, 'utf8');
+await writeFile(join(root, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /wa.php\n\nSitemap: ${SITE.url}/sitemap.xml\n`, 'utf8');
 
 function phpString(value) {
   return "'" + String(value).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
@@ -698,6 +718,11 @@ return [
         'intro' => [${Object.entries(FORM_FALLBACK.intro).map(([key, text]) => `${phpString(key)} => ${phpString(text)}`).join(', ')}],
         'labels' => [${Object.entries(FORM_FALLBACK.labels).map(([key, text]) => `${phpString(key)} => ${phpString(text)}`).join(', ')}],
         'outro' => [${FORM_FALLBACK.outro.map(phpString).join(', ')}],
+    ],
+    // Read by wa.php: every page of the message map with its default topic and
+    // the text for each topic (content/wa-messages.mjs).
+    'wa_pages' => [
+${Object.entries(PAGES).map(([path, page]) => `        ${phpString(path)} => ['topic' => ${phpString(page.topic)}, 'texts' => [${Object.keys(TOPICS).map((topicId) => `${phpString(topicId)} => ${phpString(waText(path, topicId))}`).join(', ')}]],`).join('\n')}
     ],
     'generated_at' => ${phpString(new Date().toISOString())},
 ];

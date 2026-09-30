@@ -57,6 +57,14 @@ Do not put any key in HTML, JavaScript, `.htaccess`, the public website ZIP or t
 
 Direct WhatsApp links do not create a VenderCRM contact because a click does not reveal the visitor's phone number. Use the contact form when both CRM capture and WhatsApp continuation are required. Direct WhatsApp clicks can be measured later as analytics events, but they are not complete CRM leads.
 
+## WhatsApp click counter (`wa.php`)
+
+Every wa.me link stays direct in the HTML, so it works without JavaScript. `assets/js/site.js` swaps a link to `/wa.php?p=<page>&t=<topic>` at the moment of the click (from its `data-wa-track` attribute, written by `build.mjs`). `wa.php` looks the text up in `config/site.generated.php` (the full page × topic table from `content/wa-messages.mjs`), appends one JSON line and answers 302 to `https://wa.me/595992279599?text=…`.
+
+- Logged per click: UTC time, page, topic, referrer host, first-touch `utm_*` from the `vc_attr` cookie. Never the IP, user agent or a phone number. The privacy page says so.
+- Log file: env `POZO_WA_LOG`, else `wa_log` in `private/pozo.php`, else `domains/pozo.com.py/private/wa-clicks.log`. The handler refuses a path inside `public_html`. The `private/` folder must exist (it already does if `pozo.php` is there).
+- Report: download the log, then `node tools/wa-report.mjs wa-clicks.log [--days 30] [--out report.md]` (by page, topic, page × topic, referrer, campaign, day).
+
 ## Resend (email notification)
 
 `contacto.php` posts a plain-text and HTML email to `https://api.resend.com/emails` after the VenderCRM step, using the same idempotency key so a double submit cannot send a double email. It is skipped silently (one `error_log` line) if `resend_key` or `notify_to` is empty — the site keeps working with only the WhatsApp fallback, exactly like v1.
