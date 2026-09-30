@@ -172,22 +172,27 @@
   }
 
   // --- Calculator ----------------------------------------------------------
+  // Also runs on /gracias/, which re-renders the estimate from the query string
+  // (d = metres, s = soil, i = 1 with installation). The price is always
+  // recomputed from the published rates, never read from the URL.
   const calculator = document.querySelector('#well-calculator');
   const estimate = document.querySelector('#estimate');
   const estimateResult = document.querySelector('#estimate-result');
+  const thanks = document.querySelector('#gracias-estimate');
+  const calcRoot = estimate || thanks;
   // Base URL (number) and text template come from the build, which takes them
   // from site.config.mjs and content/wa-messages.mjs. Nothing is hard-coded here.
-  const WA_BASE = estimate ? estimate.dataset.waBase || '' : '';
-  const WA_TEMPLATE = estimate ? estimate.dataset.waTemplate || '' : '';
+  const WA_BASE = calcRoot ? calcRoot.dataset.waBase || '' : '';
+  const WA_TEMPLATE = calcRoot ? calcRoot.dataset.waTemplate || '' : '';
 
-  const RATES = (() => { if (!estimate) return {}; try { return JSON.parse(estimate.dataset.rates || '{}'); } catch { return {}; } })();
+  const RATES = (() => { if (!calcRoot) return {}; try { return JSON.parse(calcRoot.dataset.rates || '{}'); } catch { return {}; } })();
   const formatGs = (value) => `${Math.round(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')} Gs`;
   const soilLabels = { tierra: 'tierra', mixto: 'mixto', roca: 'roca', desconocido: 'no sé' };
+  const SOILS = Object.keys(soilLabels);
 
-  function calculatorSummary(data) {
-    const depth = Math.max(10, Math.min(300, Number(data.get('depth')) || 100));
-    const soil = data.get('soil');
-    const install = data.has('install');
+  function estimateFor(depthValue, soilValue, install) {
+    const depth = Math.max(10, Math.min(300, Math.round(Number(depthValue)) || 100));
+    const soil = SOILS.includes(soilValue) ? soilValue : 'desconocido';
     const rate = soil === 'mixto' ? RATES.mixed : soil === 'roca' ? RATES.rock : RATES.soil;
     const drilling = rate ? depth * rate : null;
     const kit = install ? RATES.kit || null : 0;
@@ -195,8 +200,11 @@
     return { depth, soil, install, rate, drilling, kit, total };
   }
 
-  function requestText() {
-    const s = calculatorSummary(new FormData(calculator));
+  function calculatorSummary(data) {
+    return estimateFor(data.get('depth'), data.get('soil'), data.has('install'));
+  }
+
+  function requestTextFor(s) {
     return WA_TEMPLATE
       .replace('{depth}', String(s.depth))
       .replace('{soil}', soilLabels[s.soil] || s.soil)
@@ -204,7 +212,13 @@
       .replace('{estimate}', s.total != null ? `Estimación del sitio: ${formatGs(s.total)}` : 'Estimación: a cotizar');
   }
 
-  function renderEstimate(s) {
+  function requestText() {
+    return requestTextFor(calculatorSummary(new FormData(calculator)));
+  }
+
+  function renderEstimate(s, target, options) {
+    const withCopy = !options || options.copy !== false;
+    const eyebrow = options && options.eyebrow ? options.eyebrow : 'Estimación inicial';
     const labels = {
       tierra: 'suelo de tierra',
       mixto: 'suelo mixto',
@@ -218,12 +232,13 @@
     const note = s.total != null
       ? `Precio de referencia. Si hace falta perforar 20 m más, suma ${formatGs(20 * s.rate)}. El operador confirma el valor final al revisar suelo, profundidad y acceso.`
       : 'Para este tipo de suelo el operador prepara la cotización según los datos del terreno.';
-    const waHref = WA_BASE && WA_TEMPLATE ? `${WA_BASE}${encodeURIComponent(requestText())}` : '';
+    const waHref = WA_BASE && WA_TEMPLATE ? `${WA_BASE}${encodeURIComponent(requestTextFor(s))}` : '';
     const waButton = waHref
       ? `<a class="button button--wa" id="send-estimate" href="${waHref}" target="_blank" rel="noopener noreferrer">Enviar por WhatsApp</a>`
       : '';
+    const copyButton = withCopy ? '<button class="button button--outline" id="copy-estimate" type="button">Copiar solicitud</button>' : '';
 
-    estimateResult.innerHTML = `<p class="eyebrow">Estimación inicial</p><h2>${s.depth} metros · ${labels[s.soil]}</h2><ul>${rows}</ul><div class="estimate-total"><span>Estimado</span><strong>${s.total != null ? formatGs(s.total) : 'A cotizar'}</strong></div><p>${note}</p><div class="estimate-actions"><button class="button button--outline" id="copy-estimate" type="button">Copiar solicitud</button>${waButton}</div>`;
+    target.innerHTML = `<p class="eyebrow">${eyebrow}</p><h2>${s.depth} metros · ${labels[s.soil]}</h2><ul>${rows}</ul><div class="estimate-total"><span>Estimado</span><strong>${s.total != null ? formatGs(s.total) : 'A cotizar'}</strong></div><p>${note}</p><div class="estimate-actions">${copyButton}${waButton}</div>`;
   }
 
   async function copySummary() {
@@ -240,11 +255,24 @@
     }
   }
 
+  // The lead form under the estimate posts the scope with the contact details.
+  const leadForm = document.querySelector('#calc-lead');
+  function syncLeadFields(s) {
+    if (!leadForm) return;
+    const set = (name, value) => { if (leadForm.elements[name]) leadForm.elements[name].value = value; };
+    set('depth', s.depth);
+    set('soil', s.soil);
+    set('install', s.install ? '1' : '0');
+    set('estimate', s.total != null ? Math.round(s.total) : '');
+    set('message', `Presupuesto desde la calculadora: pozo artesiano de ${s.depth} m, suelo ${soilLabels[s.soil]}, ${s.install ? 'con instalación completa' : 'solo perforación'}. ${s.total != null ? `Estimación del sitio: ${formatGs(s.total)}.` : 'Estimación: a cotizar.'}`);
+  }
+
   function refreshEstimate() {
     // Skip half-typed input (empty or out of range) so the price never jumps to a default.
     if (!calculator.checkValidity()) return;
     const summary = calculatorSummary(new FormData(calculator));
-    renderEstimate(summary);
+    renderEstimate(summary, estimateResult);
+    syncLeadFields(summary);
     document.querySelectorAll('#included-toggle [data-needs-install]').forEach((col) => { col.hidden = !summary.install; });
     const total = estimateResult.querySelector('.estimate-total strong');
     if (total && !reducedMotion) {
@@ -255,6 +283,7 @@
   }
 
   if (calculator && estimate && estimateResult) {
+    syncLeadFields(calculatorSummary(new FormData(calculator)));
     calculator.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!calculator.reportValidity()) return;
@@ -266,6 +295,21 @@
     document.addEventListener('click', (event) => {
       if (event.target.closest('#copy-estimate')) copySummary();
     });
+  }
+
+  // /gracias/ after the calculator lead form: show the estimate and what is included.
+  if (thanks) {
+    const params = new URLSearchParams(window.location.search);
+    const depthParam = Number(params.get('d'));
+    if (Number.isInteger(depthParam) && depthParam >= 10 && depthParam <= 300 && SOILS.includes(params.get('s'))) {
+      const result = thanks.querySelector('#gracias-estimate-result');
+      const summary = estimateFor(depthParam, params.get('s'), params.get('i') === '1');
+      if (result) {
+        renderEstimate(summary, result, { copy: false, eyebrow: 'Tu presupuesto de referencia' });
+        thanks.querySelectorAll('[data-needs-install]').forEach((col) => { col.hidden = !summary.install; });
+        thanks.hidden = false;
+      }
+    }
   }
 
   // --- CRM attribution script, loaded when the browser is idle ---------------

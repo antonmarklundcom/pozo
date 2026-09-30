@@ -11,6 +11,7 @@ const RESEND_API_BASE_DEFAULT = 'https://api.resend.com';
 const CONTACT_SOURCES = [
     'contacto' => 'site:pozo.com.py:contacto',
     'ficha' => 'site:pozo.com.py:ficha-rapida',
+    'calculadora' => 'site:pozo.com.py:calculadora',
 ];
 
 function redirectTo(string $location): never
@@ -111,6 +112,21 @@ $lead = [
 ];
 $isUrgent = $urgencyKey === 'hoy';
 
+// Calculator scope (form_id calculadora): validated, kept in the CRM, and used to
+// rebuild the estimate on /gracias/. The price itself is never trusted from the
+// URL; the thank-you page recomputes it from the published rates.
+$calc = [];
+if ($formId === 'calculadora') {
+    $calcDepth = (int)value('depth', 4);
+    $calcSoil = value('soil', 12);
+    $calc = [
+        'profundidad_m' => ($calcDepth >= 10 && $calcDepth <= 300) ? $calcDepth : null,
+        'suelo' => in_array($calcSoil, ['tierra', 'mixto', 'roca', 'desconocido'], true) ? $calcSoil : null,
+        'instalacion_completa' => value('install', 1) === '1' ? 'sí' : 'no',
+        'estimacion_gs' => ctype_digit(value('estimate', 12)) ? (int)value('estimate', 12) : null,
+    ];
+}
+
 if (
     $lead['name'] === '' ||
     $lead['phone'] === '' ||
@@ -168,7 +184,7 @@ $payload = [
         'zona' => $city,
         'barrio' => $barrio,
         'urgencia' => $lead['urgencia'],
-    ], static fn($item) => $item !== null && $item !== ''),
+    ] + $calc, static fn($item) => $item !== null && $item !== ''),
     'idempotency_key' => $idempotencyKey,
 ];
 $payload = array_filter($payload, static fn($item) => $item !== null && $item !== '');
@@ -363,4 +379,13 @@ if ($resendApiKey === '' || empty($notifyTo)) {
 
 // --- [3] Always end in WhatsApp with the enquiry prefilled ------------------
 error_log(sprintf('[pozo] crm=%s resend=%s', $crmStatusLog, $resendStatusLog));
+// Calculator leads land on the thank-you page, which shows their estimate and
+// what is included, with a WhatsApp button.
+if ($formId === 'calculadora' && $calc['profundidad_m'] !== null && $calc['suelo'] !== null) {
+    redirectTo(THANK_YOU_PATH . '?' . http_build_query([
+        'd' => $calc['profundidad_m'],
+        's' => $calc['suelo'],
+        'i' => $calc['instalacion_completa'] === 'sí' ? '1' : '0',
+    ]));
+}
 whatsappFallback($lead, $whatsappNumber, $waForm, isset(CONTACT_SOURCES[$formId]) ? $formId : 'contacto', $convertingPage);

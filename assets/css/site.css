@@ -646,3 +646,21 @@ body.launcher-open { overflow: hidden; }
   .included-card { padding: 18px; }
   .included-list li { padding-top: 3px; padding-bottom: 3px; }
 }
+
+.calc-lead { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line-light); }
+.calc-lead h3 { margin: 0 0 4px; font-size: 1.05rem; color: var(--white); }
+.calc-lead > p { margin: 0 0 14px; color: rgba(255,255,255,.7); font-size: .82rem; }
+.calc-lead__fields { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-bottom: 14px; }
+.calc-lead label:not(.consent) { display: block; margin-bottom: 6px; color: rgba(255,255,255,.82); font-size: .74rem; font-weight: 800; }
+.calc-lead .consent { margin-bottom: 14px; color: rgba(255,255,255,.7); }
+.calc-lead .consent a { color: var(--water-light); }
+.calc-lead .button { width: 100%; }
+.thanks-grid { display: grid; gap: 24px; grid-template-columns: 1.1fr 1fr; align-items: start; }
+.thanks-grid .included-card h2 { margin: 0 0 14px; font-size: 1.3rem; }
+.thanks-steps { margin: 28px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); counter-reset: step; }
+.thanks-steps li { counter-increment: step; padding: 16px 16px 16px 52px; position: relative; background: var(--sand); font-size: .9rem; }
+.thanks-steps li::before { content: counter(step); position: absolute; left: 14px; top: 14px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--water); color: var(--white); font-weight: 800; font-size: .8rem; }
+@media (max-width: 700px) {
+  .calc-lead__fields { grid-template-columns: 1fr; }
+  .thanks-grid { grid-template-columns: 1fr; }
+}

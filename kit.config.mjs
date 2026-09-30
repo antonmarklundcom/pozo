@@ -64,7 +64,7 @@ export default {
       phone: '0981 000 000', email: 'visitante@example.invalid', zona: 'San Lorenzo', barrio: 'Barrio Centro', urgencia: 'hoy',
       service: 'Desagüe de pozo ciego', message: 'Prueba local con stubs. El pozo rebalsa.', consent: '1',
     },
-    sources: { contacto: 'site:pozo.com.py:contacto', ficha: 'site:pozo.com.py:ficha-rapida' },
+    sources: { contacto: 'site:pozo.com.py:contacto', ficha: 'site:pozo.com.py:ficha-rapida', calculadora: 'site:pozo.com.py:calculadora' },
     ficha: { form_id: 'ficha', page_url: 'https://pozo.com.py/servicios/desague/', whatsappIncludes: 'ficha rápida (/servicios/desague/)' },
     whatsappIncludes: ['pozo.com.py', 'formulario de contacto', 'San Lorenzo, Barrio Centro', 'Desagüe de pozo ciego', '0981 000 000'],
     crmFields: { zona: 'San Lorenzo', pagina: 'https://pozo.com.py/contacto/', servicio: 'Desagüe de pozo ciego' },

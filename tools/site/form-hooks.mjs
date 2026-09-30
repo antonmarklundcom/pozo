@@ -29,4 +29,19 @@ export async function extra({ post, calls, check, waText, valid, withKeysPort, n
   const badCrm = calls.slice(mark).find((call) => call.url === '/api/v1/leads');
   check(badCrm && !('urgencia' in (badCrm.body.fields || {})), 'an unknown urgencia value must be dropped');
   check(waText(r.location).includes('Para cuándo lo necesito'), 'without a valid urgency the WhatsApp text must ask for it');
+
+  // Calculator lead: own source, scope stored in the CRM, redirect to the thank-you page (not WhatsApp).
+  mark = calls.length;
+  const calc = { ...valid, form_id: 'calculadora', service: 'Cotizar pozo artesiano', page_url: 'https://pozo.com.py/servicios/precio-pozo/', depth: '180', soil: 'tierra', install: '1', estimate: '21920000', phone: '0981 000 004' };
+  r = await post(withKeysPort, calc);
+  const calcCrm = calls.slice(mark).find((call) => call.url === '/api/v1/leads');
+  check(calcCrm?.body.source === 'site:pozo.com.py:calculadora', `calculator source ${calcCrm?.body.source}`);
+  check(calcCrm?.body.fields?.profundidad_m === 180 && calcCrm?.body.fields?.suelo === 'tierra' && calcCrm?.body.fields?.estimacion_gs === 21920000 && calcCrm?.body.fields?.instalacion_completa === 'sí', `calculator CRM fields ${JSON.stringify(calcCrm?.body.fields)}`);
+  check(r.location === '/gracias/?d=180&s=tierra&i=1', `calculator lead must redirect to the thank-you page with its scope (got ${r.location})`);
+  // Tampered scope: rejected values are dropped and the visitor falls back to WhatsApp.
+  mark = calls.length;
+  r = await post(withKeysPort, { ...calc, depth: '9999', soil: '<x>', estimate: 'abc', phone: '0981 000 005' });
+  const badCalc = calls.slice(mark).find((call) => call.url === '/api/v1/leads');
+  check(badCalc && !('profundidad_m' in badCalc.body.fields) && !('suelo' in badCalc.body.fields) && !('estimacion_gs' in badCalc.body.fields), 'invalid calculator values must be dropped from the CRM fields');
+  check(r.location.startsWith('https://wa.me/'), 'invalid calculator scope must fall back to WhatsApp');
 }
