@@ -14,6 +14,11 @@ export const SITE = {
   venderCrmUrl: 'https://crm.clientes.com.py',
   capacity: '8 m³',
   assetVersion: '20260930-4',
+  // Organization logo for structured data (512 x 512 PNG of the favicon mark).
+  logo: '/assets/images/logo-pozo-512.png',
+  // Official profiles of the business (Google Business Profile, Facebook,
+  // Instagram…). Empty until the owner confirms them; never guess a URL.
+  sameAs: [],
 };
 
 export const DEMO_MODE = false;

@@ -1,5 +1,5 @@
 {
-  "crawledAt": "2026-09-30T02:37:24.043Z",
+  "crawledAt": "2026-09-30T02:40:49.089Z",
   "base": "http://127.0.0.1:8765",
   "sitemap": {
     "status": 200,
@@ -96,6 +96,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "FAQPage"
           ]
@@ -190,6 +192,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "BreadcrumbList"
           ]
@@ -473,6 +477,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "BreadcrumbList"
           ]
@@ -547,6 +553,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "CollectionPage",
             "BreadcrumbList"
@@ -639,6 +647,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",
@@ -728,6 +738,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",
@@ -828,6 +840,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",
@@ -916,6 +930,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",
@@ -1008,6 +1024,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",
@@ -1092,6 +1110,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "BreadcrumbList"
@@ -1179,6 +1199,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",
@@ -1285,6 +1307,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "CollectionPage",
             "FAQPage",
@@ -1369,6 +1393,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",
@@ -1455,6 +1481,8 @@
         {
           "valid": true,
           "types": [
+            "WebSite",
+            "Organization",
             "ProfessionalService",
             "Service",
             "FAQPage",

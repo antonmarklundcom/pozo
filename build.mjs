@@ -13,6 +13,19 @@ const imageManifest = JSON.parse(await readFile(join(root, 'assets', 'images', '
 const areas = COVERAGE_CITIES;
 const barrios = ['Villa Morra', 'Recoleta', 'Carmelitas', 'Sajonia', 'Trinidad', 'Barrio Jara'];
 
+// serviceType (schema.org Service) per page that renders a Service node, and
+// for the business's offer catalog. Structured data only: no visible copy.
+const SERVICE_TYPES = {
+  '/servicios/artesiano/': 'Perforación de pozos artesianos',
+  '/servicios/precio-pozo/': 'Perforación de pozos artesianos',
+  '/servicios/pozo-ciego/': 'Construcción y mantenimiento de pozos ciegos',
+  '/servicios/desague/': 'Desagüe de pozos ciegos con camión atmosférico',
+  '/servicios/pozo-lleno/': 'Desagüe de pozos ciegos con camión atmosférico',
+  '/servicios/septico/': 'Cámaras sépticas y biodigestores',
+  '/servicios/agua/': 'Tratamiento de agua de pozo',
+};
+const ZONE_SERVICE_TYPE = 'Desagüe de pozos ciegos con camión atmosférico';
+
 const services = [
   { href: '/servicios/artesiano/', label: 'Pozos artesianos', text: 'Perforación, entubado, filtro, bomba y tablero según el terreno y la profundidad.', image: 'pozo-artesiano-servicio.webp', alt: 'Ilustración de perforación de pozo artesiano con equipo y personal técnico' },
   { href: '/servicios/pozo-ciego/', label: 'Pozos ciegos', text: 'Construcción, mantenimiento y revisión de pozos ciegos según el terreno y el uso.', image: 'pozo-septico-instalacion.webp', alt: 'Ilustración de instalación de pozo ciego' },
@@ -157,14 +170,36 @@ function breadcrumbs(items) {
   return `<nav class="breadcrumbs" aria-label="Migas de pan"><ol>${items.map(([href, label], index) => `<li>${index === items.length - 1 ? esc(label) : `<a href="${href}">${esc(label)}</a>`}</li>`).join('')}</ol></nav>`;
 }
 
+// JSON-LD graph. Ids: /#website, /#organization, /#business (the local
+// business, part of the organization), <page>#service, <page>#article.
+// No ratings, reviews or prices anywhere (qa.mjs enforces it).
 function baseSchema(page) {
+  const cityList = (names) => names.map((name) => ({ '@type': 'City', name }));
+  const website = {
+    '@type': 'WebSite',
+    '@id': `${SITE.url}/#website`,
+    url: `${SITE.url}/`,
+    name: SITE.name,
+    inLanguage: 'es-PY',
+    publisher: { '@id': `${SITE.url}/#organization` },
+  };
+  const organization = {
+    '@type': 'Organization',
+    '@id': `${SITE.url}/#organization`,
+    name: SITE.name,
+    url: `${SITE.url}/`,
+    logo: { '@type': 'ImageObject', url: `${SITE.url}${SITE.logo}`, width: 512, height: 512 },
+    ...(SITE.sameAs.length ? { sameAs: SITE.sameAs } : {}),
+  };
   const professional = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     '@id': `${SITE.url}/#business`,
     name: SITE.name,
-    url: SITE.url,
+    url: `${SITE.url}/`,
     description: SITE.tagline,
+    logo: `${SITE.url}${SITE.logo}`,
+    parentOrganization: { '@id': `${SITE.url}/#organization` },
     image: `${SITE.url}/assets/images/pozo-artesiano-perforacion.webp`,
     address: {
       '@type': 'PostalAddress',
@@ -172,9 +207,19 @@ function baseSchema(page) {
       addressRegion: SITE.region,
       addressCountry: SITE.country,
     },
-    areaServed: areas.map((name) => ({ '@type': 'City', name })),
+    areaServed: cityList(areas),
     knowsLanguage: SITE.languages,
     openingHours: ['Mo-Sa 07:00-19:00'],
+    // What the business offers, without prices (none are verified).
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Servicios de pozos, desagüe y agua',
+      itemListElement: services.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: service.label, serviceType: SERVICE_TYPES[service.href], url: `${SITE.url}${service.href}` },
+      })),
+    },
+    ...(SITE.sameAs.length ? { sameAs: SITE.sameAs } : {}),
   };
   if (SITE.phoneDisplay !== 'Contacto pendiente') professional.telephone = SITE.phoneDisplay;
   if (SITE.phoneDisplay !== 'Contacto pendiente') {
@@ -185,13 +230,16 @@ function baseSchema(page) {
       availableLanguage: ['Spanish', 'Guarani'],
     };
   }
-  const graph = [professional];
+  const graph = [website, organization, professional];
   if (page.service) {
     graph.push({
       '@type': 'Service',
+      '@id': `${SITE.url}${page.path}#service`,
       name: page.h1,
+      serviceType: page.zone ? ZONE_SERVICE_TYPE : SERVICE_TYPES[page.path],
       provider: { '@id': `${SITE.url}/#business` },
-      areaServed: areas.map((name) => ({ '@type': 'City', name })),
+      // A zone page serves its own city; service pages the whole coverage.
+      areaServed: cityList(page.zone ? [page.zone] : areas),
       url: `${SITE.url}${page.path}`,
       description: page.description,
     });
@@ -222,6 +270,7 @@ function baseSchema(page) {
       description: page.description,
       url,
       mainEntityOfPage: url,
+      isPartOf: { '@id': `${SITE.url}/#website` },
       inLanguage: 'es-PY',
       datePublished: page.article.published,
       dateModified: page.article.updated || page.article.published,
