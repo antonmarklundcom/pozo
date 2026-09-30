@@ -60,12 +60,23 @@ host was unreachable from the cloud; Sonnet S0 re-crawls live). Full diff: `docs
 
 ## 5. Phase 2 — Sonnet *(to fill in)*
 
-- S0 live crawl: …
-- S1 keyword map: …
-- S2 copy / FAQs / internal links: …
-- S3 new pages: …
-- S4 polish: …
-- S5 final verify output: …
+Status 2026-09-30: **S0–S3 blocked in the cloud session; S4 done earlier; no page content changed.**
+
+- S0 live crawl: **not run.** `pozo.com.py` is denied by the cloud environment's network policy (proxy answers
+  403 to CONNECT). Run `node tools/crawl.mjs https://pozo.com.py docs/seo/audit-live-before.json` and
+  `node tools/seo-diff.mjs docs/seo/audit-before.json docs/seo/audit-live-before.json` from a machine that
+  can reach the site (or allow the host in the environment's Network access).
+- S1 keyword map: **not done, no evidence.** No keyword-library MCP was connected in the session (none of
+  the available connectors is installed). `docs/seo/keyword-map.md` holds the current titles/H1s and the
+  hypotheses table with every volume empty. Nothing was invented.
+- S2 copy / FAQs / internal links: **not done.** The rule ties copy, title, H1 and question-based FAQs to
+  MCP evidence, so rewriting without it would break the brief.
+- S3 new pages: **not done.** New zone pages need per-city search demand from the MCP; new service pages
+  (biodigestor, camión atmosférico) need the same, and limpieza / bombas / destape need owner confirmation.
+- S4 polish: done in the earlier Sonnet session (sticky mobile contact bar, table cards).
+- S5 final verify: `node tools/verify.mjs` → **all steps passed** on the branch head before this docs-only
+  change (0 lost URLs, Playwright 1366/390 clean, stubbed form test passed). SEO before/after is unchanged
+  from section 3.
 
 ## 6. Needs a human
 
@@ -74,5 +85,10 @@ host was unreachable from the cloud; Sonnet S0 re-crawls live). Full diff: `docs
    cache), resubmit the sitemap in Search Console, request indexing of `/zonas/`.
 3. Confirm which extra services are real (limpieza de pozo artesiano, bombas, destape) and the city coverage.
 4. Real photos, verified PYG prices, VenderCRM site key, Resend domain verification and `notify_to`.
-5. Confirm the obra.com.py target pages are live (they exist in the obra repo: /quintas/, /presupuesto/,
+5. **Unblock S0–S3:** run the session where the keyword-library MCP is connected and `pozo.com.py` is
+   reachable (local PC as the plan intended, or add the host to the cloud environment's Network access and
+   connect the MCP). Nothing else in the plan depends on a decision.
+6. Services still needing the owner's confirmation, so no page exists: limpieza de pozo artesiano, bombas
+   para pozo, destape de cañerías.
+7. Confirm the obra.com.py target pages are live (they exist in the obra repo: /quintas/, /presupuesto/,
    /ampliaciones/, /casas/, /reformas/, /patios/, /piscinas/).
