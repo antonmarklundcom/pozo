@@ -146,3 +146,8 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   neither zone was linked from a service page. Fixed with build link blocks (no copy changes): "Servicios
   relacionados" (`RELATED_SERVICES`) on service/zone pages and "Desagüe por zona" on desagüe + pozo-lleno.
   All rules pass; report `docs/seo/link-graph.md` (all pages at depth 1, 0 orphans).
+- **O8 — Live smoke test**: `tools/smoke-live.mjs [base] [--out file]` compares a deployed site with this
+  build: sitemap URLs 200, title/H1 equal the generated HTML, each page's wa.me number and exact texts, JSON-LD
+  parses, 39 legacy URLs (literal `.htaccess` rules) 301 to their target, 10 denied paths 404/403. Exit 2 when
+  unreachable (network error or egress denial via `x-deny-reason`). Tested: local router → pass; original v2
+  import → 63 differences; live `pozo.com.py` → exit 2 (host not in this environment's allowlist).
