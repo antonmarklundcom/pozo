@@ -459,7 +459,7 @@ function faqBlock(items) {
 const strata = '<div class="strata" aria-hidden="true"><span></span><span></span><span></span></div>';
 
 function trustBar() {
-  return `<section class="trust-bar"><div class="shell trust-bar__inner"><span>Imágenes ilustrativas</span><span>Presupuesto antes de coordinar</span><span>Sin costo oculto: se confirma cada visita</span></div></section>`;
+  return `<section class="trust-bar"><div class="shell trust-bar__inner"><span>Imágenes ilustrativas</span><span>Presupuesto antes de coordinar</span><span>Cada visita se confirma con el operador</span></div></section>`;
 }
 
 const home = {

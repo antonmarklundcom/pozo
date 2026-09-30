@@ -187,3 +187,8 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   home hero, calculator, water analysis, zone pages) to describe what each image shows (e.g. the "pozo
   ciego" picture is a concrete chamber with lids, not a generic installation). All still start with
   "Ilustración" and every "Imagen ilustrativa" label is unchanged. No other wording changed; verify green.
+- **N4 — Copy QA sweep**: read the visible text of all 15 pages plus the WhatsApp texts. Accents, spelling,
+  punctuation and voseo (affirmative imperatives "Reducí/Sacá/Contanos"; negative "No abras" is the common
+  Paraguayan form and was left) came out clean; no tuteo. One error fixed: the trust bar said "Sin costo oculto",
+  an unconfirmed cost promise (`docs/CONTENT-NOTES.md`), now "Cada visita se confirma con el operador".
+  No SEO rewording, titles and H1s untouched.
