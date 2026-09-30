@@ -1,5 +1,5 @@
 {
-  "crawledAt": "2026-09-30T02:29:00.349Z",
+  "crawledAt": "2026-09-30T02:33:39.665Z",
   "base": "http://127.0.0.1:8765",
   "sitemap": {
     "status": 200,
@@ -478,7 +478,7 @@
           ]
         }
       ],
-      "words": 315,
+      "words": 407,
       "images": []
     },
     "/servicios/": {

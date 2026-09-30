@@ -1,7 +1,7 @@
 # SEO before/after diff
 
 Before: http://127.0.0.1:8770 (2026-09-30T00:53:43.782Z, 37 URLs)  
-After: http://127.0.0.1:8765 (2026-09-30T02:29:00.349Z, 48 URLs)
+After: http://127.0.0.1:8765 (2026-09-30T02:33:39.665Z, 48 URLs)
 
 ## Lost or broken URLs (0)
 
@@ -23,7 +23,7 @@ None. Every URL that answered 200 or 301 before still does.
 | /privacidad.php | 301 | — |  | no |
 | /tratamiento-agua.php | 301 | — |  | no |
 
-## Changed URLs (12)
+## Changed URLs (13)
 
 ### /pozos-artesianos/precio-metro
 
@@ -46,6 +46,12 @@ None. Every URL that answered 200 or 301 before still does.
 | description | La página solicitada no existe. Volvé al inicio o elegí un servicio. | — |
 | h1 | Esta página no está donde esperábamos. | — |
 | robots | noindex,follow | — |
+
+### /privacidad/
+
+| Field | Before | After |
+|---|---|---|
+| words | 315 | 407 |
 
 ### /servicios/agua/
 
