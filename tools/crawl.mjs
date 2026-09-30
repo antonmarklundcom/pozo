@@ -39,7 +39,7 @@ async function legacySeeds() {
   const seeds = [];
   try {
     const htaccess = await readFile(join(root, '.htaccess'), 'utf8');
-    for (const [, from] of htaccess.matchAll(/^RewriteRule \^([a-z0-9/.-]+?)(?:\/\?)?\$\s+(\S+)\s+\[R=301/gim)) {
+    for (const [, from] of htaccess.matchAll(/^RewriteRule \^([a-z0-9/.\\-]+?)(?:\/\?)?\$\s+(\S+)\s+\[R=301/gim)) {
       seeds.push(`/${from.replace(/\\\./g, '.')}${from.includes('.') ? '' : '/'}`);
     }
   } catch { /* no .htaccess */ }

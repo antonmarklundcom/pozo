@@ -11,3 +11,4 @@ private/
 *private*.php
 !*private*.example.php
 
+qa-screens/
