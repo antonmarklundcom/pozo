@@ -111,6 +111,67 @@ function triageOk(formHtml) {
   return radios.join() === Object.keys(FORM_FALLBACK.urgency).join() && cities.every((city) => options.includes(city)) && options.includes('Otra');
 }
 
+// Structured data: required properties per @type, ids that resolve, and no
+// ratings, reviews or prices (nothing of that is verified).
+const SCHEMA_REQUIRED = {
+  WebSite: ['@id', 'url', 'name', 'publisher'],
+  Organization: ['@id', 'name', 'url', 'logo'],
+  ProfessionalService: ['@id', 'name', 'url', 'telephone', 'address', 'areaServed', 'image', 'logo', 'openingHours', 'hasOfferCatalog', 'parentOrganization'],
+  Service: ['@id', 'name', 'serviceType', 'provider', 'areaServed', 'url'],
+  FAQPage: ['mainEntity'],
+  BreadcrumbList: ['itemListElement'],
+  CollectionPage: ['name', 'url', 'mainEntity'],
+  Article: ['@id', 'headline', 'description', 'url', 'mainEntityOfPage', 'datePublished', 'author', 'publisher'],
+};
+const FORBIDDEN_SCHEMA = /"(?:aggregateRating|review|reviewRating|ratingValue|price|priceSpecification|lowPrice|highPrice|priceRange)"\s*:/;
+function validateGraph(rel, path, data, html) {
+  const graph = data['@graph'];
+  if (data['@context'] !== 'https://schema.org' || !Array.isArray(graph)) { fail(`${rel}: JSON-LD must be one @graph with the schema.org context`); return; }
+  if (FORBIDDEN_SCHEMA.test(JSON.stringify(data))) fail(`${rel}: JSON-LD contains ratings, reviews or prices`);
+  const ids = new Set(graph.map((node) => node['@id']).filter(Boolean));
+  for (const type of ['WebSite', 'Organization', 'ProfessionalService']) {
+    if (!graph.some((node) => node['@type'] === type)) fail(`${rel}: JSON-LD missing ${type}`);
+  }
+  for (const node of graph) {
+    const required = SCHEMA_REQUIRED[node['@type']];
+    if (!required) { fail(`${rel}: JSON-LD type ${node['@type']} has no QA rule`); continue; }
+    for (const key of required) {
+      const value = node[key];
+      if (value == null || value === '' || (Array.isArray(value) && !value.length)) fail(`${rel}: ${node['@type']} missing ${key}`);
+    }
+    // Every {"@id": …} reference inside a node points at a node on the page.
+    for (const [, ref] of JSON.stringify(node).matchAll(/\{"@id":"([^"]+)"\}/g)) {
+      if (!ids.has(ref)) fail(`${rel}: ${node['@type']} references ${ref}, which is not in the graph`);
+    }
+    if (node['@type'] === 'Organization' && node.logo?.url && !existsAsRoute(new URL(node.logo.url).pathname)) fail(`${rel}: Organization logo file is missing`);
+    if (node['@type'] === 'Organization' && node.sameAs && !node.sameAs.every((url) => /^https:\/\//.test(url))) fail(`${rel}: sameAs entries must be https URLs`);
+    if (node['@type'] === 'ProfessionalService') {
+      const offers = node.hasOfferCatalog?.itemListElement || [];
+      if (!offers.length || !offers.every((offer) => offer['@type'] === 'Offer' && offer.itemOffered?.name && offer.itemOffered?.serviceType && offer.itemOffered?.url)) fail(`${rel}: hasOfferCatalog offers need itemOffered name, serviceType and url`);
+      for (const offer of offers) if (offer.itemOffered?.url && !existsAsRoute(new URL(offer.itemOffered.url).pathname)) fail(`${rel}: offer catalog links to a missing page ${offer.itemOffered.url}`);
+      if (!node.address?.addressCountry) fail(`${rel}: ProfessionalService address needs addressCountry`);
+    }
+    if (node['@type'] === 'Service') {
+      if (node.url !== `${SITE.url}${path}`) fail(`${rel}: Service url must be the page URL`);
+      if (!node.areaServed.every((area) => area['@type'] === 'City' && area.name)) fail(`${rel}: Service areaServed must list City names`);
+      const zone = ZONES.find((item) => item.path === path);
+      if (zone && (node.areaServed.length !== 1 || node.areaServed[0].name !== zone.city)) fail(`${rel}: zone Service areaServed must be ${zone.city}`);
+    }
+    if (node['@type'] === 'FAQPage') {
+      if (!node.mainEntity.every((q) => q['@type'] === 'Question' && q.name && q.acceptedAnswer?.text)) fail(`${rel}: FAQPage questions need name and acceptedAnswer.text`);
+      const visibleQuestions = (html.match(/<div class="faq-list">[\s\S]*?<\/div>/g) || []).join('').match(/<summary>/g)?.length || 0;
+      if (visibleQuestions !== node.mainEntity.length) fail(`${rel}: FAQPage has ${node.mainEntity.length} questions but the page shows ${visibleQuestions}`);
+    }
+    if (node['@type'] === 'BreadcrumbList') {
+      const items = node.itemListElement;
+      if (!items.every((item, index) => item.position === index + 1 && item.name && item.item?.startsWith(SITE.url))) fail(`${rel}: BreadcrumbList positions/items invalid`);
+      if (items.at(-1)?.item !== `${SITE.url}${path}`) fail(`${rel}: BreadcrumbList must end at the page itself`);
+    }
+    if (node['@type'] === 'CollectionPage' && !(node.mainEntity?.itemListElement || []).length) fail(`${rel}: CollectionPage ItemList is empty`);
+  }
+  if (html.includes('class="faq-list"') && !graph.some((node) => node['@type'] === 'FAQPage')) fail(`${rel}: page shows FAQs without FAQPage JSON-LD`);
+}
+
 // --- 3. Every generated page -------------------------------------------------
 const titles = new Set();
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
@@ -155,6 +216,7 @@ for (const file of htmlFiles) {
         const data = JSON.parse(block[1]);
         const business = (data['@graph'] || []).find((item) => item['@type'] === 'ProfessionalService');
         if (business && business.telephone !== NUMBER_DISPLAY) fail(`${rel}: JSON-LD telephone is not ${NUMBER_DISPLAY}`);
+        validateGraph(rel, path, data, html);
       } catch (error) { fail(`${rel}: invalid JSON-LD (${error.message})`); }
     }
   }

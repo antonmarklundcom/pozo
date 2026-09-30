@@ -122,3 +122,9 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   for "hoy"; email and WhatsApp text carry urgency and zona (the "¿para cuándo?" ask line only when none
   was chosen). form-test covers hoy / semana / invalid; qa checks both forms. Asset version bumped (also
   covers the O2 site.js change, which had shipped without a bump).
+- **O4 — Structured data**: every page's graph now has WebSite (`/#website`), Organization
+  (`/#organization`, 512 px PNG logo rendered from the favicon mark, `SITE.sameAs` — empty until the owner
+  confirms profiles) and the ProfessionalService (`/#business`, `parentOrganization`, `hasOfferCatalog` of
+  the 6 services with serviceType, **no prices**). Service nodes get `@id`, `serviceType` and `areaServed`
+  (zone pages: their own city). qa.mjs checks required properties per type, `@id` references, visible FAQ
+  count = FAQPage count, breadcrumb ends at the page, and forbids ratings/reviews/prices.
