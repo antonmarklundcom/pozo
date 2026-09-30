@@ -13,7 +13,7 @@ export const SITE = {
   leadEmail: '',
   venderCrmUrl: 'https://crm.clientes.com.py',
   capacity: '8 m³',
-  assetVersion: '20260930-6',
+  assetVersion: '20260930-7',
   // Organization logo for structured data (512 x 512 PNG of the favicon mark).
   logo: '/assets/images/logo-pozo-512.png',
   // Official profiles of the business (Google Business Profile, Facebook,
@@ -23,14 +23,14 @@ export const SITE = {
 
 export const DEMO_MODE = false;
 
+// Client-facing rates in guaraníes (Gs). Operator quote of 2026-09-30 (80.000 Gs/m
+// drilling, 6.500.000 Gs installation kit) plus ~5%, rounded to clean numbers.
+// Never publish the operator's own rates. null = "A cotizar".
 export const PRICES = {
-  drillingSoilPerMeter: null,
-  drillingMixedPerMeter: null,
-  drillingRockPerMeter: null,
-  casingPerMeter: null,
-  filter: null,
-  pump: null,
-  controlPanel: null,
+  drillingSoilPerMeter: 84000,   // includes casing (entubado) and gravel pack (engravado)
+  drillingMixedPerMeter: 84000,  // same quote covered the zone's soil; confirm mixed on site
+  drillingRockPerMeter: null,    // no operator quote yet
+  installationKit: 6800000,      // 1 hp pump + panel, hydropneumatic tank, pipes, fittings
   drainageTrip8m3: null,
 };
 
