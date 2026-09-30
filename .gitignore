@@ -1,0 +1,13 @@
+node_modules/
+*.zip
+private/
+.DS_Store
+
+.env
+.env.*
+!.env.example
+config/local.php
+private/
+*private*.php
+!*private*.example.php
+

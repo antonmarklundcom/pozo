@@ -1,0 +1,11 @@
+# pozo.com.py
+# ⚠️ MODO DEMO: mientras el sitio no esté lanzado, dejar el Disallow global activo
+# y quitar DEMO_MODE en includes/config.php recién el día del lanzamiento.
+
+User-agent: *
+Disallow: /includes/
+Disallow: /privacidad
+Disallow: /404
+Allow: /
+
+Sitemap: https://pozo.com.py/sitemap.xml
