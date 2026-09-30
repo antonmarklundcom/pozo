@@ -183,3 +183,7 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   723 caracteres, 12 publicaciones semanales, 10 Q&A tomadas de las FAQ del sitio, lista de fotos reales,
   texto de pedido de reseña sin incentivos, rutina mensual). Hecho con la skill gbp-optimizer; sin
   precios, plazos ni garantías. Pendientes del dueño en `docs/OWNER-TODO.md`.
+- **N3 — Alt text**: viewed all 8 images and rewrote 16 alt attributes in `build.mjs` (service cards, heroes,
+  home hero, calculator, water analysis, zone pages) to describe what each image shows (e.g. the "pozo
+  ciego" picture is a concrete chamber with lids, not a generic installation). All still start with
+  "Ilustración" and every "Imagen ilustrativa" label is unchanged. No other wording changed; verify green.
