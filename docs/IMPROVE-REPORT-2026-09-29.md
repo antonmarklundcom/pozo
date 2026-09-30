@@ -173,3 +173,9 @@ to the latest `main` after each merge — this replaces the runbook's `<run>/<ta
   run are in `docs/RUNBOOK-OPUS-THEN-SONNET.md` §3 ("Notes from the Opus run").
   **The Sonnet run may start.**
 
+
+## Sonnet run log
+
+- **N1 — WhatsApp reply templates**: `docs/WHATSAPP-RESPUESTAS.md`, one operator reply per topic in
+  `wa-messages.mjs` (13), each with a quick-reply shortcut (`/urgente`, `/precio`, …), a label table and four
+  follow-up shortcuts. No prices, times or guarantees. Docs only; verify green.
