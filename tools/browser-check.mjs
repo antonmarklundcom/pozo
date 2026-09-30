@@ -108,6 +108,40 @@ for (const viewport of widths) {
   }
   await context.close();
 }
+// Critical CSS: the first screen must lay out the same with only the inlined
+// <style> as with the full stylesheet (build.mjs CRITICAL_COMPONENTS).
+async function firstScreen(context, path, blockFullCss) {
+  const page = await context.newPage();
+  if (blockFullCss) await page.route(/\/assets\/css\/site\.min\.css/, (route) => route.abort());
+  await page.goto(`${base}${path}`, { waitUntil: 'load' });
+  await page.evaluate(() => document.fonts.ready);
+  await page.addStyleTag({ content: '*,*::before,*::after{transition:none!important;animation:none!important}' });
+  await page.evaluate(() => { document.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-in')); window.scrollTo(0, 0); });
+  await page.waitForTimeout(200);
+  const boxes = await page.evaluate(() => [...document.body.querySelectorAll('*')].map((node) => {
+    const rect = node.getBoundingClientRect();
+    const name = `${node.tagName.toLowerCase()}${node.className && typeof node.className === 'string' ? `.${node.className.trim().split(/\s+/).join('.')}` : ''}`;
+    const shown = rect.width > 0 && rect.height > 0 && node.checkVisibility({ visibilityProperty: true, contentVisibilityAuto: true });
+    return { name, x: Math.round(rect.x), y: Math.round(rect.y), w: Math.round(rect.width), h: Math.round(rect.height), visible: shown && rect.top < window.innerHeight && rect.bottom > 0, inside: rect.bottom <= window.innerHeight };
+  }));
+  await page.close();
+  return boxes;
+}
+for (const viewport of widths) {
+  const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, isMobile: !!viewport.isMobile, hasTouch: !!viewport.hasTouch, locale: 'es-PY' });
+  await context.route(THIRD_PARTY, (route) => route.abort());
+  for (const path of paths) {
+    const full = await firstScreen(context, path, false);
+    const critical = await firstScreen(context, path, true);
+    // Position and width of everything in the first screen must match; height
+    // only for elements that end inside it (content below may differ).
+    const diffs = full.map((box, index) => [box, critical[index]]).filter(([a, b]) => b && (a.visible || b.visible) && (a.visible !== b.visible || Math.abs(a.x - b.x) > 2 || Math.abs(a.y - b.y) > 2 || Math.abs(a.w - b.w) > 2 || (a.inside && Math.abs(a.h - b.h) > 2)));
+    if (full.length !== critical.length) problems.push(`${viewport.name} ${path}: critical CSS check saw a different DOM`);
+    else if (diffs.length) problems.push(`${viewport.name} ${path}: first screen differs without the full stylesheet (add the component to CRITICAL_COMPONENTS in build.mjs): ${diffs.length} elements, e.g. ${diffs.slice(0, 6).map(([a, b]) => `${a.name} ${a.x},${a.y} ${a.w}x${a.h} vs ${b.x},${b.y} ${b.w}x${b.h}${a.visible !== b.visible ? ' (visibility)' : ''}`).join(' | ')}`);
+  }
+  await context.close();
+}
+
 // WhatsApp click tracking: the HTML link is wa.me; a click opens /wa.php?p=&t=.
 {
   const context = await browser.newContext({ viewport: { width: 1366, height: 900 }, locale: 'es-PY' });

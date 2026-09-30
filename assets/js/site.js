@@ -253,6 +253,20 @@
     });
   }
 
+  // --- CRM attribution script, loaded when the browser is idle ---------------
+  // It is not needed for the first paint; site.js already stores vc_attr.
+  const vcSrc = document.body.dataset.vcSrc;
+  if (vcSrc) {
+    const loadVc = () => {
+      const script = document.createElement('script');
+      script.src = vcSrc;
+      script.async = true;
+      document.body.appendChild(script);
+    };
+    if ('requestIdleCallback' in window) window.requestIdleCallback(loadVc, { timeout: 3000 });
+    else window.setTimeout(loadVc, 1500);
+  }
+
   // --- Forms ---------------------------------------------------------------
   document.querySelectorAll('input[name="page_url"]').forEach((field) => {
     field.value = window.location.href;

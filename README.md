@@ -39,6 +39,8 @@ Where things live:
 | Guides (`/guias/`, drafts preview in `.preview/`) | `content/guides.mjs` |
 | One sibling-site cross-link per page | `content/cross-links.mjs` |
 | Page templates and copy | `build.mjs` |
+| Styles / scripts (edit these; `site.min.*` and the inline critical CSS are generated) | `assets/css/site.css`, `assets/js/site.js` |
+| Performance check (LCP, bytes at 390/1366) | `node tools/perf.mjs` → `docs/perf/` |
 | Internal editorial notes (never published) | `docs/CONTENT-NOTES.md` |
 | SEO baseline, crawl, before/after diff | `docs/seo/` |
 
