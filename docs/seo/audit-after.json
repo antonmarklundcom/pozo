@@ -1,5 +1,5 @@
 {
-  "crawledAt": "2026-09-30T17:51:18.647Z",
+  "crawledAt": "2026-09-30T19:00:56.074Z",
   "base": "http://127.0.0.1:8765",
   "sitemap": {
     "status": 200,
@@ -15,12 +15,27 @@
       "/servicios/agua/",
       "/zonas/san-lorenzo/",
       "/zonas/mra/",
+      "/zonas/luque/",
+      "/zonas/capiata/",
+      "/zonas/lambare/",
+      "/zonas/fernando-de-la-mora/",
+      "/zonas/nemby/",
+      "/zonas/villa-elisa/",
+      "/zonas/limpio/",
+      "/zonas/asuncion/",
       "/zonas/",
+      "/guias/cada-cuanto-desagotar-pozo-ciego/",
+      "/guias/pozo-ciego-o-camara-septica/",
+      "/guias/pozo-artesiano-o-pozo-excavado/",
+      "/guias/bomba-y-tanque-hidroneumatico/",
+      "/guias/preparar-terreno-para-perforar-pozo/",
+      "/guias/preparar-acceso-camion-atmosferico/",
+      "/guias/",
       "/contacto/",
       "/privacidad/"
     ]
   },
-  "pageCount": 48,
+  "pageCount": 63,
   "pages": {
     "/": {
       "path": "/",
@@ -37,6 +52,7 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -47,8 +63,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [],
       "whatsapp": [
@@ -129,6 +153,7 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -139,8 +164,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [],
       "whatsapp": [
@@ -264,6 +297,676 @@
       "legacy": true,
       "status": 301,
       "location": "/zonas/san-lorenzo/"
+    },
+    "/guias/": {
+      "path": "/guias/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Guías sobre pozos, desagüe y agua | Pozo.com.py",
+      "description": "Guías prácticas sobre pozos artesianos, pozos ciegos, desagüe y agua de pozo en Asunción y Gran Asunción.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/guias/",
+      "h1": [
+        "Guías sobre pozos, desagüe y agua"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/guias/bomba-y-tanque-hidroneumatico/",
+        "/guias/cada-cuanto-desagotar-pozo-ciego/",
+        "/guias/pozo-artesiano-o-pozo-excavado/",
+        "/guias/pozo-ciego-o-camara-septica/",
+        "/guias/preparar-acceso-camion-atmosferico/",
+        "/guias/preparar-terreno-para-perforar-pozo/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Guías).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Guías).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Guías).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Guías).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Guías).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Guías).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Guías).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "CollectionPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 215,
+      "images": []
+    },
+    "/guias/bomba-y-tanque-hidroneumatico/": {
+      "path": "/guias/bomba-y-tanque-hidroneumatico/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Bomba y tanque hidroneumático: cómo funcionan | Pozo.com.py",
+      "description": "Cómo trabajan juntos bomba, presostato, tanque hidroneumático y tablero en un pozo, y de qué depende elegir cada componente.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/guias/bomba-y-tanque-hidroneumatico/",
+      "h1": [
+        "Bomba y tanque hidroneumático: cómo trabajan juntos"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/guias/pozo-artesiano-o-pozo-excavado/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Bomba y tanque hidroneumático).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Article",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 896,
+      "images": []
+    },
+    "/guias/cada-cuanto-desagotar-pozo-ciego/": {
+      "path": "/guias/cada-cuanto-desagotar-pozo-ciego/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Cada cuánto desagotar un pozo ciego | Pozo.com.py",
+      "description": "De qué depende cada cuánto hay que desagotar un pozo ciego: personas, tamaño, suelo y uso. Señales para no esperar a que se llene.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/guias/cada-cuanto-desagotar-pozo-ciego/",
+      "h1": [
+        "Cada cuánto hay que desagotar un pozo ciego"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/guias/pozo-ciego-o-camara-septica/",
+        "/guias/preparar-acceso-camion-atmosferico/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Cada cuánto desagotar el pozo ciego).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Article",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 1163,
+      "images": []
+    },
+    "/guias/pozo-artesiano-o-pozo-excavado/": {
+      "path": "/guias/pozo-artesiano-o-pozo-excavado/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Pozo artesiano o pozo excavado | Pozo.com.py",
+      "description": "Diferencias entre pozo perforado (artesiano) y pozo excavado: profundidad, protección contra contaminación, bomba y mantenimiento.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/guias/pozo-artesiano-o-pozo-excavado/",
+      "h1": [
+        "Pozo artesiano o pozo excavado: diferencias"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/guias/bomba-y-tanque-hidroneumatico/",
+        "/guias/preparar-terreno-para-perforar-pozo/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo artesiano o excavado).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Article",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 851,
+      "images": []
+    },
+    "/guias/pozo-ciego-o-camara-septica/": {
+      "path": "/guias/pozo-ciego-o-camara-septica/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Pozo ciego o cámara séptica: diferencias | Pozo.com.py",
+      "description": "Diferencias entre pozo ciego y cámara séptica, ventajas y límites de cada uno, cuándo conviene cada opción y qué suma un biodigestor.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/guias/pozo-ciego-o-camara-septica/",
+      "h1": [
+        "Pozo ciego o cámara séptica: cuál conviene"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/guias/cada-cuanto-desagotar-pozo-ciego/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Pozo ciego o cámara séptica).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Article",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 1031,
+      "images": []
+    },
+    "/guias/preparar-acceso-camion-atmosferico/": {
+      "path": "/guias/preparar-acceso-camion-atmosferico/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Cómo preparar el acceso para el camión | Pozo.com.py",
+      "description": "Qué revisar antes de que llegue el camión atmosférico: acceso, distancia a la tapa, fotos útiles y seguridad durante el desagüe.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/guias/preparar-acceso-camion-atmosferico/",
+      "h1": [
+        "Cómo preparar el acceso para el camión atmosférico"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/guias/cada-cuanto-desagotar-pozo-ciego/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el acceso para el camión).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Article",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 876,
+      "images": []
+    },
+    "/guias/preparar-terreno-para-perforar-pozo/": {
+      "path": "/guias/preparar-terreno-para-perforar-pozo/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Preparar el terreno para perforar un pozo | Pozo.com.py",
+      "description": "Qué preparar antes de perforar un pozo: acceso para la máquina, ubicación, servicios enterrados, tanque, energía y fotos para enviar.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/guias/preparar-terreno-para-perforar-pozo/",
+      "h1": [
+        "Cómo preparar el terreno para perforar un pozo"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/guias/bomba-y-tanque-hidroneumatico/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Preparar el terreno para perforar).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Article",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 859,
+      "images": []
     },
     "/index.php": {
       "path": "/index.php",
@@ -427,6 +1130,7 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -437,8 +1141,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://www.bacn.gov.py/leyes-paraguayas/12924/ley-n-75932025-de-proteccion-de-datos-personales-en-la-republica-del-paraguay",
@@ -502,6 +1214,7 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -512,8 +1225,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [],
       "whatsapp": [
@@ -586,6 +1307,7 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -596,8 +1318,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://obra.com.py/piscinas/"
@@ -656,7 +1386,7 @@
           ]
         }
       ],
-      "words": 474,
+      "words": 553,
       "images": [
         "/assets/images/tratamiento-agua-filtros.webp",
         "/assets/images/analisis-calidad-agua.webp"
@@ -677,6 +1407,10 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
+        "/guias/bomba-y-tanque-hidroneumatico/",
+        "/guias/pozo-artesiano-o-pozo-excavado/",
+        "/guias/preparar-terreno-para-perforar-pozo/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -687,8 +1421,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://obra.com.py/quintas/"
@@ -747,7 +1489,7 @@
           ]
         }
       ],
-      "words": 595,
+      "words": 845,
       "images": [
         "/assets/images/pozo-artesiano-servicio.webp"
       ]
@@ -767,6 +1509,9 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
+        "/guias/cada-cuanto-desagotar-pozo-ciego/",
+        "/guias/preparar-acceso-camion-atmosferico/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -777,8 +1522,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://obra.com.py/patios/"
@@ -849,7 +1602,7 @@
           ]
         }
       ],
-      "words": 549,
+      "words": 757,
       "images": [
         "/assets/images/desague-pozo-ciego-camion.webp"
       ]
@@ -869,6 +1622,9 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
+        "/guias/pozo-ciego-o-camara-septica/",
+        "/guias/preparar-terreno-para-perforar-pozo/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -879,8 +1635,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://obra.com.py/ampliaciones/"
@@ -939,7 +1703,7 @@
           ]
         }
       ],
-      "words": 498,
+      "words": 633,
       "images": [
         "/assets/images/pozo-septico-instalacion.webp"
       ]
@@ -959,6 +1723,9 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
+        "/guias/cada-cuanto-desagotar-pozo-ciego/",
+        "/guias/preparar-acceso-camion-atmosferico/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -969,8 +1736,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://obra.com.py/reformas/"
@@ -1033,7 +1808,7 @@
           ]
         }
       ],
-      "words": 496,
+      "words": 682,
       "images": [
         "/assets/images/pozo-ciego-lleno-inspeccion.webp"
       ]
@@ -1053,6 +1828,9 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
+        "/guias/bomba-y-tanque-hidroneumatico/",
+        "/guias/pozo-artesiano-o-pozo-excavado/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -1063,8 +1841,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://obra.com.py/presupuesto/"
@@ -1114,11 +1900,12 @@
             "Organization",
             "ProfessionalService",
             "Service",
+            "FAQPage",
             "BreadcrumbList"
           ]
         }
       ],
-      "words": 440,
+      "words": 790,
       "images": [
         "/assets/images/bomba-pozo-artesiano.webp"
       ]
@@ -1138,6 +1925,8 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
+        "/guias/pozo-ciego-o-camara-septica/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -1148,8 +1937,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [
         "https://obra.com.py/casas/"
@@ -1208,7 +2005,7 @@
           ]
         }
       ],
-      "words": 479,
+      "words": 598,
       "images": [
         "/assets/images/pozo-septico-instalacion.webp"
       ]
@@ -1256,6 +2053,7 @@
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -1266,8 +2064,16 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [],
       "whatsapp": [
@@ -1316,24 +2122,25 @@
           ]
         }
       ],
-      "words": 327,
+      "words": 419,
       "images": []
     },
-    "/zonas/mra/": {
-      "path": "/zonas/mra/",
+    "/zonas/asuncion/": {
+      "path": "/zonas/asuncion/",
       "inSitemap": true,
       "legacy": false,
       "status": 200,
-      "title": "Desagüe en Mariano Roque Alonso | Pozo.com.py",
-      "description": "Desagüe de pozo ciego con camión atmosférico de 8 m³ en Mariano Roque Alonso. Consultá acceso, disponibilidad y tarifa.",
+      "title": "Pozo ciego en Asunción: desagüe por barrio | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Asunción: casas con y sin red cloacal, casas antiguas, locales y acceso del camión. Consultá por WhatsApp.",
       "robots": "index,follow",
-      "canonical": "https://pozo.com.py/zonas/mra/",
+      "canonical": "https://pozo.com.py/zonas/asuncion/",
       "h1": [
-        "Desagüe de pozo ciego en Mariano Roque Alonso"
+        "Desagüe de pozo ciego en Asunción"
       ],
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -1344,8 +2151,598 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Asunción, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Asunción, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Asunción, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Asunción, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Asunción, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Asunción, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Asunción, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Asunción, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Asunción).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Asunción, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 653,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/capiata/": {
+      "path": "/zonas/capiata/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en Capiatá | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Capiatá: barrios en crecimiento, calles de tierra en época de lluvias y acceso del camión. Consultá por WhatsApp.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/capiata/",
+      "h1": [
+        "Desagüe de pozo ciego en Capiatá"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Capiatá, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Capiatá, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Capiatá, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Capiatá, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Capiatá, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Capiatá, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Capiatá, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Capiatá, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Capiatá).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Capiatá, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 636,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/fernando-de-la-mora/": {
+      "path": "/zonas/fernando-de-la-mora/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe en Fernando de la Mora | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Fernando de la Mora: lotes chicos, portones angostos y coordinación del camión en barrios muy poblados. Escribinos.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/fernando-de-la-mora/",
+      "h1": [
+        "Desagüe de pozo ciego en Fernando de la Mora"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Fernando de la Mora, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Fernando de la Mora, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Fernando de la Mora, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Fernando de la Mora, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Fernando de la Mora, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Fernando de la Mora, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Fernando de la Mora, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Fernando de la Mora, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Fernando de la Mora).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Fernando de la Mora, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 660,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/lambare/": {
+      "path": "/zonas/lambare/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en Lambaré | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Lambaré: calles en pendiente, barrios densos cerca de Asunción y acceso del camión. Escribinos por WhatsApp.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/lambare/",
+      "h1": [
+        "Desagüe de pozo ciego en Lambaré"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Lambaré, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Lambaré, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Lambaré, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Lambaré, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Lambaré, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Lambaré, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Lambaré, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Lambaré, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Lambaré).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Lambaré, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 583,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/limpio/": {
+      "path": "/zonas/limpio/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en Limpio | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Limpio: barrios urbanos, quintas y acceso del camión atmosférico en época de lluvias. Consultá por WhatsApp.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/limpio/",
+      "h1": [
+        "Desagüe de pozo ciego en Limpio"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Limpio, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Limpio, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Limpio, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Limpio, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Limpio, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Limpio, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Limpio, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Limpio, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Limpio).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Limpio, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 581,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/luque/": {
+      "path": "/zonas/luque/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en Luque | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Luque: barrios urbanos, zonas de quintas, acceso del camión y consulta por pozo artesiano. Escribinos por WhatsApp.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/luque/",
+      "h1": [
+        "Desagüe de pozo ciego en Luque"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Luque, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Luque, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Luque, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Luque, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Luque, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Luque, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Luque, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Luque, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Luque).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Luque, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 660,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/mra/": {
+      "path": "/zonas/mra/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe en Mariano Roque Alonso | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Mariano Roque Alonso: quintas, zonas bajas cerca del río y acceso del camión atmosférico. Consultá por WhatsApp.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/mra/",
+      "h1": [
+        "Desagüe de pozo ciego en Mariano Roque Alonso"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [],
       "whatsapp": [
@@ -1402,26 +2799,27 @@
           ]
         }
       ],
-      "words": 388,
+      "words": 645,
       "images": [
         "/assets/images/desague-pozo-ciego-camion.webp"
       ]
     },
-    "/zonas/san-lorenzo/": {
-      "path": "/zonas/san-lorenzo/",
+    "/zonas/nemby/": {
+      "path": "/zonas/nemby/",
       "inSitemap": true,
       "legacy": false,
       "status": 200,
-      "title": "Desagüe de pozo ciego en San Lorenzo | Pozo.com.py",
-      "description": "Desagüe de pozo ciego con camión atmosférico de 8 m³ en San Lorenzo. Consultá acceso, disponibilidad y tarifa.",
+      "title": "Desagüe de pozo ciego en Ñemby | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Ñemby: barrios en expansión, calles de tierra y terrenos amplios. Coordiná el camión atmosférico por WhatsApp.",
       "robots": "index,follow",
-      "canonical": "https://pozo.com.py/zonas/san-lorenzo/",
+      "canonical": "https://pozo.com.py/zonas/nemby/",
       "h1": [
-        "Desagüe de pozo ciego en San Lorenzo"
+        "Desagüe de pozo ciego en Ñemby"
       ],
       "internal": [
         "/",
         "/contacto/",
+        "/guias/",
         "/privacidad/",
         "/servicios/",
         "/servicios/agua/",
@@ -1432,8 +2830,113 @@
         "/servicios/precio-pozo/",
         "/servicios/septico/",
         "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
         "/zonas/mra/",
-        "/zonas/san-lorenzo/"
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Ñemby, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Ñemby, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Ñemby, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Ñemby, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Ñemby, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Ñemby, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Ñemby, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Ñemby, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Ñemby).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Ñemby, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 557,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/san-lorenzo/": {
+      "path": "/zonas/san-lorenzo/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en San Lorenzo | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en San Lorenzo: barrios céntricos y zonas de quintas, acceso del camión atmosférico y cómo pedir el servicio por WhatsApp.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/san-lorenzo/",
+      "h1": [
+        "Desagüe de pozo ciego en San Lorenzo"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
       ],
       "external": [],
       "whatsapp": [
@@ -1490,7 +2993,104 @@
           ]
         }
       ],
-      "words": 382,
+      "words": 803,
+      "images": [
+        "/assets/images/desague-pozo-ciego-camion.webp"
+      ]
+    },
+    "/zonas/villa-elisa/": {
+      "path": "/zonas/villa-elisa/",
+      "inSitemap": true,
+      "legacy": false,
+      "status": 200,
+      "title": "Desagüe de pozo ciego en Villa Elisa | Pozo.com.py",
+      "description": "Desagüe de pozo ciego en Villa Elisa: zona residencial con casas de jardín, acceso del camión y pozo artesiano. Consultá por WhatsApp.",
+      "robots": "index,follow",
+      "canonical": "https://pozo.com.py/zonas/villa-elisa/",
+      "h1": [
+        "Desagüe de pozo ciego en Villa Elisa"
+      ],
+      "internal": [
+        "/",
+        "/contacto/",
+        "/guias/",
+        "/privacidad/",
+        "/servicios/",
+        "/servicios/agua/",
+        "/servicios/artesiano/",
+        "/servicios/desague/",
+        "/servicios/pozo-ciego/",
+        "/servicios/pozo-lleno/",
+        "/servicios/precio-pozo/",
+        "/servicios/septico/",
+        "/zonas/",
+        "/zonas/asuncion/",
+        "/zonas/capiata/",
+        "/zonas/fernando-de-la-mora/",
+        "/zonas/lambare/",
+        "/zonas/limpio/",
+        "/zonas/luque/",
+        "/zonas/mra/",
+        "/zonas/nemby/",
+        "/zonas/san-lorenzo/",
+        "/zonas/villa-elisa/"
+      ],
+      "external": [],
+      "whatsapp": [
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Villa Elisa, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Villa Elisa, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Villa Elisa, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nNecesito un desagüe de pozo ciego con camión atmosférico.\nCiudad y barrio: Villa Elisa, barrio ___\n¿Está rebalsando? (sí/no): ___\nFecha aproximada del último desagüe: ___\nDistancia del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nNecesito un desagüe urgente: el pozo ciego está lleno o rebalsando.\nCiudad y barrio: Villa Elisa, barrio ___\n¿Está rebalsando ahora? (sí/no): ___\n¿Puede entrar el camión hasta cerca del pozo? (sí/no/no sé): ___\nDistancia aproximada del portón a la tapa: ___ pasos\nLes mando una foto del acceso y otra de la tapa, sin abrirla.\nPara cuándo: hoy mismo / mañana / esta semana"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nQuiero cotizar la perforación de un pozo artesiano.\nCiudad y barrio: Villa Elisa, barrio ___\nUso del agua (casa, quinta, comercio, riego, obra): ___\nProfundidad de pozos vecinos, si la sé: ___ m\nLes mando fotos del terreno y del acceso para el equipo.\nPara cuándo lo quiero hacer (este mes, en 1 a 3 meses, estoy averiguando): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nTengo una consulta por un pozo ciego (construcción, revisión o mantenimiento).\nCiudad y barrio: Villa Elisa, barrio ___\nQué necesito (pozo nuevo, se llena seguido, revisión): ___\nCantidad de personas que usan el baño: ___\nLes mando fotos del patio y de la tapa, con medidas aproximadas del espacio.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nQuiero consultar por el tratamiento del agua de mi pozo.\nCiudad y barrio: Villa Elisa, barrio ___\nQué noto en el agua (sarro, hierro, color, olor, sedimento): ___\nAnálisis de laboratorio (sí/no): ___ Si lo tengo, les mando foto del informe.\nUso del agua y cantidad de personas: ___\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        },
+        {
+          "number": "595992279599",
+          "text": "Hola, les escribo desde pozo.com.py (página: Desagüe en Villa Elisa).\nTengo otra consulta sobre pozos, desagüe o agua.\nCiudad y barrio: Villa Elisa, barrio ___\nQué necesito: ___\nLes mando fotos si ayudan a entender el caso.\nPara cuándo lo necesito (hoy, esta semana, sin apuro): ___"
+        }
+      ],
+      "tel": [
+        "tel:+595992279599"
+      ],
+      "jsonld": [
+        {
+          "valid": true,
+          "types": [
+            "WebSite",
+            "Organization",
+            "ProfessionalService",
+            "Service",
+            "FAQPage",
+            "BreadcrumbList"
+          ]
+        }
+      ],
+      "words": 586,
       "images": [
         "/assets/images/desague-pozo-ciego-camion.webp"
       ]

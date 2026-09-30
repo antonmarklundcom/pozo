@@ -13,7 +13,7 @@ export const SITE = {
   leadEmail: '',
   venderCrmUrl: 'https://crm.clientes.com.py',
   capacity: '8 m³',
-  assetVersion: '20260930-8',
+  assetVersion: '20261001-1',
   // Organization logo for structured data (512 x 512 PNG of the favicon mark).
   logo: '/assets/images/logo-pozo-512.png',
   // Official profiles of the business (Google Business Profile, Facebook,
@@ -41,4 +41,5 @@ export const PRICES = {
 export const CONTACT_SOURCES = {
   contacto: 'site:pozo.com.py:contacto',
   ficha: 'site:pozo.com.py:ficha-rapida',
+  calculadora: 'site:pozo.com.py:calculadora',
 };
