@@ -618,3 +618,10 @@ body.launcher-open { overflow: hidden; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+.included-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.included-card { padding: 24px; background: var(--white); border: 1px solid var(--line); }
+.included-card h3 { margin: 0 0 12px; }
+.included-list { margin: 0; padding: 0; list-style: none; }
+.included-list li { padding: 8px 0 8px 26px; position: relative; border-bottom: 1px solid var(--line); font-size: .9rem; }
+.included-list li::before { content: "✓"; position: absolute; left: 0; color: var(--water); font-weight: 700; }

@@ -150,13 +150,14 @@ export function waText(path, topicId) {
 }
 
 // --- Calculator (/servicios/precio-pozo/) --------------------------------------------
-// Filled in the browser by site.js. Tokens: {depth} {soil} {components}.
+// Filled in the browser by site.js. Tokens: {depth} {soil} {components} {estimate}.
 export const CALCULATOR_TEMPLATE = [
   `Hola, les escribo desde ${SITE_LABEL} (página: Precio de pozo artesiano por metro).`,
   'Quiero cotizar este alcance de pozo artesiano:',
   'Profundidad estimada: {depth} m',
   'Tipo de suelo esperado: {soil}',
-  'Componentes: {components}',
+  'Incluye: {components}',
+  '{estimate}',
   zoneLine(''),
   'Les mando fotos del terreno y del acceso para el equipo.',
   WHEN_PROJECT,

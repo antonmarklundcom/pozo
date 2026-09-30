@@ -1,5 +1,5 @@
 {
-  "crawledAt": "2026-09-30T04:21:49.132Z",
+  "crawledAt": "2026-09-30T16:08:19.086Z",
   "base": "http://127.0.0.1:8765",
   "sitemap": {
     "status": 200,
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "words": 898,
+      "words": 900,
       "images": [
         "/assets/images/pozo-artesiano-perforacion.webp",
         "/assets/images/pozo-artesiano-servicio.webp",
@@ -747,7 +747,7 @@
           ]
         }
       ],
-      "words": 597,
+      "words": 595,
       "images": [
         "/assets/images/pozo-artesiano-servicio.webp"
       ]
@@ -1118,7 +1118,7 @@
           ]
         }
       ],
-      "words": 246,
+      "words": 359,
       "images": [
         "/assets/images/bomba-pozo-artesiano.webp"
       ]
