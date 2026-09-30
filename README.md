@@ -46,6 +46,7 @@ Where things live:
 | Internal editorial notes (never published) | `docs/CONTENT-NOTES.md` |
 | SEO baseline, crawl, before/after diff | `docs/seo/` |
 | Live smoke test (deploy = build? exit 2 if the host is unreachable from here) | `node tools/smoke-live.mjs https://pozo.com.py [--out docs/seo/smoke-live.md]` |
+| Search Console report (service-account key via `GSC_KEY_FILE`, never in git; example `docs/gsc.example.json`) | `node tools/gsc-report.mjs [--days 28]` → `docs/seo/gsc-<date>.csv` + `.md` |
 | Internal link graph (orphans, depth, contextual links; part of verify) | `node tools/link-graph.mjs` → `docs/seo/link-graph.md`; link blocks in `build.mjs` (`RELATED_SERVICES`) |
 
 `tools/qa.mjs` fails on any phone number other than 595992279599 in any file, on a wa.me link with empty text or without the site/page line, on a previously published URL without a 301, on a route folder without `index.html`, and on internal notes visible to visitors.

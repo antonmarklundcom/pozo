@@ -1,0 +1,10 @@
+{
+  "_comment": "Example only. The real key is created in Google Cloud (service account -> Keys -> JSON), kept OUTSIDE the repo, and passed with GSC_KEY_FILE=/path/key.json. Add the service account's email as a user of the Search Console property.",
+  "type": "service_account",
+  "project_id": "example-project",
+  "private_key_id": "0000000000000000000000000000000000000000",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nDUMMY-NOT-A-KEY\n-----END PRIVATE KEY-----\n",
+  "client_email": "pozo-gsc@example-project.iam.gserviceaccount.com",
+  "client_id": "000000000000000000000",
+  "token_uri": "https://oauth2.googleapis.com/token"
+}

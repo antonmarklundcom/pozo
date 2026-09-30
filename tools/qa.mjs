@@ -438,6 +438,7 @@ for (const file of allFiles) {
   const text = await readFile(file, 'utf8');
   if (/vc_(?:live|test)_[A-Za-z0-9_-]{8,}/.test(text)) fail(`${rel}: VenderCRM key detected`);
   if (/\bre_[A-Za-z0-9]{8,}_[A-Za-z0-9]{8,}|\bre_[A-Za-z0-9]{24,}/.test(text)) fail(`${rel}: Resend key detected`);
+  if (/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----(?:\\n|\s)*[A-Za-z0-9+/=]{64,}/.test(text)) fail(`${rel}: private key detected (service-account keys stay outside the repo, GSC_KEY_FILE)`);
 }
 if (fileSet.has('private/pozo.php') || fileSet.has('private/vendercrm.php')) fail('private/: real config must never be in the repo');
 

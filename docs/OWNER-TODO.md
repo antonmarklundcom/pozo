@@ -19,5 +19,13 @@ Only things an agent cannot do. Everything else is handled by the runbook runs
 
 - Does the operator offer: limpieza de pozo artesiano, bombas (venta/cambio), destape de cañerías?
 - Coverage: exactly the 10 cities listed on /zonas/, or more?
-- Later: real photos, verified prices (PYG), VenderCRM site key, Resend domain + notify mailbox,
-  Search Console service-account key (for `tools/gsc-report.mjs`).
+- Later: real photos, verified prices (PYG), VenderCRM site key, Resend domain + notify mailbox.
+
+## Search Console key (for `node tools/gsc-report.mjs`)
+
+1. Google Cloud console → a project → enable "Google Search Console API" → IAM → Service accounts →
+   create one (no roles needed) → Keys → Add key → JSON. Keep the file **outside** the repo.
+2. Search Console → pozo.com.py property → Settings → Users and permissions → add the service account's
+   email (`…@….iam.gserviceaccount.com`) with "Restricted" access.
+3. Run `GSC_KEY_FILE=/path/key.json node tools/gsc-report.mjs` on the PC (or give a session the key as a
+   secret file, never in git). Output: `docs/seo/gsc-<date>.csv` + a high-impression / low-CTR summary.
