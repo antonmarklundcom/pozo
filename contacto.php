@@ -71,7 +71,9 @@ function whatsappFallback(array $lead, string $whatsappNumber, array $waForm, st
         $lines[] = (string)($waForm['ask_when'] ?? '');
     }
     $lines = array_values(array_filter($lines, static fn($line) => $line !== ''));
-    redirectTo('https://wa.me/' . $whatsappNumber . '?text=' . rawurlencode(implode("\n", $lines)));
+    // The full enquiry is already retained. Avoid oversized HTTP Location headers.
+    $target = 'https://wa.me/' . $whatsappNumber . '?text=' . rawurlencode(implode("\n", $lines));
+    redirectTo(strlen($target) > 2000 ? THANK_YOU_PATH : $target);
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -149,7 +151,8 @@ $digits = preg_replace('/\D+/', '', $lead['phone']) ?: '';
 if (str_starts_with($digits, '0')) {
     $digits = '595' . substr($digits, 1);
 }
-$idempotencyKey = hash('sha256', $digits . '|' . gmdate('Y-m-d-H'));
+$idempotencyKey = value('idempotency_key', 100);
+if (strlen($idempotencyKey) < 8) $idempotencyKey = bin2hex(random_bytes(16));
 
 $attr = [];
 if (!empty($_COOKIE['vc_attr'])) {
@@ -222,52 +225,22 @@ $crmStatusLog = 'skipped';
 $resendStatusLog = 'skipped';
 $crmResultSummary = 'no enviado';
 
-// --- [1] VenderCRM POST: try, never blocks the WhatsApp redirect -----------
-if (!$validCrmUrl) {
-    error_log('[pozo] VenderCRM skipped: CRM URL missing or not https.');
-} elseif ($apiKey === '') {
-    error_log('[pozo] VenderCRM skipped: no API key configured (env VENDERCRM_API_KEY or private/pozo.php).');
-} elseif (!function_exists('curl_init')) {
-    error_log('[pozo] VenderCRM skipped: PHP cURL extension unavailable.');
+// --- [1] Save the complete enquiry privately before any delivery. ---------
+require_once __DIR__ . '/lib/lead-delivery.php';
+$delivery = new VenderCrmDelivery([
+    'url'=>$crmUrl, 'api_key'=>$apiKey, 'site_domain'=>'pozo.com.py',
+    'outbox_dir'=>getenv('VENDERCRM_OUTBOX_DIR') ?: dirname($documentRoot).'/.vendercrm-outbox',
+], $documentRoot);
+try { $result = $delivery->accept($payload); }
+catch (RuntimeException $error) { redirectTo(CONTACT_PATH . '?error=campos#lead-form'); }
+if (empty($result['retained']) && empty($result['received'])) {
+    http_response_code(503);
+    echo 'No pudimos guardar tu consulta. Volvé a intentar.';
+    exit;
 }
-if ($validCrmUrl && $apiKey !== '' && function_exists('curl_init')) {
-    $curl = curl_init($crmUrl . '/api/v1/leads');
-    curl_setopt_array($curl, [
-        CURLOPT_POST => true,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_CONNECTTIMEOUT => 4,
-        CURLOPT_TIMEOUT => 10,
-        CURLOPT_HTTPHEADER => [
-            'Content-Type: application/json',
-            'X-Api-Key: ' . $apiKey,
-            'Idempotency-Key: ' . $idempotencyKey,
-        ],
-        CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-    ]);
-
-    $crmResponse = curl_exec($curl);
-    $crmStatus = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
-    $crmError = curl_error($curl);
-    curl_close($curl);
-
-    $crmStatusLog = (string)$crmStatus;
-
-    if ($crmStatus === 200 || $crmStatus === 201) {
-        $decodedCrm = json_decode((string)$crmResponse, true);
-        if (is_array($decodedCrm)) {
-            $contactId = $decodedCrm['contactId'] ?? $decodedCrm['contact_id'] ?? null;
-            $dealId = $decodedCrm['dealId'] ?? $decodedCrm['deal_id'] ?? null;
-            $crmResultSummary = 'contactId=' . ($contactId ?? '?') . ' dealId=' . ($dealId ?? '?');
-        }
-    } else {
-        error_log(sprintf(
-            '[pozo] VenderCRM lead failed [%d] response=%s curl=%s',
-            $crmStatus,
-            substr((string)$crmResponse, 0, 2000),
-            substr($crmError, 0, 500)
-        ));
-    }
-}
+$crmStatusLog = !empty($result['received']) ? 'received' : 'pending';
+$crmResultSummary = $crmStatusLog;
+if (($result['code'] ?? '') === 'already-received') $resendApiKey = '';
 
 // --- [2] Resend notify: try, never blocks the WhatsApp redirect ------------
 if ($resendApiKey === '' || empty($notifyTo)) {

@@ -250,8 +250,10 @@ await runQa({
     if (!triageOk(contactHtml.match(/<form class="lead-form"[\s\S]*?<\/form>/)?.[0] || '')) fail('contacto/index.html: lead form needs the urgencia radios and the zona select');
     if (!contactHtml.includes('https://crm.clientes.com.py/vc-attribution.js') || !contactHtml.includes('Enviar y continuar en WhatsApp')) fail('contacto/index.html: CRM attribution or CRM-to-WhatsApp CTA missing');
     const contactHandler = await readFile(join(root, 'contacto.php'), 'utf8');
+    if (!contactHandler.includes('/lib/lead-delivery.php')) fail('contacto.php: durable transport module is not wired');
+    const serverDeliverySource = contactHandler + await readFile(join(root, 'lib/lead-delivery.php'), 'utf8') + await readFile(join(root, 'lib/site-vendercrm.php'), 'utf8');
     for (const required of ["'urgencia' =>", "'[URGENTE] '", "'ask_when'", 'VENDERCRM_URL', 'VENDERCRM_API_KEY', '/api/v1/leads', 'idempotency_key', 'X-Api-Key', 'api.resend.com', 'Idempotency-Key', 'RESEND_API_KEY', 'https://crm.clientes.com.py', '/private/vendercrm.php', '/private/pozo.php', 'whatsappFallback($lead,', "'wa_form'"]) {
-      if (!contactHandler.includes(required)) fail(`contacto.php: missing ${required}`);
+      if (!serverDeliverySource.includes(required)) fail(`contacto.php: missing ${required}`);
     }
     try {
       const generated = await readFile(join(root, 'config', 'site.generated.php'), 'utf8');

@@ -14,7 +14,7 @@ export default {
     // Any Paraguayan mobile-looking number (595 + 9 digits) that is not ours fails QA…
     foreign: /(?<!\d)595[ .-]?9\d{2}[ .-]?\d{3}[ .-]?\d{3}(?!\d)/,
     // …except the demo placeholder kept in the archived July v0 config (never published).
-    allow: [{ digits: ['595', '981', '234', '567'].join(''), under: 'docs/archive/' }],
+    allow: [{ digits: ['595', '981', '234', '567'].join(''), under: 'docs/archive/' }, { digits: ['595', '981', '000', '000'].join(''), under: 'tests/' }],
   },
   // v0 sitemap: its URLs must keep answering (200 or 301).
   legacySitemaps: ['docs/archive/v0-php-2026-07/sitemap.xml'],
