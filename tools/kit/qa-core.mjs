@@ -255,10 +255,14 @@ export async function runQa(hooks = {}) {
       const body = await response.text();
       if (!body.includes('<!doctype html>')) fail(`${route}: response is not HTML`);
     }
-    const usesRouter = (await fetch(`${base}/esta-pagina-no-existe/`, { redirect: 'manual' })).status === 404;
+    const routerProbe = await fetch(`${base}/esta-pagina-no-existe/`, { redirect: 'manual' });
+    const usesRouter = routerProbe.status === 404;
+    await routerProbe.arrayBuffer();
     if (usesRouter) {
       for (const denied of kit.deniedPaths) {
-        const status = (await fetch(`${base}${denied}`, { redirect: 'manual' })).status;
+        const probe = await fetch(`${base}${denied}`, { redirect: 'manual' });
+        const status = probe.status;
+        await probe.arrayBuffer();
         if (status !== 404 && status !== 403) fail(`${denied}: must not be served (HTTP ${status})`);
       }
       for (const path of published) {

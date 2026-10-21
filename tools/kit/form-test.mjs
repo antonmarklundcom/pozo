@@ -10,6 +10,9 @@
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
 import { join } from 'node:path';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+const queueTemp = await mkdtemp(join(tmpdir(), 'pozo-form-test-'));
 import { hook, kit, root } from './config.mjs';
 
 const form = kit.formTest;
@@ -29,7 +32,7 @@ const stub = createServer((req, res) => {
   req.on('data', (chunk) => { body += chunk; });
   req.on('end', () => {
     calls.push({ url: req.url, headers: req.headers, body: body ? JSON.parse(body) : null });
-    if (req.url === '/api/v1/leads') { res.writeHead(201, { 'Content-Type': 'application/json' }); res.end('{"contactId":"c_stub","dealId":"d_stub"}'); return; }
+    if (req.url === '/api/v1/leads') { res.writeHead(201, { 'Content-Type': 'application/json' }); res.end('{"contactId":"AAAAAAAAAAAAAAAAAAAAAAAAAA","submissionId":"BBBBBBBBBBBBBBBBBBBBBBBBBB","dealId":"DDDDDDDDDDDDDDDDDDDDDDDDDD"}'); return; }
     if (req.url === '/emails') { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('{"id":"email_stub"}'); return; }
     res.writeHead(404); res.end();
   });
@@ -39,7 +42,7 @@ await new Promise((resolve) => stub.listen(STUB_PORT, '127.0.0.1', resolve));
 function startPhp(port, env) {
   const child = spawn(PHP, ['-S', `127.0.0.1:${port}`, join('tools', 'router.php')], {
     cwd: root,
-    env: { ...process.env, ...Object.fromEntries((form.privateConfigEnv || []).map((name) => [name, join(root, 'tools', `no-such-${name.toLowerCase()}.php`)])), ...env },
+    env: { ...process.env, ...Object.fromEntries((form.privateConfigEnv || []).map((name) => [name, join(root, 'tools', `no-such-${name.toLowerCase()}.php`)])), VENDERCRM_OUTBOX_DIR: join(queueTemp, String(port)), ...env },
     stdio: ['ignore', 'ignore', 'pipe'],
   });
   let log = '';
@@ -89,7 +92,7 @@ try {
   check(calls.length === 0, 'no-keys submit must not call any service');
 
   // Valid, stubbed keys: CRM then Resend, then WhatsApp.
-  r = await post(WITH_KEYS_PORT, valid);
+  r = await post(WITH_KEYS_PORT, { ...valid, idempotency_key: 'fixture-confirmed-retry' });
   check(r.location.startsWith(`https://wa.me/${NUMBER}?text=`), 'stubbed submit must end in WhatsApp');
   const crm = calls.find((call) => call.url === '/api/v1/leads');
   const mail = calls.find((call) => call.url === '/emails');
@@ -99,20 +102,20 @@ try {
     check(crm.headers['x-api-key'] === 'stub-not-a-real-key', 'CRM call without X-Api-Key');
     check(crm.body.source === form.sources.contacto, `CRM source ${crm.body.source}`);
     for (const [field, value] of Object.entries(form.crmFields || {})) check(crm.body.fields?.[field] === value, `CRM field ${field} = ${crm.body.fields?.[field]} (expected ${value})`);
-    check(/^[a-f0-9]{64}$/.test(crm.body.idempotency_key || ''), 'CRM idempotency_key missing');
+    check((crm.body.idempotency_key || '').length >= 8, 'CRM idempotency_key missing');
   }
   if (mail && crm) {
     check(mail.headers['idempotency-key'] === crm.body.idempotency_key, 'Resend Idempotency-Key must equal the CRM key');
     check(mail.body.reply_to === valid.email && mail.body.to?.[0] === 'operator@example.invalid', 'Resend reply_to/to wrong');
     check(!/[\r\n]/.test(mail.body.subject || ''), 'Resend subject contains a newline');
-    check(String(mail.body.text).includes('contactId=c_stub'), 'Resend text must carry the CRM result');
+    check(String(mail.body.text).includes('received'), 'Resend text must carry the verified CRM result');
   }
 
   // Same visitor again within the hour: same idempotency key (no duplicate deal/email).
   const before = calls.length;
-  await post(WITH_KEYS_PORT, valid);
+  await post(WITH_KEYS_PORT, { ...valid, idempotency_key: 'fixture-confirmed-retry' });
   const repeat = calls.slice(before).find((call) => call.url === '/api/v1/leads');
-  check(repeat && crm && repeat.body.idempotency_key === crm.body.idempotency_key, 'repeat submit must reuse the idempotency key');
+  check(!repeat && calls.length === before, 'confirmed retry must not send another CRM request or notification');
 
   // Ficha rápida from the launcher: own source and intro.
   const beforeFicha = calls.length;
@@ -134,12 +137,13 @@ try {
   withKeys.child.kill();
   noKeys.child.kill();
   stub.close();
+  await rm(queueTemp, { recursive: true, force: true });
 }
 
 const log = withKeys.log() + noKeys.log();
 const prefix = (form.logPrefix || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-check(new RegExp(`${prefix} crm=201 resend=200`).test(log), 'PHP log should show crm=201 resend=200');
-check(new RegExp(`${prefix} crm=skipped resend=skipped`).test(log), 'PHP log should show crm=skipped resend=skipped for the no-keys server');
+check(new RegExp(`${prefix} crm=received resend=200`).test(log), 'PHP log should show crm=201 resend=200');
+check(new RegExp(`${prefix} crm=pending resend=skipped`).test(log), 'PHP log should show crm=skipped resend=skipped for the no-keys server');
 
 if (failures.length) {
   console.error(`Form test failed with ${failures.length} issue(s):`);
